@@ -1,0 +1,40 @@
+/*
+Cores
+
+#FFFFFF - background
+#8E8E8E - fonte pesquisa
+#00502B - bolinhas
+#72ABCD - caixa pesquisa
+#6B6B6B - contorno busca
+#000000 - fonte
+#F2F2F2 - retângulo galeria
+
+
+// <weight>: Use a value from 100 to 900
+// <uniquifier>: Use a unique and descriptive class name
+
+.inter-<uniquifier> {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+}
+
+*/
+
+/* ELEMENTOS DO HEADER*/
+
+@media screen and (max-width: 1200px) {
+  
+header{
+
+max-width: 100%;
+background: linear-gradient(#00000000, #00000000, #000000b9, #000000ce), url(/Images/header.png);
+height: 60vh;
+background-repeat: no-repeat;
+background-position: center;
+background-size: cover;
+
+}
+
+}

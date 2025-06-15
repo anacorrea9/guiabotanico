@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0, user-scalable=no">
+  <title>Guia botânico dos campos</title>
+  <link rel="stylesheet" href="./Styles/index.css" />
+  <link rel="stylesheet" href="./Styles/mobile.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Open+Sans:wght@300;400;600&family=Pacifico&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Scripts do Ionicons (já estão aqui, não precisam ser repetidos no body) -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</head>
+
+<body>
+
+  <div class="linha-topo">
+    <a href="https://peldbisc.ufsc.br/" target="_blank">
+      <img src="./Images/logopeld.png" alt="logo" id="logo" />
+    </a>
+
+    <ul id="icone-menu">
+      <li id="menu"><ion-icon name="menu-outline"></ion-icon></li> <!-- Ícone sanduíche -->
+      <li id="menuX" style="display: none"><ion-icon name="close-outline"></ion-icon></li> <!-- Ícone fechar -->
+    </ul>
+  </div>
+
+  <ul class="menu-principal" id="menuBox">
+    <li><a href="#">SOBRE NÓS</a></li>
+    <li><a href="conservacao.html">CONSERVAÇÃO DOS CAMPOS</a></li>
+    <li><a href="#">DISTÚRBIOS</a></li>
+    <li><a href="#">GUIAS DE CAMPO</a></li>
+  </ul>
+
+  <header>
+
+  <div class="titulo-sobre-imagem">
+    <h1>GUIA BOTÂNICO DOS CAMPOS</h1>
+    <h2>Descubra a flora dos campos de altitude do Parque Nacional de São Joaquim</h2>
+  </div>
+
+ <div class="container-barra-pesquisa">
+    <div class="barra-pesquisa">
+      <input type="text" placeholder="Pesquise por nome popular, família, gênero, espécie, ou qualquer termo que descreva a planta..." />
+      <button><ion-icon name="search-outline"></ion-icon></button>
+    </div>
+    <!-- As sugestões são inseridas aqui via JavaScript -->
+</header>
+
+
+<!-- NOVA SEÇÃO DE ÍCONES -->
+<section class="secao-info">
+  <div class="info-box">
+    <div class="icone"><ion-icon name="flower-outline"></ion-icon></div>
+    <p><strong>500+</strong><br><span>ESPÉCIES</span></p>
+  </div>
+  
+  <div class="info-box">
+    <div class="icone"><ion-icon name="camera-outline"></ion-icon></div>
+    <p><strong>100+</strong><br><span>FOTOS</span></p>
+  </div>
+
+  <div class="info-box contribuicao">
+  <div class="icone"><ion-icon name="cloud-upload-outline"></ion-icon></div>
+  <p>CONTRIBUA COM FOTOS PARA O SITE</span></p>
+
+</div>
+</section>
+
+ <!-- aqui acaba bolas verdes e inicia a galeria-->
+  
+<!-- Seção de galeria com filtro e imagens lado a lado -->
+<section class="galeria-container">
+  <!-- Cabeçalho com título, pesquisa e ordenação -->
+  <div class="galeria-header">
+    <h2 class="galeria-titulo">Galeria de fotos</h2>
+    <div class="galeria-pesquisa">
+      <ion-icon name="search-outline" class="lupa"></ion-icon>
+      <input type="text" placeholder="Digite aqui para pesquisar" />
+    </div>
+    <div class="ordenacao-container">
+      <span class="ordenacao-label">Ordenar:</span>
+      <select class="ordenacao-select">
+        <option value="familia_az">Família A-Z</option>
+        <option value="familia_za">Família Z-A</option>
+        <option value="genero_az">Nome científico A-Z</option>
+        <option value="genero_za">Nome científico Z-A</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Área principal: filtros + galeria -->
+  <div class="galeria-conteudo">
+    <!-- Filtros à esquerda -->
+    <div class="filtros-area">
+      <div class="filtro-container">
+        <div class="filtro-topo" onclick="toggleFiltro(this)">
+          <span>Cor da flor</span>
+          <span class="icone-toggle">+</span>
+        </div>
+        <div class="filtro-conteudo">
+          <label><input type="checkbox" value="amarela"><span>Amarela</span></label>
+          <label><input type="checkbox" value="azul"><span>Azul</span></label>
+          <label><input type="checkbox" value="branca"><span>Branca</span></label>
+      <label><input type="checkbox" value="laranja"><span>Laranja</span></label>
+      <label><input type="checkbox" value="marrom"><span>Marrom</span></label>
+      <label><input type="checkbox" value="preta"><span>Preta</span></label>
+      <label><input type="checkbox" value="rosa"><span>Rosa</span></label>
+      <label><input type="checkbox" value="roxa"><span>Roxa</span></label>
+      <label><input type="checkbox" value="verde"><span>Verde</span></label>
+      <label><input type="checkbox" value="vermelha"><span>Vermelha</span></label>
+      
+          <!-- ... outros filtros -->
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Novo Filtro Grupo Botânico -->
+     <!-- teste
+    <div class="filtro-container">
+        <div class="filtro-topo">
+            <span>Grupo botânico</span>
+            <span class="icone-toggle">+</span>
+        </div>
+        <div class="filtro-conteudo">
+            <label><input type="checkbox" value="Angiospermas"><span>Angiosperma</span></label>
+            <label><input type="checkbox" value="Gimnospermas"><span>Gimnosperma</span></label>
+            <label><input type="checkbox" value="Samambaias"><span>Samambaia</span></label>
+            <label><input type="checkbox" value="Licófitas"><span>Samambaia</span></label>
+        </div>
+    </div>
+</div> -->
+    <!-- Galeria de imagens à direita -->
+    <div class="galeria-imagens" id="galeria-imagens">
+      <!-- Imagens inseridas dinamicamente -->
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<!-- aqui termina galeria de fotos-->
+
+</section>
+
+
+  <main></main>
+  <footer></footer>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js" integrity="sha512-CEiA+78TpP9KAIPzqBvxUv8hy41jyI3f2uHi7DGp/Y/Ka973qgSdybNegWFciqh6GrN2UePx2KkflnQUbUhNIA==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/shortcuts/sticky.min.js" integrity="sha512-O5YCLUxCY2OBc4rfpnKUIgE4LGuCiW8CrJ7ty4hvkBAAKUOnlbomEFWd3a6ruRnFvO3LG2wiaGiJ1heOvdppvA==" crossorigin="anonymous"></script>
+
+
+<!-- Scripts-->
+<script src="Scripts/menu.js"></script>
+<script src="Scripts/galeria.js"></script>
+<script src="Scripts/index.js"></script>
+<script src="Scripts/filtros.js"></script>
+
+
+
+<footer class="rodape">
+  <div class="rodape-conteudo">
+    
+    <div class="rodape-links">
+      <p><strong>SOBRE NÓS</strong></p>
+      <p><strong>CONSERVAÇÃO DOS CAMPOS</strong></p>
+      <p><strong>DISTÚRBIOS</strong></p>
+      <p><strong>GUIAS DE CAMPO</strong></p>
+    </div>
+
+    <div class="rodape-contato">
+      <p><strong>MANDE SUA OPINIÃO</strong></p>
+      <p><ion-icon name="mail-outline"></ion-icon> anacorrea.bio@gmail.com</p>
+    </div>
+    
+  </div>
+
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

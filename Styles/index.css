@@ -1,0 +1,703 @@
+/*
+Cores
+
+#FFFFFF - background
+#8E8E8E - fonte pesquisa
+#00502B - bolinhas
+#72ABCD - caixa pesquisa
+#6B6B6B - contorno busca
+#000000 - fonte
+#F2F2F2 - retângulo galeria
+
+
+// <weight>: Use a value from 100 to 900
+// <uniquifier>: Use a unique and descriptive class name
+
+.inter-<uniquifier> {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+}
+*/
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/*linha topo*/
+.linha-topo {
+    display: flex;
+    justify-content: space-between;
+    height: 2rem;        /* altura da linha */
+    background: rgb(255, 255, 255);  /* cor da linha */
+    width: 100%;        /* ocupa toda a largura da página */
+    padding: 1rem;
+    top: 0;
+    left: 0;
+    z-index: 1;      /* fica abaixo de tudo */
+    align-items: center;
+}
+
+header {
+    margin-top: 40px;
+    width: 100%;
+    height: 25rem;
+    position: relative;
+    z-index: 2;
+    overflow: hidden; /* Garante que nada ultrapasse os limites */
+}
+
+header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, 
+                rgba(0,0,0,0) 0%, 
+             
+                rgba(0,0,0,0.7) 75%, 
+                rgba(0,0,0,0.9) 100%);
+    z-index: 1;
+}
+
+header::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url(../Images/header.png) center/cover no-repeat;
+    z-index: 0;
+}
+
+/* Logo */
+#logo {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+    margin-top: 2.5rem;
+}
+
+/* Ícones do menu (hamburguer e fechar) */
+#menu ion-icon, #menuX ion-icon {
+    font-size: 2rem;
+    color: #00502B;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;  /* Não precisa ser absolute */
+    margin-top: 40px;
+    margin-right: 20px;
+    z-index: 999;
+}
+
+/* Por padrão, ícone fechar fica escondido */
+#menuX {
+    display: none;
+}
+
+/* Container do ícone - lista sem estilo */
+#icone-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Itens da lista ícone */
+#icone-menu li {
+    list-style: none;
+}
+
+/* Menu principal - inicialmente invisível, mas no fluxo (sem display:none) */
+.menu-principal {
+    position: absolute;
+    top: 70px;
+    right: 1rem;
+    width: 300px;
+    height: 260px;
+    background-color: white;
+    border: 1px solid #00502B;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transform: translateY(-20px);
+    pointer-events: none; /* Não deixa clicar quando invisível */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+    list-style: none;
+    padding: 1rem;
+    z-index: 999;
+}
+
+/* Quando ativo, mostra o menu com animação */
+.menu-principal.active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto; /* Permite interação */
+}
+
+/* Itens do menu */
+.menu-principal li {
+    width: 100%;
+    text-align: center;
+    transition: transform 0.2s ease;
+}
+
+/* Efeito hover nos itens do menu */
+.menu-principal li:hover {
+    transform: translateX(5px);
+}
+
+/* Links dentro do menu */
+.menu-principal li a {
+    text-decoration: none;
+    color: #00502B;
+    font-size: 110%;
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding-bottom: 10px;
+    transition: opacity 0.3s ease-in-out;
+    display: block;
+    width: 100%;
+    cursor: pointer;
+}
+
+.menu-principal li a:hover {
+    opacity: 0.6;
+}
+
+
+/* Texto H1 E H2 */
+.titulo-sobre-imagem {
+  position: absolute;
+  top: 25%;
+  width: 100%;
+  text-align: center;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Título principal */
+.titulo-sobre-imagem h1 {
+  font-size: 3rem;
+  color: white;
+  font-family: "Inter", sans-serif;
+  margin: 0;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+/* Subtítulo */
+.titulo-sobre-imagem h2 {
+  font-size: 1.3rem;
+  color: #ffffff;
+  font-weight: 400;
+  max-width: 1000px;
+  font-family: "Inter", sans-serif;
+  margin: 0;
+  padding: 0 1rem;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+/* barra de pesquisa*/
+/* .container-barra-pesquisa {border: 2px solid rgb(84, 255, 17); } */
+.container-barra-pesquisa {
+  position: relative;
+  width: 58%;
+  margin: 0 auto;
+  top: 60%;
+  transform: translateY(-50%);
+  z-index: 100;
+}
+
+.barra-pesquisa {
+  position: relative; /* PARA POSICIONAR AS SUGESTÕES */
+  width: 100%;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  background: white;
+  border-radius: 20px;
+  /*box-shadow: 0 4px 10px rgba(0,0,0,0.15); */
+  gap: 0.5rem;
+  border: none;
+
+}
+
+/* INPUT */
+.barra-pesquisa input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-family: "Inter", sans-serif;
+  font-size: 0.9rem;
+  padding: 1rem;
+  margin: 0;
+}
+
+/* BOTÃO DE PESQUISA */
+.barra-pesquisa button { 
+  flex-shrink: 0;
+  background: #72ABCD;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  right: -0.5rem;
+  z-index: 5;
+}
+
+.barra-pesquisa button:hover {
+  background: #5a9bbf;
+  transform: scale(1.05);
+}
+
+/* SUGESTÕES agora posicionadas dentro da barra, com top: 100% */
+.sugestoes-pesquisa {
+  position: absolute;
+  background: white;
+  /*border: 1px solid #ccc; */
+  z-index: 0;
+  width: 97%;
+  max-height: 130px;
+  overflow-y: auto;
+  border-radius: 10px 10px 10px 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  top: 100%;
+  left: 0;
+}
+
+/* itens de sugestão */
+.sugestao-item {
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+  font-size: 0.9rem;
+  background-color: white;
+}
+
+.sugestao-item:last-child {
+  border-bottom: none;
+}
+
+.sugestao-item:hover {
+  background-color: #f5f5f5;
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+  .titulo-sobre-imagem h1 {
+    font-size: 2rem;
+  }}
+
+
+
+/*ícones verdes bolas*/
+
+.secao-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5rem;
+  margin-top: 2rem;
+  padding: 2rem;
+  align-items: flex-start; /* Alinha todos os itens no topo */
+}
+
+.info-box {
+text-align: center;
+color: #00502B;
+max-width: 200px;
+min-height: 180px; 
+align-items: center;
+}
+
+.info-box.contribuicao p {
+  margin-left: -1.8rem; 
+  max-width: 160px;
+
+}
+
+
+.info-box .icone {
+  background-color: #00502B;
+  color: white;
+  border-radius: 50%;
+  padding: 0rem;
+  font-size: 4rem;
+  margin-bottom: 0.5rem;
+  width: 100px;
+  height: 100px;
+display: flex; 
+align-items: center; 
+justify-content: center; 
+}
+
+.info-box p {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  font-size: 0.85rem;
+}
+
+.info-box strong {
+  font-size: 1.1rem;
+}
+
+/* galeria de fotos*/
+/* Conteiner cinza*/
+/*
+.galeria-container { border: 1px solid rgb(17, 219, 255); } */
+
+/*
+
+/* ------------------------- GERAL ------------------------ */
+body {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #ffffff;
+}
+
+/* --------------------- CONTAINER PRINCIPAL --------------------- */
+.galeria-container {
+  max-width: 1150px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background-color: #F2F2F2;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* ------------------------ CABEÇALHO ------------------------ */
+.galeria-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.galeria-titulo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #1f1f1f;
+  margin: 0;
+  flex: 1;
+}
+
+.galeria-pesquisa {
+  display: flex;
+  align-items: center;
+  flex: 2;
+  position: relative;
+}
+
+.galeria-pesquisa input {
+  width: 90%;
+  padding: 0.6rem 2.5rem 0.6rem 1rem;
+  border: 1px solid #ffffff;
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
+
+.lupa {
+  position: absolute;
+  right: 5rem;
+  color: #666;
+  font-size: 1.2rem;
+}
+
+/* ---------------------- ORDENADOR ---------------------- */
+.ordenacao-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ordenacao-label {
+  font-size: 0.9rem;
+  color: #444;
+}
+
+.ordenacao-select {
+  padding: 0.5rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 0.95rem;
+  background-color: #fff;
+}
+
+/* --------------------- ÁREA PRINCIPAL --------------------- */
+.galeria-conteudo {
+  display: flex;
+  gap: 2rem;
+}
+
+/* ---------------------- FILTROS ---------------------- */
+.filtros-area {
+  flex: 0 0 240px;
+  position: sticky;
+  top: 1rem;
+  align-self: flex-start;
+}
+
+.filtro-container {
+  border: 1px solid #e0e0e0;
+  border-radius: 14px;
+  background-color: #fff;
+  padding: 1.25rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.filtro-topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.filtro-topo:hover {
+  background-color: #f5f5f5;
+}
+
+.icone-toggle {
+  transition: transform 0.3s ease;
+}
+
+.filtro-conteudo {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: 
+    max-height 0.3s ease, 
+    opacity 0.2s ease,
+    padding 0.3s ease;
+  padding: 0 1rem;
+   display: none;
+}
+
+.filtro-conteudo.aberto {
+  max-height: 500px; /* Ajuste conforme necessário */
+  opacity: 1;
+  padding: 0.5rem 1rem 1rem;
+   display: block;
+}
+
+.icone-toggle.aberto {
+  transform: rotate(45deg); /* Transforma o + em X */
+  
+}
+
+.filtro-conteudo label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.5rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  color: #444;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filtro-conteudo label:hover {
+  background-color: #f5f5f5;
+}
+
+.filtro-conteudo input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  appearance: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.filtro-conteudo input[type="checkbox"]:checked {
+  background-color: #00502B;
+  border-color: #00502B;
+}
+
+.filtro-conteudo input[type="checkbox"]:checked::after {
+  content: "✓";
+  color: white;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+
+/* ---------------------- GALERIA DE IMAGENS ---------------------- */
+.galeria-imagens {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.8rem; /* Aumentei um pouco o espaçamento */
+  padding: 0.5rem; /* Padding suave */
+}
+
+.imagem-container {
+  width: 100%;
+  height: 320px; /* altura fixa do card */
+  position: relative;
+  border-radius: 12px; /* Bordas mais arredondadas */
+  overflow: hidden;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.08); /* Sombra mais suave */
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /* Transição mais suave */
+  background: white;
+}
+
+.imagem-container:hover {
+  transform: translateY(-8px); /* Efeito de flutuação maior */
+  box-shadow: 0 12px 20px rgba(0,0,0,0.12); /* Sombra mais intensa no hover */
+}
+
+.imagem-planta {
+  width: 100%;           /* ocupa toda largura do container */
+  aspect-ratio: 8 / 7;   /* define a proporção 4:3 */
+  object-fit: cover;     /* cobre todo o espaço, cortando o que extrapolar */
+  display: block;
+  transition: transform 0.5s ease;
+  object-position: center center;
+
+}
+
+.imagem-container:hover .imagem-planta {
+  transform: scale(1.05); /* Zoom sutil ao passar o mouse */
+}
+
+.legenda-planta {
+  padding: 1rem;
+  background: white;
+  border-top: 0px solid #f0f0f0; /* Borda mais suave */
+}
+
+.familia {
+  font-weight: 600; /* Peso intermediário */
+  font-family: "Inter", sans-serif;
+  color: #00502B;
+  text-transform: uppercase;
+  margin: 0.3rem 0;
+  font-size: 0.95rem;
+}
+
+.nome-cientifico {
+  font-style: italic;
+  font-family: "Inter", sans-serif;
+  color: #333; /* Cor mais escura para melhor contraste */
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.tipo-planta {
+  font-family: "Inter", sans-serif;
+  color: #666;
+  font-size: 0.85rem;
+  margin: 0.3rem 0 0;
+}
+
+/* ---------------------- RESPONSIVIDADE ---------------------- */
+@media (max-width: 992px) {
+  .galeria-imagens {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  
+  .imagem-planta {
+    height: 200px;
+  }
+}
+
+@media (max-width: 576px) {
+  .galeria-imagens {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+  
+  .imagem-planta {
+    height: 240px; /* Mais altura para mobile */
+  }
+  
+  .imagem-container {
+    border-radius: 10px;
+  }
+
+  
+}
+/*footer*/
+
+.rodape {
+  background-color: #00502B;
+  color: white;
+  padding: 2rem 1rem;
+  margin: 0;
+  font-family: "Inter", sans-serif;
+}
+
+.rodape-conteudo {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.rodape-links {
+  text-align: center;
+  flex: 1;
+}
+
+.rodape-links p {
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+}
+
+.rodape-contato {
+  position: absolute;
+  right: 0;
+  top: 0;
+  text-align: right;
+}
+
+.rodape-contato p {
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+}
+
+.rodape-contato ion-icon {
+  margin-right: 0.5rem;
+  vertical-align: middle;
+  font-size: 1.1rem;
+}
+

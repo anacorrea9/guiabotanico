@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Conservação dos Campos de Altitude</title>
+
+  <!-- Ionicons CDN para ícones -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+  <style>
+    /* RESET básico */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    ul {
+      list-style: none;
+    }
+
+    /* ============ TOPO ============ */
+    .linha-topo {
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 20px;
+      border-bottom: 1px solid #ddd;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    #logo {
+      height: 40px;
+      cursor: pointer;
+    }
+
+    #icone-menu {
+      display: flex;
+      gap: 10px;
+      font-size: 28px;
+      color: #2a5d4a;
+      cursor: pointer;
+    }
+
+    #icone-menu li {
+      display: flex;
+      align-items: center;
+    }
+
+    /* ============ MENU PRINCIPAL ============ */
+    .menu-principal {
+      background-color: #2a5d4a;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 10px 0;
+      font-weight: bold;
+      font-size: 0.9rem;
+      color: white;
+      user-select: none;
+    }
+    .menu-principal li a {
+      color: white;
+      padding: 6px 12px;
+      transition: background-color 0.3s ease;
+      border-radius: 4px;
+    }
+    .menu-principal li a:hover {
+      background-color: #4a7c6c;
+    }
+
+    /* ======= MENU RESPONSIVO (MOBILE) ======= */
+    @media (max-width: 768px) {
+      .menu-principal {
+        flex-direction: column;
+        position: absolute;
+        width: 100%;
+        top: 62px;
+        left: 0;
+        background-color: #2a5d4a;
+        display: none;
+      }
+      .menu-principal.active {
+        display: flex;
+      }
+    }
+
+    /* ============ HEADER ============ */
+    header {
+      margin-top: 15px;
+      margin-bottom: 40px;
+      padding: 0 20px;
+      flex-grow: 1;
+    }
+
+    .breadcrumb {
+      background-color: #2a5d4a;
+      color: #fff;
+      padding: 10px 20px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border-radius: 0 0 6px 6px;
+      margin-bottom: 20px;
+      user-select: none;
+    }
+
+    .header-img {
+      width: 100%;
+      max-height: 280px;
+      object-fit: cover;
+      border-radius: 6px;
+      margin-bottom: 20px;
+      box-shadow: 0 3px 8px rgb(0 0 0 / 0.1);
+    }
+
+    h1 {
+      color: #2a5d4a;
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+    }
+    h2 {
+      color: #4a7c6c;
+      font-weight: 400;
+      margin-bottom: 25px;
+    }
+
+    /* ============ CONTEÚDO PRINCIPAL ============ */
+    .content {
+      max-width: 900px;
+      margin: 0 auto 60px;
+      padding: 0 20px;
+    }
+
+    .content p {
+      margin-bottom: 1em;
+      text-align: justify;
+    }
+    .content ul {
+      margin-left: 20px;
+      margin-bottom: 1.2em;
+      color: #444;
+    }
+    .content ul li {
+      margin-bottom: 6px;
+    }
+
+    /* Destaque verde (como o retângulo do breadcrumb) */
+    .highlight {
+      background-color: #e6f0eb;
+      border-left: 6px solid #2a5d4a;
+      padding: 1em 1.2em;
+      margin: 30px 0;
+      font-style: normal;
+      color: #2a5d4a;
+      border-radius: 4px;
+    }
+
+    /* ============ FOOTER ============ */
+    footer.rodape {
+      background-color: #2a5d4a;
+      color: white;
+      padding: 30px 20px;
+      font-size: 0.9rem;
+      user-select: none;
+    }
+
+    .rodape-conteudo {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .rodape-links p,
+    .rodape-contato p {
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    .rodape-contato ion-icon {
+      vertical-align: middle;
+      margin-right: 6px;
+      font-size: 1.2rem;
+    }
+
+    /* responsividade do footer */
+    @media (max-width: 600px) {
+      .rodape-conteudo {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="linha-topo">
+    <a href="https://peldbisc.ufsc.br/" target="_blank">
+      <img src="images/logopeld.png" alt="logo" id="logo" />
+    </a>
+
+    <ul id="icone-menu">
+      <li id="menu"><ion-icon name="menu-outline"></ion-icon></li> <!-- Ícone sanduíche -->
+      <li id="menuX" style="display: none"><ion-icon name="close-outline"></ion-icon></li> <!-- Ícone fechar -->
+    </ul>
+  </div>
+
+  <ul class="menu-principal" id="menuBox">
+    <li><a href="#">SOBRE NÓS</a></li>
+    <li><a href="conservacao.html">CONSERVAÇÃO DOS CAMPOS</a></li>
+    <li><a href="#">DISTÚRBIOS</a></li>
+    <li><a href="#">GUIAS DE CAMPO</a></li>
+  </ul>
+
+  <header>
+    <div class="breadcrumb">home &gt; conservação</div>
+
+    <img
+      src="images/campos-altitude.jpg"
+      alt="Imagem dos Campos de Altitude"
+      class="header-img"
+    />
+
+    <h1>Campos de Altitude: o que são e por que conservar</h1>
+    <h2>Ecossistemas únicos que merecem proteção</h2>
+
+    <section class="content">
+      <p>
+        Os <strong>Campos de Altitude</strong> são ecossistemas caracterizados
+        por vegetação predominantemente herbácea e arbustiva, localizados em
+        áreas montanhosas do sul e sudeste do Brasil. Eles fazem parte do bioma
+        Mata Atlântica e ocorrem principalmente em altitudes elevadas, com clima
+        mais rigoroso e variações sazonais marcantes.
+      </p>
+
+      <p>
+        Esses campos abrigam uma <strong>alta biodiversidade</strong>,
+        incluindo muitas espécies endêmicas — ou seja, que não existem em nenhum
+        outro lugar do planeta. A vegetação é adaptada a solos rasos,
+        temperaturas baixas, ventos fortes e grandes variações de umidade.
+      </p>
+
+      <h3>Serviços ecossistêmicos prestados</h3>
+      <ul>
+        <li>Proteção e recarga de aquíferos</li>
+        <li>Controle da erosão do solo</li>
+        <li>
+          Armazenamento de carbono (ajudando a combater as mudanças climáticas)
+        </li>
+        <li>Manutenção da biodiversidade</li>
+        <li>Suporte à pecuária extensiva sustentável</li>
+        <li>Potencial para o turismo ecológico</li>
+      </ul>
+
+      <h3>Ameaças à conservação</h3>
+      <p>
+        Os Campos de Altitude estão entre os ecossistemas mais ameaçados do
+        Brasil. As principais ameaças incluem:
+      </p>
+     
