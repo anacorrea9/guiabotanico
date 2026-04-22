@@ -808,12 +808,12 @@ a.stat-item-link .stat-label { color: #888; }
 .toolbar-filter-btn {
   display: none;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   gap: 6px;
   background: #fff;
   border: 1px solid #ccc;
   border-radius: 6px;
-  padding: 8px 14px;
+  padding: 8px 12px;
   font-family: 'Inter', sans-serif !important;
   font-size: 13px;
   font-weight: 500;
@@ -821,6 +821,7 @@ a.stat-item-link .stat-label { color: #888; }
   cursor: pointer;
 }
 .toolbar-filter-btn:hover { border-color: #00502B; color: #00502B; }
+.toolbar-btn-icon { flex-shrink: 0; }
 
 /* Header interno da sidebar (só no modo off-canvas) */
 .filter-sidebar-header { display: none; }
@@ -1924,12 +1925,27 @@ footer {
     background: #fff;
     border: 1px solid #ccc;
     border-radius: 6px;
-    padding: 0 10px;
+    padding: 0 12px;
     display: flex;
     align-items: center;
     gap: 6px;
+    position: relative;
+  }
+  .gallery-toolbar .toolbar-order::after {
+    content: '';
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    pointer-events: none;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231a1a1a' stroke-width='2.4' stroke-linecap='round'><line x1='4' y1='7' x2='20' y2='7'/><line x1='7' y1='12' x2='17' y2='12'/><line x1='10' y1='17' x2='14' y2='17'/></svg>");
   }
   .gallery-toolbar .toolbar-order select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
     border: none;
     background: transparent;
     flex: 1;
@@ -1937,6 +1953,7 @@ footer {
     font-size: 13px;
     font-family: 'Inter', sans-serif !important;
     color: #1a1a1a;
+    padding-right: 0;
   }
   .gallery-toolbar .toolbar-order-label { display: none; }
   .toolbar-filter-btn { display: inline-flex; }
