@@ -812,20 +812,26 @@ a.stat-item-link .stat-label { color: #888; }
   pointer-events: none;
   background: url('ordenar.png') no-repeat center / contain;
 }
+.gallery-toolbar .toolbar-order select,
 .toolbar-order select {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  border: none;
+  border: 0;
   background: transparent;
   outline: none;
+  box-shadow: none;
   flex: 1;
   font-size: 13px;
   font-family: 'Inter', sans-serif !important;
   color: #1a1a1a;
   cursor: pointer;
   padding: 0;
+  margin: 0;
+  border-radius: 0;
+  white-space: nowrap;
 }
+.toolbar-order select::-ms-expand { display: none; }
 
 .toolbar-order-label { display: none; }
 
