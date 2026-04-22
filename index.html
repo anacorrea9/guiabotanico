@@ -225,12 +225,25 @@
         <option value="nome-za">Nome científico Z-A</option>
       </select>
     </div>
+    <button class="toolbar-filter-btn" type="button" onclick="abrirFiltrosMobile()" aria-label="Abrir filtros">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+      Filtrar
+    </button>
   </div>
 
   <!-- Corpo: sidebar filtros + galeria -->
   <div class="gallery-body">
-    <!-- Sidebar filtros à esquerda -->
-    <aside class="filter-sidebar">
+    <!-- Backdrop para o modo off-canvas no mobile -->
+    <div class="filter-backdrop" id="filterBackdrop" onclick="fecharFiltrosMobile()"></div>
+
+    <!-- Sidebar filtros à esquerda (vira off-canvas no mobile) -->
+    <aside class="filter-sidebar" id="filterSidebar">
+      <div class="filter-sidebar-header">
+        <span>Filtros</span>
+        <button class="filter-sidebar-close" type="button" onclick="fecharFiltrosMobile()" aria-label="Fechar filtros">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
       <!-- Cor da flor -->
       <div class="filter-group">
         <div class="filter-group-header" onclick="toggleFilter('f-cor')">
@@ -373,7 +386,7 @@
 
       <!-- Botões -->
       <div class="filter-actions">
-        <button class="btn-apply" onclick="aplicarFiltros()">Aplicar</button>
+        <button class="btn-apply" onclick="aplicarFiltros(); fecharFiltrosMobile();">Aplicar</button>
         <button class="btn-clear" onclick="limparFiltros()">Limpar</button>
       </div>
     </aside>
@@ -537,6 +550,19 @@
     document.getElementById('ordemSel').value = 'familia-az';
     aplicarFiltros();
   }
+
+  // ===== FILTROS OFF-CANVAS (MOBILE) =====
+  function abrirFiltrosMobile() {
+    document.body.classList.add('filter-open');
+  }
+  function fecharFiltrosMobile() {
+    document.body.classList.remove('filter-open');
+  }
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && document.body.classList.contains('filter-open')) {
+      fecharFiltrosMobile();
+    }
+  });
 
   // ===== THUMB HELPER =====
   // Converte "fotos/xxx.jpg" em "fotos/thumbs/xxx.jpg" (usado em cards/modal).

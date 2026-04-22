@@ -804,6 +804,38 @@ a.stat-item-link .stat-label { color: #888; }
   color: #1a1a1a;
 }
 
+/* Botão "Filtrar" do toolbar (só aparece no mobile) */
+.toolbar-filter-btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 8px 14px;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 13px;
+  font-weight: 500;
+  color: #1a1a1a;
+  cursor: pointer;
+}
+.toolbar-filter-btn:hover { border-color: #00502B; color: #00502B; }
+
+/* Header interno da sidebar (só no modo off-canvas) */
+.filter-sidebar-header { display: none; }
+
+/* Backdrop escuro que aparece junto com a sidebar off-canvas */
+.filter-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 9998;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
 /* filters-container não mais utilizado — filtros agora na sidebar */
 
 .gallery-controls {
@@ -1865,6 +1897,97 @@ footer {
 
   .gallery-section-bg { padding: 14px 6px 36px; }
   .main-layout { padding: 16px 12px 28px; border-radius: 12px; }
+
+  /* Toolbar mobile: título centralizado, Ordenar + Filtrar em duas caixas */
+  .gallery-toolbar {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    row-gap: 14px;
+  }
+  .gallery-toolbar h2 {
+    font-size: 26px;
+    width: 100%;
+    text-align: center;
+    margin: 4px 0 2px;
+  }
+  .gallery-toolbar .search-inline,
+  .gallery-toolbar .toolbar-divider { display: none; }
+  .gallery-toolbar .toolbar-order,
+  .gallery-toolbar .toolbar-filter-btn {
+    flex: 1 1 0;
+    min-width: 0;
+    height: 40px;
+  }
+  .gallery-toolbar .toolbar-order {
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .gallery-toolbar .toolbar-order select {
+    border: none;
+    background: transparent;
+    flex: 1;
+    outline: none;
+    font-size: 13px;
+    font-family: 'Inter', sans-serif !important;
+    color: #1a1a1a;
+  }
+  .gallery-toolbar .toolbar-order-label { display: none; }
+  .toolbar-filter-btn { display: inline-flex; }
+
+  /* Sidebar vira off-canvas deslizando da direita */
+  .gallery-body { position: relative; }
+  .filter-sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 86%;
+    max-width: 360px;
+    z-index: 9999;
+    background: #f5f7f5;
+    border-radius: 0;
+    padding: 16px 16px 20px;
+    overflow-y: auto;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    box-shadow: -4px 0 20px rgba(0,0,0,0.18);
+  }
+  body.filter-open .filter-sidebar { transform: translateX(0); }
+
+  .filter-sidebar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 12px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid #e0e0e0;
+    font-weight: 700;
+    font-size: 17px;
+    color: #1a1a1a;
+  }
+  .filter-sidebar-close {
+    background: transparent;
+    border: 0;
+    padding: 4px;
+    cursor: pointer;
+    color: #555;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .filter-backdrop { display: block; pointer-events: none; }
+  body.filter-open .filter-backdrop {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  body.filter-open { overflow: hidden; }
 }
 
 /* ===== OUTRAS PLANTAS (carrossel no final da página da espécie) ===== */
