@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entre em contato – Guia Botânico dos Campos</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .contact-wrap { max-width: 640px; margin: 40px auto; padding: 0 20px; }
+    .contact-card { background: #fff; padding: 28px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
+    .contact-card h1 { color: #00502B; font-size: 24px; margin-bottom: 8px; }
+    .contact-lead { color: #555; font-size: 14px; margin-bottom: 20px; }
+    .form-row { display: flex; flex-direction: column; gap: 4px; margin-bottom: 14px; }
+    .form-row label { font-size: 13px; font-weight: 600; color: #444; }
+    .form-row input, .form-row textarea { padding: 10px 12px; border: 1px solid #ccc; border-radius: 6px; font-family: inherit; font-size: 14px; }
+    .form-row textarea { resize: vertical; min-height: 180px; }
+    .btn { background: #00502B; color: #fff; border: 0; padding: 12px 22px; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 14px; }
+    .btn[disabled] { opacity: 0.6; cursor: not-allowed; }
+    .msg { padding: 12px; border-radius: 6px; margin: 14px 0; font-size: 14px; }
+    .msg.err { background: #FFEBEE; color: #C62828; }
+    .msg.ok { background: #E8F5E9; color: #2E7D32; }
+    .back-link { color: #00502B; text-decoration: none; font-size: 14px; display: inline-block; margin-bottom: 16px; }
+    .back-link:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+<div class="contact-wrap">
+  <a class="back-link" href="index.html">← Voltar ao site</a>
+  <div class="contact-card">
+    <h1>Entre em contato</h1>
+    <p class="contact-lead">
+      Envie sugestões, dúvidas ou comentários sobre o Guia Botânico dos Campos.
+      Vamos responder pelo email que você informar.
+    </p>
+
+    <div id="msg"></div>
+
+    <form id="contatoForm" action="mailto:anacorrea.bio@gmail.com" method="post" enctype="text/plain">
+      <div class="form-row">
+        <label>Nome *</label>
+        <input type="text" name="Nome" required>
+      </div>
+      <div class="form-row">
+        <label>Endereço de Email *</label>
+        <input type="email" name="Email" required>
+      </div>
+      <div class="form-row">
+        <label>Mensagem *</label>
+        <textarea name="Mensagem" required></textarea>
+      </div>
+
+      <button type="submit" class="btn">Enviar</button>
+    </form>
+  </div>
+</div>
+
+</body>
+</html>

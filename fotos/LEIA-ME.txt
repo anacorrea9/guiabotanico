@@ -1,0 +1,14 @@
+COMO ORGANIZAR AS FOTOS
+=======================
+
+1. Nomeie cada foto com o nome cientifico (sem acento, minusculo, separado por hifen)
+   Exemplo: eryngium-pandanifolium.jpg
+
+2. Se tiver mais de uma foto da mesma especie:
+   eryngium-pandanifolium-1.jpg
+   eryngium-pandanifolium-2.jpg
+
+3. Formatos aceitos: .jpg, .jpeg, .png, .webp
+
+4. Tamanho recomendado: entre 600px e 1200px de largura
+   (fotos muito grandes deixam o site lento)

@@ -1,0 +1,38 @@
+# Segredos — NUNCA commitar
+.env
+.env.local
+data/users.json
+
+# Submissões pendentes (dados privados de contribuidores)
+data/pending.json
+data/pending-refs.json
+uploads/
+
+# Backend Node (não é usado no GitHub Pages)
+server/
+node_modules/
+package-lock.json
+
+# Scripts Python e caches
+*.py
+__pycache__/
+*.pyc
+
+# Backups e arquivos intermediários
+*.bak
+*.log
+data.js.*.bak
+data/*.bak
+reflora_run.log
+conservation_results.json
+iucn_results.json
+iucn_v4_results.json
+photo_matches.json
+report_reflora.md
+species_list.txt
+
+# Editor/SO
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store

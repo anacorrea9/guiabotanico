@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contribuir com referência – Guia Botânico dos Campos</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .contrib-wrap { max-width: 640px; margin: 40px auto; padding: 0 20px; }
+    .contrib-card { background: #fff; padding: 28px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
+    .contrib-card h1 { color: #00502B; font-size: 24px; margin-bottom: 8px; }
+    .contrib-lead { color: #555; font-size: 14px; margin-bottom: 20px; }
+    .form-row { display: flex; flex-direction: column; gap: 4px; margin-bottom: 14px; }
+    .form-row label { font-size: 13px; font-weight: 600; color: #444; }
+    .form-row .hint { font-size: 12px; color: #888; font-weight: 400; }
+    .form-row input, .form-row textarea { padding: 10px 12px; border: 1px solid #ccc; border-radius: 6px; font-family: inherit; font-size: 14px; }
+    .form-row textarea { resize: vertical; min-height: 80px; }
+    .cat-options { display: flex; flex-direction: column; gap: 6px; margin-top: 4px; }
+    .cat-options label { display: flex; align-items: center; gap: 8px; font-weight: 400; font-size: 14px; color: #333; cursor: pointer; }
+    .cat-options input[type="radio"] { accent-color: #00502B; }
+    .btn { background: #00502B; color: #fff; border: 0; padding: 12px 22px; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 14px; }
+    .btn[disabled] { opacity: 0.6; cursor: not-allowed; }
+    .msg { padding: 12px; border-radius: 6px; margin: 14px 0; font-size: 14px; }
+    .msg.err { background: #FFEBEE; color: #C62828; }
+    .msg.ok { background: #E8F5E9; color: #2E7D32; }
+    .back-link { color: #00502B; text-decoration: none; font-size: 14px; display: inline-block; margin-bottom: 16px; }
+    .back-link:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+<div class="contrib-wrap">
+  <a class="back-link" href="biblioteca.html">← Voltar à biblioteca</a>
+  <div class="contrib-card">
+    <h1>Contribuir com referência</h1>
+    <p class="contrib-lead">
+      Ajude a manter este guia atualizado! Sugira referências ou materiais que podem enriquecer
+      nosso conteúdo. Sua sugestão será revisada antes de aparecer no site.
+    </p>
+
+    <div id="msg"></div>
+
+    <form id="refForm">
+      <div class="form-row">
+        <label>Título *</label>
+        <input type="text" name="titulo" required placeholder="Ex: Guia de plantas campestres dos Aparados da Serra">
+      </div>
+      <div class="form-row">
+        <label>Referência / Citação *</label>
+        <textarea name="referencia" required placeholder="Ex: 2. ed. Porto Alegre: Rede Campos Sulinos — UFRGS. 136 p. ISBN 978-85-63843-24-1."></textarea>
+      </div>
+      <div class="form-row">
+        <label>Autores *</label>
+        <input type="text" name="autores" required placeholder="Ex: Boldrini, I. et al.">
+      </div>
+      <div class="form-row">
+        <label>Link <span class="hint">(opcional)</span></label>
+        <input type="url" name="link" placeholder="https://...">
+      </div>
+      <div class="form-row">
+        <label>Categoria *</label>
+        <div class="cat-options">
+          <label><input type="radio" name="categoria" value="livros" required> Livros</label>
+          <label><input type="radio" name="categoria" value="academicos"> Trabalhos Acadêmicos</label>
+          <label><input type="radio" name="categoria" value="publicacoes"> Publicações</label>
+          <label><input type="radio" name="categoria" value="legislacao"> Legislação e políticas</label>
+          <label><input type="radio" name="categoria" value="base-dados"> Base de dados</label>
+          <label><input type="radio" name="categoria" value="outros"> Outros</label>
+        </div>
+      </div>
+      <div class="form-row">
+        <label>Anexo <span class="hint">(opcional — PDF, imagem ou documento. Máx 10 MB)</span></label>
+        <input type="file" name="anexo" id="anexoInput" accept=".pdf,.doc,.docx,.odt,.jpg,.jpeg,.png,.webp">
+        <span class="hint" id="anexoNome"></span>
+      </div>
+      <div class="form-row">
+        <label>Seu nome *</label>
+        <input type="text" name="contribuidor" required>
+      </div>
+      <div class="form-row">
+        <label>Seu email <span class="hint">(opcional — caso precisemos esclarecer algo)</span></label>
+        <input type="email" name="emailContato">
+      </div>
+
+      <button type="submit" class="btn" id="btnSubmit">Enviar contribuição</button>
+    </form>
+  </div>
+</div>
+
+<script>
+document.getElementById('anexoInput').addEventListener('change', e => {
+  const f = e.target.files[0];
+  document.getElementById('anexoNome').textContent = f ? f.name : '';
+});
+
+function showMsg(text, type) {
+  document.getElementById('msg').innerHTML = `<div class="msg ${type}">${text}</div>`;
+}
+
+document.getElementById('refForm').addEventListener('submit', async e => {
+  e.preventDefault();
+  const btn = document.getElementById('btnSubmit');
+  btn.disabled = true;
+  btn.textContent = 'Enviando...';
+
+  try {
+    const fd = new FormData(e.target);
+    const res = await fetch('/api/ref-submissions', { method: 'POST', body: fd });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || 'erro ao enviar');
+    showMsg('Obrigada! Sua sugestão foi enviada e está aguardando aprovação.', 'ok');
+    e.target.reset();
+    document.getElementById('anexoNome').textContent = '';
+  } catch (err) {
+    showMsg('Erro: ' + err.message, 'err');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Enviar contribuição';
+  }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biblioteca – Guia Botânico dos Campos de Altitude</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="logo-area">
+    <a href="index.html" class="logo-link">
+      <img src="logos/logo.png" alt="Guia dos Campos" class="main-logo"
+           onerror="this.style.display='none'; document.getElementById('lf').style.display='flex'">
+      <div id="lf" class="main-logo-fallback" style="display:none">
+        <span style="font-size:26px">🌿</span>
+        <div>
+          <div style="font-size:16px;font-weight:800;color:#00502B;line-height:1.1">Guia dos Campos</div>
+          <div style="font-size:10px;color:#888">Botânico de Altitude</div>
+        </div>
+      </div>
+    </a>
+    <div class="logo-divider"></div>
+    <a href="https://peldbisc.ufsc.br/" target="_blank" rel="noopener" class="logo-link">
+      <img src="logos/logo-peld.png" alt="PELD" class="peld-logo" onerror="this.style.display='none'">
+    </a>
+  </div>
+  <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+
+  <div class="nav-overlay" id="navOverlay"></div>
+
+  <nav id="mainNav" class="nav-menu" aria-label="Menu principal">
+    <div class="nav-menu-header">
+      <a href="index.html" class="nav-menu-logo">
+        <img src="logos/logo.png" alt="Guia dos Campos" onerror="this.style.display='none'">
+      </a>
+      <button class="nav-menu-close" id="navClose" aria-label="Fechar menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+
+    <p class="nav-menu-tagline">Descubra a flora dos campos de altitude de Santa Catarina</p>
+
+    <div class="nav-menu-list">
+      <a href="index.html">
+        <svg class="nav-menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+        Galeria
+      </a>
+      <a href="sobre.html">
+        <svg class="nav-menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
+        Sobre nós
+      </a>
+      <a href="conservacao.html">
+        <svg class="nav-menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3 9 8 10 5-1 8-5 8-10V6z"/></svg>
+        Conservação dos campos
+      </a>
+      <a href="disturbios.html">
+        <img src="simbolo-de-interface-quente-do-contorno-de-chamas-de-fogo.png" alt="" class="nav-menu-icon">
+        Distúrbios
+      </a>
+      <a href="guias.html">
+        <svg class="nav-menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        Guias de campo
+      </a>
+      <a href="biblioteca.html" class="active">
+        <svg class="nav-menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        Biblioteca
+      </a>
+      <a href="contribuir.html">
+        <svg class="nav-menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/></svg>
+        Contribua
+      </a>
+      <a href="contato.html">
+        <svg class="nav-menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+        Fale conosco
+      </a>
+    </div>
+
+    <div class="nav-menu-footer">
+      <img src="araucaria.png" alt="" class="nav-menu-art">
+    </div>
+  </nav>
+
+<script>
+(function(){
+  const btn = document.getElementById('navToggle');
+  const menu = document.getElementById('mainNav');
+  const overlay = document.getElementById('navOverlay');
+  const close = document.getElementById('navClose');
+  if (!btn || !menu) return;
+  function openMenu() {
+    btn.classList.add('open');
+    menu.classList.add('open');
+    if (overlay) overlay.classList.add('open');
+    btn.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMenu() {
+    btn.classList.remove('open');
+    menu.classList.remove('open');
+    if (overlay) overlay.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+  btn.addEventListener('click', e => {
+    e.stopPropagation();
+    if (btn.classList.contains('open')) closeMenu(); else openMenu();
+  });
+  if (overlay) overlay.addEventListener('click', closeMenu);
+  if (close) close.addEventListener('click', closeMenu);
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && menu.classList.contains('open')) closeMenu();
+  });
+})();
+</script>
+</header>
+
+<section class="hero-banner">
+  <div class="hero-banner-bg"></div>
+  <div class="hero-banner-overlay"></div>
+  <div class="hero-banner-content">
+    <h1 class="hero-title">Biblioteca</h1>
+    <p class="hero-subtitle">ACESSE OS MATERIAIS DE REFERÊNCIA USADOS NA CRIAÇÃO DESTE PROJETO</p>
+  </div>
+  <span class="hero-photo-credit">Fotografia: Sofia Casali, Parque Nacional de São Joaquim</span>
+</section>
+
+<section class="gallery-section-bg">
+<div class="main-layout">
+
+  <div class="gallery-toolbar">
+    <h2>Biblioteca</h2>
+    <span class="toolbar-divider"></span>
+    <div class="search-inline">
+      <span class="search-icon">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      </span>
+      <input type="text" id="bibSearch" placeholder="Pesquise por autor, título, palavra-chave ou tema" oninput="aplicarFiltros()">
+    </div>
+    <div class="toolbar-order">
+      <span class="toolbar-order-label">Ordenar:</span>
+      <select id="ordemSel" onchange="aplicarFiltros()">
+        <option value="recente">Mais recente</option>
+        <option value="titulo-az">Título A-Z</option>
+        <option value="titulo-za">Título Z-A</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="gallery-body">
+
+    <aside class="filter-sidebar">
+      <div class="filter-group">
+        <div class="filter-group-header" onclick="toggleFilter('f-categoria')">
+          <span class="filter-group-label">Navegue por categoria</span>
+          <button class="filter-toggle-btn" data-target="f-categoria">−</button>
+        </div>
+        <div class="filter-content open" id="f-categoria">
+          <div class="filter-content-inner">
+            <label class="filter-checkbox">
+              <input type="checkbox" name="categoria" value="livros">
+              <span>Livros</span>
+            </label>
+            <label class="filter-checkbox">
+              <input type="checkbox" name="categoria" value="academicos">
+              <span>Trabalhos Acadêmicos</span>
+            </label>
+            <label class="filter-checkbox">
+              <input type="checkbox" name="categoria" value="publicacoes">
+              <span>Publicações</span>
+            </label>
+            <label class="filter-checkbox">
+              <input type="checkbox" name="categoria" value="legislacao">
+              <span>Legislação e políticas</span>
+            </label>
+            <label class="filter-checkbox">
+              <input type="checkbox" name="categoria" value="base-dados">
+              <span>Base de dados</span>
+            </label>
+            <label class="filter-checkbox">
+              <input type="checkbox" name="categoria" value="outros">
+              <span>Outros</span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="filter-actions">
+        <button class="btn-apply" onclick="aplicarFiltros()">Aplicar</button>
+        <button class="btn-clear" onclick="limparFiltros()">Limpar</button>
+      </div>
+
+      <div class="info-card" style="text-align:center;margin-top:12px;border-left:none;background:#fff">
+        <h3 style="color:#00502B">Ajude a manter este guia atualizado!</h3>
+        <p style="font-size:12px;color:#555;margin-bottom:10px">Sugira referências ou materiais que podem enriquecer nosso conteúdo.</p>
+        <a class="btn-apply" style="display:inline-block;text-decoration:none" href="contribuir-referencia.html">Contribuir</a>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <div class="result-info" id="resultInfo"></div>
+      <div id="bibList"></div>
+      <div class="pagination" id="pagination"></div>
+    </main>
+  </div>
+</div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h4>Sobre o projeto</h4>
+      <p>O Guia dos Campos é uma iniciativa do PELD BISC para divulgar e valorizar a flora dos campos de altitude de Santa Catarina.</p>
+      <a href="sobre.html" class="footer-cta">Saiba mais sobre o projeto →</a>
+    </div>
+    <div class="footer-col">
+      <h4>Links rápidos</h4>
+      <a href="index.html">Galeria</a>
+      <a href="sobre.html">Sobre nós</a>
+      <a href="conservacao.html">Conservação dos campos</a>
+      <a href="disturbios.html">Distúrbios</a>
+      <a href="guias.html">Guias de campo</a>
+      <a href="biblioteca.html">Biblioteca</a>
+      <a href="contribuir.html">Contribua</a>
+    </div>
+    <div class="footer-col">
+      <h4>Fale conosco</h4>
+      <a href="contato.html" class="footer-cta">Entre em contato →</a>
+    </div>
+    <div class="footer-col">
+      <h4>Realização</h4>
+      <div class="footer-logos">
+        <a href="https://peldbisc.ufsc.br/" target="_blank" rel="noopener" class="footer-logo-box"><img src="logos/logo-peld.png" alt="PELD BISC"></a>
+        <a href="https://divecon.ufsc.br/index.php" target="_blank" rel="noopener" class="footer-logo-box"><img src="logos/DIVECON.svg" alt="div&amp;con"></a>
+        <a href="https://ufsc.br/" target="_blank" rel="noopener" class="footer-logo-box"><img src="logos/UFSC.png" alt="UFSC"></a>
+      </div>
+      <h4 class="footer-subheader">Apoio</h4>
+      <div class="footer-logos">
+        <div class="footer-logo-box"><img src="logos/fapesc.png" alt="FAPESC"></div>
+        <div class="footer-logo-box"><img src="logos/CNPQ.png" alt="CNPq"></div>
+        <div class="footer-logo-box"><img src="logos/icmbio.png" alt="ICMBio"></div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 2026 Guia Botânico dos Campos de Altitude — Este site foi realizado com recursos provenientes da FAPESC.
+  </div>
+</footer>
+
+<script>
+  const REFERENCIAS = [
+    {
+      categoria: 'livros',
+      autores: 'Boldrini, I. et al.',
+      ano: 2023,
+      titulo: 'Guia de plantas campestres dos Aparados da Serra',
+      fonte: '2. ed. Porto Alegre: Rede Campos Sulinos — UFRGS. 136 p. ISBN 978-85-63843-24-1.',
+      link: 'https://lume.ufrgs.br/bitstream/handle/10183/258775/001170809.pdf?sequence=1'
+    },
+    {
+      categoria: 'livros',
+      autores: 'Martinelli, G. & Moraes, M. A. (texto e organização)',
+      ano: 2013,
+      titulo: 'Livro Vermelho da Flora do Brasil',
+      fonte: 'Tradução Flávia Anderson e Chris Hieatt. 1. ed. Rio de Janeiro: Andrea Jakobsson / Instituto de Pesquisas Jardim Botânico do Rio de Janeiro. 1100 p.',
+      link: 'https://dspace.jbrj.gov.br/jspui/handle/doc/26'
+    },
+    {
+      categoria: 'publicacoes',
+      autores: 'Iganci, J. R. V. et al.',
+      ano: 2011,
+      titulo: 'Campos de Cima da Serra: the Brazilian Subtropical Highland Grasslands show an unexpected level of plant endemism',
+      fonte: 'Botanical Journal of the Linnean Society, London, v. 167, n. 4, p. 378–393. DOI: 10.1111/j.1095-8339.2011.01182.x',
+      link: 'https://academic.oup.com/botlinnean/article/167/4/378/2418615'
+    },
+    {
+      categoria: 'academicos',
+      autores: 'Teston, L.',
+      ano: 2024,
+      titulo: 'Florística e fitossociologia dos campos naturais da região de Curitibanos, Santa Catarina, Brasil',
+      fonte: 'Dissertação de Mestrado, Universidade Federal de Santa Catarina.',
+      link: 'https://repositorio.ufsc.br/handle/123456789/261373'
+    },
+    {
+      categoria: 'publicacoes',
+      autores: 'Andrade, J. P. O. et al.',
+      ano: 2021,
+      titulo: 'Xyris serrana (Xyridaceae), a new species endemic to the Campos de Cima da Serra, southern Brazil',
+      fonte: 'Acta Botanica Brasilica, v. 35, n. 4, p. 526–534, out./dez. 2021. DOI: 10.1590/0102-33062020abb0409',
+      link: 'https://www.scielo.br/j/abb/a/qjRLLv3xGM56sRr7yMJpWkP/?lang=en'
+    },
+    {
+      categoria: 'publicacoes',
+      autores: 'Casali, S.; Sühs, R. B.; Joner, F. et al.',
+      ano: 2025,
+      titulo: 'Fire regime and local biotic and abiotic factors as drivers of diversity patterns in highland grasslands in southern Brazil',
+      fonte: 'Plant Ecology, v. 226, p. 539–552. DOI: 10.1007/s11258-025-01512-2',
+      link: 'https://link.springer.com/article/10.1007/s11258-025-01512-2'
+    },
+    {
+      categoria: 'base-dados',
+      autores: 'Moro, R. S.; Souza, V. C. & Sfair, J. C. (orgs.)',
+      ano: 2012,
+      titulo: 'Lista de Espécies da Flora do Brasil',
+      fonte: 'Jardim Botânico do Rio de Janeiro.',
+      link: 'http://floradobrasil.jbrj.gov.br'
+    },
+    {
+      categoria: 'base-dados',
+      autores: 'Flora e Funga do Brasil',
+      ano: 2023,
+      titulo: 'Flora e Funga do Brasil',
+      fonte: 'Jardim Botânico do Rio de Janeiro.',
+      link: 'https://floradobrasil.jbrj.gov.br/reflora'
+    },
+    {
+      categoria: 'legislacao',
+      autores: 'IBAMA',
+      ano: 2022,
+      titulo: 'Lista Nacional Oficial de Espécies da Flora Ameaçadas de Extinção',
+      fonte: 'Portaria MMA nº 148, de 7 de junho de 2022.',
+      link: 'https://www.gov.br/icmbio/pt-br/assuntos/centros-de-pesquisa/aves-silvestres/arquivos/portaria-148-2022.pdf'
+    },
+    {
+      categoria: 'legislacao',
+      autores: 'CONAMA',
+      ano: 2010,
+      titulo: 'Resolução CONAMA nº 423, de 12 de abril de 2010',
+      fonte: 'Dispõe sobre parâmetros básicos para identificação e análise da vegetação primária e dos estágios sucessionais da vegetação secundária nos Campos de Altitude.',
+      link: 'https://siam.mg.gov.br/sla/download.pdf?idNorma=13314'
+    },
+    {
+      categoria: 'legislacao',
+      autores: 'SANTA CATARINA — Conselho Estadual de Meio Ambiente (CONSEMA)',
+      ano: 2014,
+      titulo: 'Resolução CONSEMA nº 51, de 05 de dezembro de 2014',
+      fonte: 'Reconhece a Lista Oficial das Espécies da Flora Ameaçada de Extinção no Estado de Santa Catarina e dá outras providências. Florianópolis.',
+      link: 'https://www.ima.sc.gov.br/index.php/biodiversidade/biodiversidade/flora'
+    },
+    {
+      categoria: 'legislacao',
+      autores: 'Rio Grande do Sul',
+      ano: 2014,
+      titulo: 'Lista da Flora Ameaçada de Extinção do Estado do Rio Grande do Sul',
+      fonte: 'SEMA/RS. Avaliação de 2014.',
+      link: 'https://www.sema.rs.gov.br/upload/arquivos/202112/01151427-lista-da-flora-ameacada-do-rs.pdf'
+    },
+    {
+      categoria: 'base-dados',
+      autores: 'CNCFlora',
+      ano: 2022,
+      titulo: 'Base de dados — Avaliação do risco de extinção da flora nativa do Brasil (2014–2020)',
+      fonte: 'Centro Nacional de Conservação da Flora — Jardim Botânico do Rio de Janeiro.',
+      link: 'https://ckan.jbrj.gov.br/'
+    },
+    {
+      categoria: 'base-dados',
+      autores: 'PELD-BISC',
+      ano: 2025,
+      titulo: 'Coleta de vegetação PELD 2023–2025',
+      fonte: 'Programa de Pesquisas Ecológicas de Longa Duração — Biodiversidade e Conservação de Campos de Altitude.',
+      link: 'https://peldbisc.ufsc.br/dados'
+    }
+  ];
+
+  const POR_PAG = 10;
+  let pag = 1;
+  let filtradas = [...REFERENCIAS];
+
+  function toggleFilter(id) {
+    const content = document.getElementById(id);
+    const btn = document.querySelector(`[data-target="${id}"]`);
+    const isOpen = content.classList.contains('open');
+    content.classList.toggle('open', !isOpen);
+    btn.textContent = isOpen ? '+' : '−';
+  }
+
+  function getChecked(name) {
+    return [...document.querySelectorAll(`input[name="${name}"]:checked`)].map(e => e.value);
+  }
+
+  function aplicarFiltros() {
+    const busca = document.getElementById('bibSearch').value.toLowerCase().trim();
+    const cats = getChecked('categoria');
+    const ordem = document.getElementById('ordemSel').value;
+
+    filtradas = REFERENCIAS.filter(r => {
+      if (cats.length && !cats.includes(r.categoria)) return false;
+      if (busca) {
+        const blob = `${r.autores} ${r.titulo} ${r.fonte} ${r.ano}`.toLowerCase();
+        if (!blob.includes(busca)) return false;
+      }
+      return true;
+    });
+
+    if (ordem === 'recente') filtradas.sort((a,b) => b.ano - a.ano || a.titulo.localeCompare(b.titulo));
+    else if (ordem === 'titulo-az') filtradas.sort((a,b) => a.titulo.localeCompare(b.titulo));
+    else if (ordem === 'titulo-za') filtradas.sort((a,b) => b.titulo.localeCompare(a.titulo));
+
+    pag = 1; render();
+  }
+
+  function limparFiltros() {
+    document.querySelectorAll('input[type="checkbox"]').forEach(e => e.checked = false);
+    document.getElementById('bibSearch').value = '';
+    document.getElementById('ordemSel').value = 'recente';
+    aplicarFiltros();
+  }
+
+  function render() {
+    const el = document.getElementById('bibList');
+    const total = filtradas.length;
+    document.getElementById('resultInfo').textContent =
+      `${total} referência${total !== 1 ? 's' : ''} encontrada${total !== 1 ? 's' : ''}`;
+
+    if (!total) {
+      el.innerHTML = '<div style="text-align:center;padding:40px 0;color:#aaa;font-size:14px">Nenhuma referência encontrada com os filtros selecionados.</div>';
+      document.getElementById('pagination').innerHTML = '';
+      return;
+    }
+
+    const ini = (pag - 1) * POR_PAG;
+    const itens = filtradas.slice(ini, ini + POR_PAG);
+
+    el.innerHTML = itens.map(r => {
+      const btnHtml = r.link
+        ? `<a class="btn-apply" href="${r.link}" target="_blank" rel="noopener" style="flex-shrink:0;text-decoration:none;display:inline-flex;align-items:center;gap:6px;white-space:nowrap">Abrir<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>`
+        : '';
+      return `
+        <div class="info-card" style="border-left:none;display:flex;gap:14px;align-items:center">
+          <div style="flex:1;min-width:0">
+            <h3 style="font-size:13px;margin-bottom:4px">${r.autores}. ${r.ano}.</h3>
+            <p style="font-size:15px;margin-bottom:4px;font-style:italic">${r.titulo}.</p>
+            <p style="font-size:12px;color:#777;margin-bottom:0">${r.fonte}</p>
+          </div>
+          ${btnHtml}
+        </div>`;
+    }).join('');
+
+    renderPag();
+  }
+
+  function renderPag() {
+    const total = Math.ceil(filtradas.length / POR_PAG);
+    const el = document.getElementById('pagination');
+    if (total <= 1) { el.innerHTML = ''; return; }
+
+    const windowStart = Math.floor((pag - 1) / 8) * 8 + 1;
+    const windowEnd = Math.min(total, windowStart + 7);
+
+    let h = '';
+    if (pag > 1) h += `<button class="page-btn" onclick="irPag(${pag-1})">‹</button>`;
+    for (let i = windowStart; i <= windowEnd; i++)
+      h += `<button class="page-btn ${i===pag?'active':''}" onclick="irPag(${i})">${i}</button>`;
+    if (pag < total) h += `<button class="page-btn" onclick="irPag(${pag+1})">›</button>`;
+    el.innerHTML = h;
+  }
+
+  function irPag(n) {
+    pag = n; render();
+    document.querySelector('.main-layout').scrollIntoView({behavior:'smooth', block:'start'});
+  }
+
+  aplicarFiltros();
+</script>
+</body>
+</html>

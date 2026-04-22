@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin – Guia Botânico</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { background: #f5f7f5; }
+    .admin-wrap { max-width: 1100px; margin: 32px auto; padding: 0 20px; }
+    .admin-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+    .admin-header h1 { font-size: 24px; color: #00502B; }
+    .admin-tabs { display: flex; gap: 8px; margin-bottom: 20px; border-bottom: 1px solid #ddd; }
+    .admin-tab { padding: 10px 18px; cursor: pointer; border-bottom: 2px solid transparent; font-weight: 600; color: #666; }
+    .admin-tab.active { color: #00502B; border-bottom-color: #00502B; }
+    .admin-panel { display: none; background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+    .admin-panel.active { display: block; }
+    .badge-count { background: #C62828; color: #fff; border-radius: 10px; padding: 1px 8px; font-size: 11px; margin-left: 4px; }
+    .login-box { max-width: 360px; margin: 80px auto; background: #fff; padding: 28px; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+    .login-box h2 { margin-bottom: 18px; color: #00502B; }
+    .form-row { display: flex; flex-direction: column; gap: 4px; margin-bottom: 14px; }
+    .form-row label { font-size: 13px; font-weight: 600; color: #444; }
+    .form-row input, .form-row select, .form-row textarea { padding: 9px 11px; border: 1px solid #ccc; border-radius: 6px; font-family: inherit; font-size: 14px; }
+    .form-row textarea { resize: vertical; min-height: 70px; }
+    .btn { background: #00502B; color: #fff; border: 0; padding: 10px 18px; border-radius: 6px; cursor: pointer; font-weight: 600; }
+    .btn.ghost { background: transparent; color: #00502B; border: 1px solid #00502B; }
+    .btn.danger { background: #C62828; }
+    .btn:hover { opacity: 0.9; }
+    .msg { padding: 10px; border-radius: 6px; margin: 10px 0; font-size: 13px; }
+    .msg.err { background: #FFEBEE; color: #C62828; }
+    .msg.ok { background: #E8F5E9; color: #2E7D32; }
+    .submissao { display: grid; grid-template-columns: 140px 1fr auto; gap: 16px; padding: 14px; border: 1px solid #eee; border-radius: 8px; margin-bottom: 12px; align-items: center; }
+    .submissao img { width: 140px; height: 140px; object-fit: cover; border-radius: 6px; }
+    .submissao-info .nome { font-weight: 700; font-style: italic; color: #1a1a1a; }
+    .submissao-info .familia { font-size: 12px; font-weight: 700; color: #00502B; text-transform: uppercase; }
+    .submissao-info .meta { font-size: 12px; color: #888; margin-top: 4px; }
+    .submissao-actions { display: flex; flex-direction: column; gap: 6px; }
+    .species-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .species-table th, .species-table td { padding: 8px 10px; text-align: left; border-bottom: 1px solid #eee; }
+    .species-table th { background: #f3f5f3; font-weight: 600; }
+    .species-table tr:hover { background: #fafafa; }
+    .species-search { width: 100%; padding: 10px 14px; border: 1px solid #ccc; border-radius: 6px; margin-bottom: 12px; }
+    .cor-checks, .estagio-checks { display: flex; flex-wrap: wrap; gap: 10px; }
+    .cor-checks label, .estagio-checks label { display: flex; align-items: center; gap: 4px; font-size: 13px; }
+    #editorDialog { position: fixed; inset: 0; background: rgba(0,0,0,0.4); display: none; justify-content: center; align-items: flex-start; padding: 40px 20px; z-index: 1000; overflow-y: auto; }
+    #editorDialog.open { display: flex; }
+    .editor-box { background: #fff; padding: 24px; border-radius: 10px; max-width: 720px; width: 100%; max-height: calc(100vh - 80px); overflow-y: auto; }
+    .editor-box h3 { margin-bottom: 14px; color: #00502B; }
+    .editor-actions { display: flex; gap: 8px; justify-content: flex-end; margin-top: 14px; }
+    .edit-section { margin-top: 18px; margin-bottom: 8px; color: #00502B; font-size: 14px; border-bottom: 1px solid #eee; padding-bottom: 4px; }
+    .edit-section:first-of-type { margin-top: 0; }
+    .hint { font-weight: 400; color: #888; font-size: 11px; }
+  </style>
+</head>
+<body>
+
+<div id="loginView">
+  <div class="login-box">
+    <h2>Painel administrativo</h2>
+    <div id="loginMsg"></div>
+    <form id="loginForm">
+      <div class="form-row">
+        <label>Usuário</label>
+        <input type="text" id="loginUser" autocomplete="username" required>
+      </div>
+      <div class="form-row">
+        <label>Senha</label>
+        <input type="password" id="loginPass" autocomplete="current-password" required>
+      </div>
+      <button type="submit" class="btn" style="width:100%">Entrar</button>
+    </form>
+  </div>
+</div>
+
+<div id="adminView" class="admin-wrap" style="display:none">
+  <div class="admin-header">
+    <h1>Painel administrativo</h1>
+    <div>
+      <span id="userLabel" style="margin-right:12px;color:#666"></span>
+      <button class="btn ghost" onclick="logout()">Sair</button>
+    </div>
+  </div>
+
+  <div class="admin-tabs">
+    <div class="admin-tab active" data-tab="submissoes">Submissões pendentes <span class="badge-count" id="pendCount" style="display:none">0</span></div>
+    <div class="admin-tab" data-tab="especies">Espécies</div>
+    <div class="admin-tab" data-tab="nova">Nova espécie</div>
+  </div>
+
+  <div class="admin-panel active" id="panel-submissoes">
+    <div id="msgSubs"></div>
+    <div id="listaSubmissoes"></div>
+  </div>
+
+  <div class="admin-panel" id="panel-especies">
+    <input type="text" class="species-search" id="specSearch" placeholder="Pesquisar por nome ou família...">
+    <div id="specTableWrap"></div>
+  </div>
+
+  <div class="admin-panel" id="panel-nova">
+    <div id="msgNova"></div>
+    <form id="novaForm">
+      <div class="form-row"><label>Nome científico *</label><input type="text" name="nome" required></div>
+      <div class="form-row"><label>Família</label><input type="text" name="familia" placeholder="Deixe vazio para auto-detectar pelo gênero"></div>
+      <div class="form-row"><label>Nome popular</label><input type="text" name="nomePopular"></div>
+      <div class="form-row">
+        <label>Status IUCN</label>
+        <select name="status">
+          <option value="NE">NE — Não avaliado</option>
+          <option value="LC">LC — Pouco preocupante</option>
+          <option value="NT">NT — Quase ameaçada</option>
+          <option value="VU">VU — Vulnerável</option>
+          <option value="EN">EN — Em perigo</option>
+          <option value="CR">CR — Criticamente em perigo</option>
+          <option value="DD">DD — Dados insuficientes</option>
+        </select>
+      </div>
+      <div class="form-row"><label><input type="checkbox" name="raraEndemica"> Rara ou endêmica</label></div>
+      <div class="form-row">
+        <label>Cor da flor</label>
+        <div class="cor-checks" id="corChecks"></div>
+      </div>
+      <div class="form-row">
+        <label>Estágio sucessional</label>
+        <div class="estagio-checks" id="estagioChecks"></div>
+      </div>
+      <div class="form-row"><label>Foto (caminho relativo, ex: fotos/arquivo.jpg)</label><input type="text" name="foto"></div>
+      <div class="form-row"><label>Descrição</label><textarea name="descricao"></textarea></div>
+      <button type="submit" class="btn">Adicionar</button>
+    </form>
+  </div>
+</div>
+
+<div id="editorDialog">
+  <div class="editor-box">
+    <h3>Editar espécie</h3>
+    <div id="msgEdit"></div>
+    <form id="editForm"></form>
+    <div class="editor-actions">
+      <button class="btn danger" id="btnDelete">Excluir</button>
+      <button class="btn ghost" id="btnCancel">Cancelar</button>
+      <button class="btn" id="btnSave">Salvar</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const CORES = ['amarelo','azul','branco','laranja','lilas','rosa','roxo','verde','vermelho'];
+const ESTAGIOS = ['estágio inicial','estágio médio','estágio avançado','vegetação primária'];
+
+function msg(id, text, type) {
+  const el = document.getElementById(id);
+  el.innerHTML = text ? `<div class="msg ${type}">${text}</div>` : '';
+  if (text) setTimeout(() => { el.innerHTML = ''; }, 4000);
+}
+
+async function api(url, opts = {}) {
+  const res = await fetch(url, { credentials: 'include', ...opts });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || `HTTP ${res.status}`);
+  return data;
+}
+
+async function checkAuth() {
+  const { user } = await api('/api/auth/me');
+  if (user) {
+    document.getElementById('loginView').style.display = 'none';
+    document.getElementById('adminView').style.display = 'block';
+    document.getElementById('userLabel').textContent = user.username;
+    await carregarTudo();
+  }
+}
+
+document.getElementById('loginForm').addEventListener('submit', async e => {
+  e.preventDefault();
+  try {
+    await api('/api/auth/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        username: document.getElementById('loginUser').value,
+        password: document.getElementById('loginPass').value
+      })
+    });
+    location.reload();
+  } catch (err) {
+    msg('loginMsg', err.message, 'err');
+  }
+});
+
+async function logout() {
+  await api('/api/auth/logout', { method: 'POST' });
+  location.reload();
+}
+
+document.querySelectorAll('.admin-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.admin-panel').forEach(p => p.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('panel-' + tab.dataset.tab).classList.add('active');
+  });
+});
+
+async function carregarSubmissoes() {
+  const data = await api('/api/submissions');
+  const cont = document.getElementById('listaSubmissoes');
+  const badge = document.getElementById('pendCount');
+  if (!data.submissions.length) {
+    cont.innerHTML = '<p style="color:#888;text-align:center;padding:40px 0">Nenhuma submissão pendente.</p>';
+    badge.style.display = 'none';
+    return;
+  }
+  badge.style.display = '';
+  badge.textContent = data.submissions.length;
+  cont.innerHTML = data.submissions.map(s => {
+    const files = (s.fotoArquivos && s.fotoArquivos.length) ? s.fotoArquivos : (s.fotoArquivo ? [s.fotoArquivo] : []);
+    const thumbs = files.map((_, i) => `<img src="/api/submissions/${s.id}/foto/${i}" alt="" style="width:90px;height:90px;object-fit:cover;border-radius:6px;margin-right:4px">`).join('');
+    return `
+    <div class="submissao">
+      <div style="display:flex;flex-wrap:wrap;gap:4px">${thumbs}</div>
+      <div class="submissao-info">
+        <div class="familia">${s.familia || '(família não informada)'}</div>
+        <div class="nome">${s.nome}</div>
+        ${s.nomePopular ? `<div>${s.nomePopular}</div>` : ''}
+        ${s.local ? `<div style="font-size:13px;color:#333;margin-top:4px"><strong>Local:</strong> ${s.local}</div>` : ''}
+        ${s.fotografo ? `<div style="font-size:13px;color:#333"><strong>Fotógrafo:</strong> ${s.fotografo}</div>` : ''}
+        ${s.identificador ? `<div style="font-size:13px;color:#333"><strong>Identificador:</strong> ${s.identificador}</div>` : ''}
+        ${s.descricao ? `<div style="font-size:13px;color:#555;margin-top:6px">${s.descricao}</div>` : ''}
+        <div class="meta">
+          Enviado por ${s.contribuidor || 'anônimo'}${s.emailContato ? ` (${s.emailContato})` : ''}
+          — ${new Date(s.criadoEm).toLocaleString('pt-BR')}
+        </div>
+      </div>
+      <div class="submissao-actions">
+        <button class="btn" onclick="aprovar(${s.id})">Aprovar</button>
+        <button class="btn danger" onclick="rejeitar(${s.id})">Rejeitar</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+async function aprovar(id) {
+  if (!confirm('Aprovar e publicar esta submissão?')) return;
+  try {
+    await api('/api/submissions/' + id + '/aprovar', { method: 'POST' });
+    msg('msgSubs', 'Aprovada.', 'ok');
+    await carregarSubmissoes();
+    await carregarEspecies();
+  } catch (err) { msg('msgSubs', err.message, 'err'); }
+}
+
+async function rejeitar(id) {
+  if (!confirm('Rejeitar e apagar esta submissão?')) return;
+  try {
+    await api('/api/submissions/' + id + '/rejeitar', { method: 'POST' });
+    msg('msgSubs', 'Rejeitada.', 'ok');
+    await carregarSubmissoes();
+  } catch (err) { msg('msgSubs', err.message, 'err'); }
+}
+
+let STORE = null;
+async function carregarEspecies() {
+  STORE = await api('/api/species');
+  renderSpecTable();
+}
+
+function renderSpecTable() {
+  const busca = document.getElementById('specSearch').value.toLowerCase().trim();
+  const list = STORE.species
+    .filter(s => !busca || s.nome.toLowerCase().includes(busca) || s.familia.toLowerCase().includes(busca))
+    .sort((a, b) => a.familia.localeCompare(b.familia) || a.nome.localeCompare(b.nome));
+  document.getElementById('specTableWrap').innerHTML = `
+    <p style="color:#888;font-size:13px;margin-bottom:8px">${list.length} de ${STORE.species.length} espécies</p>
+    <table class="species-table">
+      <thead><tr><th>Família</th><th>Nome científico</th><th>Status</th><th>Foto</th><th></th></tr></thead>
+      <tbody>
+        ${list.slice(0, 200).map(s => `
+          <tr>
+            <td>${s.familia}</td>
+            <td style="font-style:italic">${s.nome}</td>
+            <td>${s.status}${s.raraEndemica ? ' / R' : ''}</td>
+            <td>${s.foto ? '✓' : '—'}</td>
+            <td><button class="btn ghost" style="padding:4px 10px" onclick="abrirEditor(${s.id})">Editar</button></td>
+          </tr>`).join('')}
+      </tbody>
+    </table>
+    ${list.length > 200 ? '<p style="color:#888;font-size:12px;margin-top:8px">Mostrando primeiras 200. Refine a busca.</p>' : ''}
+  `;
+}
+
+document.getElementById('specSearch').addEventListener('input', renderSpecTable);
+
+function montarCheckboxes() {
+  document.getElementById('corChecks').innerHTML = CORES.map(c => `<label><input type="checkbox" name="cor" value="${c}"> ${c}</label>`).join('');
+  document.getElementById('estagioChecks').innerHTML = ESTAGIOS.map(e => `<label><input type="checkbox" name="estagio" value="${e}"> ${e}</label>`).join('');
+}
+
+const MULTILINE_FIELDS = new Set(['sinonimos', 'fotosAdicionais']);
+
+function colherForm(form) {
+  const fd = new FormData(form);
+  const data = {};
+  for (const [k, v] of fd.entries()) {
+    if (k === 'cor' || k === 'estagio') continue;
+    if (k === 'raraEndemica') { data[k] = true; continue; }
+    if (MULTILINE_FIELDS.has(k)) {
+      data[k] = String(v).split(/\r?\n/).map(s => s.trim()).filter(Boolean);
+      continue;
+    }
+    data[k] = v;
+  }
+  if (!('raraEndemica' in data)) data.raraEndemica = false;
+  data.cor = [...form.querySelectorAll('input[name="cor"]:checked')].map(e => e.value);
+  data.estagio = [...form.querySelectorAll('input[name="estagio"]:checked')].map(e => e.value);
+  return data;
+}
+
+document.getElementById('novaForm').addEventListener('submit', async e => {
+  e.preventDefault();
+  const data = colherForm(e.target);
+  try {
+    await api('/api/species', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    msg('msgNova', 'Espécie adicionada.', 'ok');
+    e.target.reset();
+    await carregarEspecies();
+  } catch (err) { msg('msgNova', err.message, 'err'); }
+});
+
+function escapeAttr(s) { return String(s || '').replace(/"/g, '&quot;'); }
+
+function abrirEditor(id) {
+  const sp = STORE.species.find(s => s.id === id);
+  if (!sp) return;
+  const form = document.getElementById('editForm');
+  const v = f => escapeAttr(sp[f] || '');
+  const sinonimos = (sp.sinonimos || []).join('\n');
+  const fotosAdicionais = (sp.fotosAdicionais || []).join('\n');
+  form.innerHTML = `
+    <h4 class="edit-section">Identificação</h4>
+    <div class="form-row"><label>Nome científico</label><input type="text" name="nome" value="${v('nome')}"></div>
+    <div class="form-row"><label>Autoridade <span class="hint">(autor do nome, ex: "Cham. & Schltdl.")</span></label><input type="text" name="autoridade" value="${v('autoridade')}"></div>
+    <div class="form-row"><label>Família</label><input type="text" name="familia" value="${v('familia')}"></div>
+    <div class="form-row"><label>Nome popular</label><input type="text" name="nomePopular" value="${v('nomePopular')}"></div>
+    <div class="form-row"><label>Sinônimos <span class="hint">(um por linha)</span></label><textarea name="sinonimos">${sp.sinonimos ? sp.sinonimos.join('\n') : ''}</textarea></div>
+
+    <h4 class="edit-section">Morfologia e hábitat</h4>
+    <div class="form-row"><label>Tipo de folha</label><input type="text" name="tipoFolha" value="${v('tipoFolha')}"></div>
+    <div class="form-row"><label>Margem do limbo</label><input type="text" name="margemLimbo" value="${v('margemLimbo')}"></div>
+    <div class="form-row"><label>Filotaxia</label><input type="text" name="filotaxia" value="${v('filotaxia')}"></div>
+    <div class="form-row"><label>Forma de vida</label><input type="text" name="formaVida" value="${v('formaVida')}"></div>
+    <div class="form-row"><label>Substrato</label><input type="text" name="substrato" value="${v('substrato')}"></div>
+    <div class="form-row"><label>Distribuição geográfica</label><textarea name="distribuicao">${sp.distribuicao || ''}</textarea></div>
+
+    <h4 class="edit-section">Conservação</h4>
+    <div class="form-row">
+      <label>Status IUCN</label>
+      <select name="status">
+        ${['NE','LC','NT','VU','EN','CR','DD'].map(s => `<option ${sp.status===s?'selected':''}>${s}</option>`).join('')}
+      </select>
+    </div>
+    <div class="form-row"><label><input type="checkbox" name="raraEndemica" ${sp.raraEndemica?'checked':''}> Rara ou endêmica</label></div>
+    <div class="form-row">
+      <label>Fonte de raridade</label>
+      <select name="fonteRaridade">
+        ${['MMA','CONSEMA','IUCN','CONAMA'].map(f => `<option ${((sp.fonteRaridade||'MMA')===f)?'selected':''}>${f}</option>`).join('')}
+      </select>
+    </div>
+
+    <h4 class="edit-section">Sucessão ecológica</h4>
+    <div class="form-row">
+      <label>Cor da flor</label>
+      <div class="cor-checks">${CORES.map(c => `<label><input type="checkbox" name="cor" value="${c}" ${(sp.cor||[]).includes(c)?'checked':''}> ${c}</label>`).join('')}</div>
+    </div>
+    <div class="form-row">
+      <label>Estágio sucessional</label>
+      <div class="estagio-checks">${ESTAGIOS.map(es => `<label><input type="checkbox" name="estagio" value="${es}" ${(sp.estagio||[]).includes(es)?'checked':''}> ${es}</label>`).join('')}</div>
+    </div>
+    <div class="form-row"><label>Texto "Indicadora de estágio sucessional?"</label><textarea name="indicadoraEstagio">${sp.indicadoraEstagio || ''}</textarea></div>
+
+    <h4 class="edit-section">Fotos e créditos</h4>
+    <div class="form-row"><label>Foto principal <span class="hint">(caminho, ex: fotos/arquivo.jpg)</span></label><input type="text" name="foto" value="${v('foto')}"></div>
+    <div class="form-row"><label>Fotos adicionais <span class="hint">(um caminho por linha)</span></label><textarea name="fotosAdicionais">${fotosAdicionais}</textarea></div>
+    <div class="form-row"><label>Identificação <span class="hint">(quem identificou)</span></label><input type="text" name="identificacao" value="${v('identificacao')}"></div>
+    <div class="form-row"><label>Fotografia <span class="hint">(autor da foto)</span></label><input type="text" name="fotografia" value="${v('fotografia')}"></div>
+    <div class="form-row"><label>Local da fotografia</label><input type="text" name="localFotografia" value="${v('localFotografia')}"></div>
+
+    <h4 class="edit-section">Outros</h4>
+    <div class="form-row"><label>Descrição livre</label><textarea name="descricao">${sp.descricao || ''}</textarea></div>
+  `;
+  form.dataset.id = id;
+  document.getElementById('editorDialog').classList.add('open');
+}
+
+document.getElementById('btnCancel').onclick = () => document.getElementById('editorDialog').classList.remove('open');
+document.getElementById('btnSave').onclick = async () => {
+  const form = document.getElementById('editForm');
+  const id = form.dataset.id;
+  try {
+    await api('/api/species/' + id, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(colherForm(form))
+    });
+    msg('msgEdit', 'Salvo.', 'ok');
+    await carregarEspecies();
+    setTimeout(() => document.getElementById('editorDialog').classList.remove('open'), 500);
+  } catch (err) { msg('msgEdit', err.message, 'err'); }
+};
+document.getElementById('btnDelete').onclick = async () => {
+  const id = document.getElementById('editForm').dataset.id;
+  if (!confirm('Excluir definitivamente esta espécie?')) return;
+  try {
+    await api('/api/species/' + id, { method: 'DELETE' });
+    document.getElementById('editorDialog').classList.remove('open');
+    await carregarEspecies();
+  } catch (err) { msg('msgEdit', err.message, 'err'); }
+};
+
+async function carregarTudo() {
+  montarCheckboxes();
+  await carregarSubmissoes();
+  await carregarEspecies();
+}
+
+checkAuth();
+</script>
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contribuir – Guia Botânico dos Campos</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .contrib-wrap { max-width: 640px; margin: 40px auto; padding: 0 20px; }
+    .contrib-card { background: #fff; padding: 28px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
+    .contrib-card h1 { color: #00502B; font-size: 24px; margin-bottom: 8px; }
+    .contrib-lead { color: #555; font-size: 14px; margin-bottom: 20px; }
+    .form-row { display: flex; flex-direction: column; gap: 4px; margin-bottom: 14px; }
+    .form-row label { font-size: 13px; font-weight: 600; color: #444; }
+    .form-row .hint { font-size: 12px; color: #888; font-weight: 400; }
+    .form-row input, .form-row textarea { padding: 10px 12px; border: 1px solid #ccc; border-radius: 6px; font-family: inherit; font-size: 14px; }
+    .form-row textarea { resize: vertical; min-height: 80px; }
+    .previews { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+    .preview-thumb { width: 80px; height: 80px; border-radius: 6px; object-fit: cover; }
+    .btn { background: #00502B; color: #fff; border: 0; padding: 12px 22px; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 14px; }
+    .btn[disabled] { opacity: 0.6; cursor: not-allowed; }
+    .msg { padding: 12px; border-radius: 6px; margin: 14px 0; font-size: 14px; }
+    .msg.err { background: #FFEBEE; color: #C62828; }
+    .msg.ok { background: #E8F5E9; color: #2E7D32; }
+    .back-link { color: #00502B; text-decoration: none; font-size: 14px; display: inline-block; margin-bottom: 16px; }
+    .back-link:hover { text-decoration: underline; }
+    .pac-container { z-index: 10000; }
+  </style>
+</head>
+<body>
+
+<div class="contrib-wrap">
+  <a class="back-link" href="index.html">← Voltar à galeria</a>
+  <div class="contrib-card">
+    <h1>Contribuir com uma foto</h1>
+    <p class="contrib-lead">
+      Obrigada pela contribuição! Sua foto será revisada antes de aparecer no site.
+      Preencha os campos abaixo e envie.
+    </p>
+
+    <div id="msg"></div>
+
+    <form id="contribForm">
+      <div class="form-row">
+        <label>Nome científico *</label>
+        <input type="text" name="nome" required placeholder="Ex: Baccharis crispa">
+      </div>
+      <div class="form-row">
+        <label>Família *</label>
+        <input type="text" name="familia" required placeholder="Ex: ASTERACEAE">
+      </div>
+      <div class="form-row">
+        <label>Nome popular <span class="hint">(opcional)</span></label>
+        <input type="text" name="nomePopular">
+      </div>
+      <div class="form-row">
+        <label>Fotos *</label>
+        <input type="file" name="fotos" id="fotosInput" accept="image/jpeg,image/png,image/webp" multiple required>
+        <div id="previews" class="previews"></div>
+        <span class="hint">JPG, PNG ou WebP. Máx 10 MB cada.</span>
+      </div>
+      <div class="form-row">
+        <label>Local da fotografia *</label>
+        <input type="text" name="local" id="localInput" required placeholder="Digite bairro, cidade ou endereço" autocomplete="off">
+      </div>
+      <div class="form-row">
+        <label>Fotógrafo *</label>
+        <input type="text" name="fotografo" required placeholder="Nome de quem tirou a foto">
+      </div>
+      <div class="form-row">
+        <label>Identificador *</label>
+        <input type="text" name="identificador" required placeholder="Nome de quem identificou a espécie">
+      </div>
+      <div class="form-row">
+        <label>Descrição / observações <span class="hint">(opcional)</span></label>
+        <textarea name="descricao" placeholder="Data, hábitat, outras observações..."></textarea>
+      </div>
+      <div class="form-row">
+        <label>Seu nome *</label>
+        <input type="text" name="contribuidor" required>
+      </div>
+      <div class="form-row">
+        <label>Seu email <span class="hint">(opcional — caso precisemos esclarecer algo)</span></label>
+        <input type="email" name="emailContato">
+      </div>
+
+      <button type="submit" class="btn" id="btnSubmit">Enviar contribuição</button>
+    </form>
+  </div>
+</div>
+
+<script>
+// ===== Pre-fill from URL (when coming from "Adicionar foto" button on species card) =====
+const params = new URLSearchParams(location.search);
+if (params.get('nome')) document.querySelector('[name="nome"]').value = params.get('nome');
+if (params.get('familia')) document.querySelector('[name="familia"]').value = params.get('familia');
+
+// ===== Multiple photo previews =====
+document.getElementById('fotosInput').addEventListener('change', e => {
+  const wrap = document.getElementById('previews');
+  wrap.innerHTML = '';
+  for (const file of e.target.files) {
+    const img = document.createElement('img');
+    img.className = 'preview-thumb';
+    img.src = URL.createObjectURL(file);
+    wrap.appendChild(img);
+  }
+});
+
+function showMsg(text, type) {
+  document.getElementById('msg').innerHTML = `<div class="msg ${type}">${text}</div>`;
+}
+
+// ===== Submit =====
+document.getElementById('contribForm').addEventListener('submit', async e => {
+  e.preventDefault();
+  const btn = document.getElementById('btnSubmit');
+  btn.disabled = true;
+  btn.textContent = 'Enviando...';
+
+  try {
+    const fd = new FormData(e.target);
+    const res = await fetch('/api/submissions', { method: 'POST', body: fd });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || 'erro ao enviar');
+    showMsg('Obrigada! Sua contribuição foi enviada e está aguardando aprovação.', 'ok');
+    e.target.reset();
+    document.getElementById('previews').innerHTML = '';
+  } catch (err) {
+    showMsg('Erro: ' + err.message, 'err');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Enviar contribuição';
+  }
+});
+
+// ===== Google Places Autocomplete =====
+// Para ativar o autocomplete, insira uma chave da API do Google Maps (Places API habilitada) abaixo.
+// Sem chave, o campo funciona como input de texto normal.
+window.__GOOGLE_MAPS_API_KEY = ''; // <- cole sua chave aqui, ex: 'AIzaSyXXXXXXXXXXXXXX'
+
+function initPlacesAutocomplete() {
+  const input = document.getElementById('localInput');
+  if (!input || !window.google || !google.maps || !google.maps.places) return;
+  new google.maps.places.Autocomplete(input, {
+    types: ['geocode'],
+    componentRestrictions: { country: 'br' },
+    fields: ['formatted_address', 'name']
+  });
+}
+
+if (window.__GOOGLE_MAPS_API_KEY) {
+  const s = document.createElement('script');
+  s.src = `https://maps.googleapis.com/maps/api/js?key=${window.__GOOGLE_MAPS_API_KEY}&libraries=places&callback=initPlacesAutocomplete`;
+  s.async = true;
+  s.defer = true;
+  document.head.appendChild(s);
+}
+</script>
+</body>
+</html>

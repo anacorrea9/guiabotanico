@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guia Botânico dos Campos de Altitude</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ===== NAV HEADER ===== -->
+<header class="site-header">
+  <div class="logo-area">
+    <a href="index.html" class="logo-link">
+      <img src="logos/logo.png" alt="Guia dos Campos" class="main-logo"
+           onerror="this.style.display='none'; document.getElementById('lf').style.display='flex'">
+      <div id="lf" class="main-logo-fallback" style="display:none">
+        <span style="font-size:26px">🌿</span>
+        <div>
+          <div style="font-size:16px;font-weight:800;color:#00502B;line-height:1.1">Guia dos Campos</div>
+          <div style="font-size:10px;color:#888">Botânico de Altitude</div>
+        </div>
+      </div>
+    </a>
+    <div class="logo-divider"></div>
+    <a href="https://peldbisc.ufsc.br/" target="_blank" rel="noopener" class="logo-link">
+      <img src="logos/logo-peld.png" alt="PELD" class="peld-logo" onerror="this.style.display='none'">
+    </a>
+  </div>
+  <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+
+  <div class="nav-overlay" id="navOverlay"></div>
+
+  <nav id="mainNav" class="nav-menu" aria-label="Menu principal">
+    <div class="nav-menu-header">
+      <a href="index.html" class="nav-menu-logo">
+        <img src="logos/logo.png" alt="Guia dos Campos" onerror="this.style.display='none'">
+      </a>
+      <button class="nav-menu-close" id="navClose" aria-label="Fechar menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+
+    <p class="nav-menu-tagline">Descubra a flora dos campos de altitude de Santa Catarina</p>
+
+    <div class="nav-menu-list">
+      <a href="index.html" class="active">
+        <svg class="nav-menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+        Galeria
+      </a>
+      <a href="sobre.html">
+        <svg class="nav-menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
+        Sobre nós
+      </a>
+      <a href="conservacao.html">
+        <svg class="nav-menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3 9 8 10 5-1 8-5 8-10V6z"/></svg>
+        Conservação dos campos
+      </a>
+      <a href="disturbios.html">
+        <img src="simbolo-de-interface-quente-do-contorno-de-chamas-de-fogo.png" alt="" class="nav-menu-icon">
+        Distúrbios
+      </a>
+      <a href="guias.html">
+        <svg class="nav-menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        Guias de campo
+      </a>
+      <a href="biblioteca.html">
+        <svg class="nav-menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        Biblioteca
+      </a>
+      <a href="contribuir.html">
+        <svg class="nav-menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/></svg>
+        Contribua
+      </a>
+      <a href="contato.html">
+        <svg class="nav-menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+        Fale conosco
+      </a>
+    </div>
+
+    <div class="nav-menu-footer">
+      <img src="araucaria.png" alt="" class="nav-menu-art">
+    </div>
+  </nav>
+
+<script>
+(function(){
+  const btn = document.getElementById('navToggle');
+  const menu = document.getElementById('mainNav');
+  const overlay = document.getElementById('navOverlay');
+  const close = document.getElementById('navClose');
+  if (!btn || !menu) return;
+  function openMenu() {
+    btn.classList.add('open');
+    menu.classList.add('open');
+    if (overlay) overlay.classList.add('open');
+    btn.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMenu() {
+    btn.classList.remove('open');
+    menu.classList.remove('open');
+    if (overlay) overlay.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+  btn.addEventListener('click', e => {
+    e.stopPropagation();
+    if (btn.classList.contains('open')) closeMenu(); else openMenu();
+  });
+  if (overlay) overlay.addEventListener('click', closeMenu);
+  if (close) close.addEventListener('click', closeMenu);
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && menu.classList.contains('open')) closeMenu();
+  });
+})();
+</script>
+</header>
+
+<!-- ===== HERO BANNER ===== -->
+<section class="hero-banner">
+  <div class="hero-banner-bg"></div>
+  <div class="hero-banner-overlay"></div>
+  <div class="hero-banner-content">
+    <h1 class="hero-title">Guia Botânico dos Campos</h1>
+    <p class="hero-subtitle">DESCUBRA A FLORA DOS CAMPOS DE ALTITUDE DE SANTA CATARINA</p>
+    <div class="hero-search-bar">
+      <input type="text" id="heroSearch"
+             placeholder="Pesquise por nome popular, família, gênero, espécie, ou qualquer termo que descreva a planta"
+             onkeydown="if(event.key==='Enter') buscarHero()">
+      <button onclick="buscarHero()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+  <span class="hero-photo-credit">Fotografia: Sofia Casali, Parque Nacional de São Joaquim</span>
+</section>
+
+<!-- ===== STATS ===== -->
+<div class="stats-strip">
+  <div class="stat-item">
+    <div class="stat-circle">
+      <img src="icone-especies.png" alt="Espécies" style="width:70px;height:70px;filter:brightness(0) invert(1);margin-left:-12px">
+    </div>
+    <div class="stat-info">
+      <div class="stat-number" id="statEspecies">0</div>
+      <div class="stat-label">Espécies</div>
+    </div>
+  </div>
+
+  <div class="stat-item">
+    <div class="stat-circle">
+      <!-- Camera icon -->
+      <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+        <circle cx="12" cy="13" r="4"/>
+      </svg>
+    </div>
+    <div class="stat-info">
+      <div class="stat-number" id="statFotos">0</div>
+      <div class="stat-label">Fotos</div>
+    </div>
+  </div>
+
+  <a class="stat-item stat-item-link" href="contribuir.html">
+    <div class="stat-circle">
+      <!-- Cloud upload icon -->
+      <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="16 16 12 12 8 16"/>
+        <line x1="12" y1="12" x2="12" y2="21"/>
+        <path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/>
+      </svg>
+    </div>
+    <div class="stat-info">
+      <div class="stat-label" style="font-size:15px">Contribua para o site</div>
+    </div>
+  </a>
+</div>
+
+<!-- ===== GALLERY BG SECTION ===== -->
+<section class="gallery-section-bg">
+<!-- ===== MAIN: FILTERS + GALLERY ===== -->
+<div class="main-layout">
+
+  <!-- Toolbar: título + pesquisa + ordenar -->
+  <div class="gallery-toolbar">
+    <h2>Galeria de fotos</h2>
+    <span class="toolbar-divider"></span>
+    <div class="search-inline">
+      <span class="search-icon">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      </span>
+      <input type="text" id="galSearch" placeholder="Digite aqui para pesquisar" oninput="aplicarFiltros()">
+    </div>
+    <div class="toolbar-order">
+      <span class="toolbar-order-label">Ordenar:</span>
+      <select id="ordemSel" onchange="aplicarFiltros()">
+        <option value="familia-az">Família A-Z</option>
+        <option value="familia-za">Família Z-A</option>
+        <option value="nome-az">Nome científico A-Z</option>
+        <option value="nome-za">Nome científico Z-A</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Corpo: sidebar filtros + galeria -->
+  <div class="gallery-body">
+    <!-- Sidebar filtros à esquerda -->
+    <aside class="filter-sidebar">
+      <!-- Cor da flor -->
+      <div class="filter-group">
+        <div class="filter-group-header" onclick="toggleFilter('f-cor')">
+          <span class="filter-group-label">Cor da flor</span>
+          <button class="filter-toggle-btn" data-target="f-cor">+</button>
+        </div>
+        <div class="filter-content" id="f-cor">
+          <div class="filter-content-inner">
+            <label class="filter-checkbox">
+              <input type="checkbox" name="cor" value="amarelo">
+              <span>Amarelo</span>
+            </label>
+            <label class="filter-checkbox">
+              <input type="checkbox" name="cor" value="azul">
+              <span>Azul</span>
+            </label>
+            <label class="filter-checkbox">
+              <input type="checkbox" name="cor" value="branco">
+              <span>Branco</span>
+            </label>
+            <label class="filter-checkbox">
+              <input type="checkbox" name="cor" value="laranja">
+              <span>Laranja</span>
+            </label>
+            <label class="filter-checkbox">
+              <input type="checkbox" name="cor" value="lilas">
+              <span>Lilás</span>
+            </label>
+            <label class="filter-checkbox">
+              <input type="checkbox" name="cor" value="rosa">
+              <span>Rosa</span>
+            </label>
+            <label class="filter-checkbox">
+              <input type="checkbox" name="cor" value="roxo">
+              <span>Roxo</span>
+            </label>
+            <label class="filter-checkbox">
+              <input type="checkbox" name="cor" value="verde">
+              <span>Verde</span>
+            </label>
+            <label class="filter-checkbox">
+              <input type="checkbox" name="cor" value="vermelho">
+              <span>Vermelho</span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Estado de conservação -->
+      <div class="filter-group">
+        <div class="filter-group-header" onclick="toggleFilter('f-status')">
+          <span class="filter-group-label">Estado de conservação</span>
+          <button class="filter-toggle-btn" data-target="f-status">+</button>
+        </div>
+        <div class="filter-content" id="f-status">
+          <div class="filter-content-inner">
+            <label class="filter-checkbox">
+              <input type="checkbox" name="status" value="R">
+              <div class="filter-status-circle" style="background:#7B1FA2">R</div>
+              <span>Rara ou endêmica</span>
+            </label>
+            <label class="filter-checkbox">
+              <input type="checkbox" name="status" value="CR">
+              <div class="filter-status-circle" style="background:#C62828">CR</div>
+              <span>Criticamente em Perigo</span>
+            </label>
+            <label class="filter-checkbox">
+              <input type="checkbox" name="status" value="EN">
+              <div class="filter-status-circle" style="background:#E65100">EN</div>
+              <span>Em Perigo</span>
+            </label>
+            <label class="filter-checkbox">
+              <input type="checkbox" name="status" value="VU">
+              <div class="filter-status-circle" style="background:#F9A825">VU</div>
+              <span>Vulnerável</span>
+            </label>
+            <label class="filter-checkbox">
+              <input type="checkbox" name="status" value="NT">
+              <div class="filter-status-circle" style="background:#388E3C">NT</div>
+              <span>Quase Ameaçada</span>
+            </label>
+            <label class="filter-checkbox">
+              <input type="checkbox" name="status" value="LC">
+              <div class="filter-status-circle" style="background:#00502B">LC</div>
+              <span>Pouco preocupante</span>
+            </label>
+            <label class="filter-checkbox">
+              <input type="checkbox" name="status" value="DD">
+              <div class="filter-status-circle" style="background:#757575">DD</div>
+              <span>Dados insuficientes</span>
+            </label>
+            <label class="filter-checkbox">
+              <input type="checkbox" name="status" value="NE">
+              <div class="filter-status-circle" style="background:#9E9E9E">NE</div>
+              <span>Não avaliado</span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Estágio sucessional -->
+      <div class="filter-group">
+        <div class="filter-group-header" onclick="toggleFilter('f-estagio')">
+          <span class="filter-group-label">Estágio sucessional (indicadoras)</span>
+          <button class="filter-toggle-btn" data-target="f-estagio">+</button>
+        </div>
+        <div class="filter-content" id="f-estagio">
+          <div class="filter-content-inner">
+            <label class="filter-checkbox">
+              <input type="checkbox" name="estagio" value="estágio inicial">
+              <span>Estágio inicial</span>
+            </label>
+            <label class="filter-checkbox">
+              <input type="checkbox" name="estagio" value="estágio médio">
+              <span>Estágio médio</span>
+            </label>
+            <label class="filter-checkbox">
+              <input type="checkbox" name="estagio" value="estágio avançado">
+              <span>Estágio avançado</span>
+            </label>
+            <label class="filter-checkbox">
+              <input type="checkbox" name="estagio" value="vegetação primária">
+              <span>Vegetação primária</span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Família -->
+      <div class="filter-group">
+        <div class="filter-group-header" onclick="toggleFilter('f-familia')">
+          <span class="filter-group-label">Família</span>
+          <button class="filter-toggle-btn" data-target="f-familia">+</button>
+        </div>
+        <div class="filter-content" id="f-familia">
+          <input type="text" class="filter-familia-search" id="familiaSearch" placeholder="Buscar família…" aria-label="Buscar família">
+          <div class="filter-content-inner filter-familia-scroll" id="familiasList"></div>
+        </div>
+      </div>
+
+      <!-- Botões -->
+      <div class="filter-actions">
+        <button class="btn-apply" onclick="aplicarFiltros()">Aplicar</button>
+        <button class="btn-clear" onclick="limparFiltros()">Limpar</button>
+      </div>
+    </aside>
+
+    <!-- Galeria à direita -->
+    <main class="main-content">
+      <div class="result-info" id="resultInfo"></div>
+      <div class="plant-grid" id="plantGrid"></div>
+
+      <section class="no-image-section" id="noImageSection" style="display:none">
+        <ul class="no-image-list" id="noImageList"></ul>
+      </section>
+
+      <div class="pagination" id="pagination"></div>
+
+      <div class="download-area">
+        <button class="btn-download-xlsx" onclick="baixarXlsx()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Baixar XLSX
+        </button>
+      </div>
+    </main>
+  </div>
+</div>
+
+<!-- ===== MODAL ===== -->
+<div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)fecharModal()">
+  <div class="modal-wrapper">
+    <button class="modal-close" onclick="fecharModal()">✕</button>
+    <div class="modal" id="modalContent"></div>
+  </div>
+</div>
+</section><!-- /gallery-section-bg -->
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h4>Sobre o projeto</h4>
+      <p>O Guia dos Campos é uma iniciativa do PELD BISC para divulgar e valorizar a flora dos campos de altitude de Santa Catarina.</p>
+      <a href="sobre.html" class="footer-cta">Saiba mais sobre o projeto →</a>
+    </div>
+    <div class="footer-col">
+      <h4>Links rápidos</h4>
+      <a href="index.html">Galeria</a>
+      <a href="sobre.html">Sobre nós</a>
+      <a href="conservacao.html">Conservação dos campos</a>
+      <a href="disturbios.html">Distúrbios</a>
+      <a href="guias.html">Guias de campo</a>
+      <a href="biblioteca.html">Biblioteca</a>
+      <a href="contribuir.html">Contribua</a>
+    </div>
+    <div class="footer-col">
+      <h4>Fale conosco</h4>
+      <a href="contato.html" class="footer-cta">Entre em contato →</a>
+    </div>
+    <div class="footer-col">
+      <h4>Realização</h4>
+      <div class="footer-logos">
+        <a href="https://peldbisc.ufsc.br/" target="_blank" rel="noopener" class="footer-logo-box"><img src="logos/logo-peld.png" alt="PELD BISC"></a>
+        <a href="https://divecon.ufsc.br/index.php" target="_blank" rel="noopener" class="footer-logo-box"><img src="logos/DIVECON.svg" alt="div&amp;con"></a>
+        <a href="https://ufsc.br/" target="_blank" rel="noopener" class="footer-logo-box"><img src="logos/UFSC.png" alt="UFSC"></a>
+      </div>
+      <h4 class="footer-subheader">Apoio</h4>
+      <div class="footer-logos">
+        <div class="footer-logo-box"><img src="logos/fapesc.png" alt="FAPESC"></div>
+        <div class="footer-logo-box"><img src="logos/CNPQ.png" alt="CNPq"></div>
+        <div class="footer-logo-box"><img src="logos/icmbio.png" alt="ICMBio"></div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 2026 Guia Botânico dos Campos de Altitude — Este site foi realizado com recursos provenientes da FAPESC.
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script>
+  const POR_PAG = 30;
+  let pag = 1;
+  let filtradas = [...PLANTAS];
+
+  // ===== INIT =====
+  function init() {
+    // Preencher lista de famílias no filtro lateral
+    const lista = document.getElementById('familiasList');
+    FAMILIAS.forEach(f => {
+      lista.innerHTML += `
+        <label class="filter-checkbox">
+          <input type="checkbox" name="familia" value="${f}">
+          <span>${f.charAt(0)+f.slice(1).toLowerCase()}</span>
+        </label>`;
+    });
+    // Busca interna do filtro de família
+    const famSearch = document.getElementById('familiaSearch');
+    if (famSearch) {
+      famSearch.addEventListener('input', () => {
+        const q = famSearch.value.trim().toLowerCase();
+        lista.querySelectorAll('.filter-checkbox').forEach(lbl => {
+          const txt = (lbl.querySelector('span')?.textContent || '').toLowerCase();
+          lbl.style.display = (!q || txt.includes(q)) ? '' : 'none';
+        });
+      });
+    }
+    // Query string
+    const q = new URLSearchParams(window.location.search).get('q');
+    if (q) document.getElementById('galSearch').value = q;
+    aplicarFiltros();
+  }
+
+  // ===== TOGGLE FILTER GROUP =====
+  function toggleFilter(id) {
+    const content = document.getElementById(id);
+    const btn = document.querySelector(`[data-target="${id}"]`);
+    const isOpen = content.classList.contains('open');
+    content.classList.toggle('open', !isOpen);
+    btn.textContent = isOpen ? '+' : '−';
+  }
+
+  // ===== GET CHECKED =====
+  function getChecked(name) {
+    return [...document.querySelectorAll(`input[name="${name}"]:checked`)].map(e => e.value);
+  }
+
+  // ===== FILTRAR =====
+  function aplicarFiltros() {
+    const busca = document.getElementById('galSearch').value.toLowerCase().trim();
+    const cores = getChecked('cor');
+    const status = getChecked('status');
+    const familias = [...getChecked('familia')];
+    const estagios = getChecked('estagio');
+    const ordem = document.getElementById('ordemSel').value;
+
+    filtradas = PLANTAS.filter(p => {
+      if (busca && !p.nome.toLowerCase().includes(busca) &&
+          !p.nomePopular.toLowerCase().includes(busca) &&
+          !p.familia.toLowerCase().includes(busca)) return false;
+      if (cores.length && !cores.some(c => p.cor.includes(c))) return false;
+      if (status.length) {
+        const querRara = status.includes('R');
+        const outros = status.filter(s => s !== 'R');
+        const passa = (querRara && p.raraEndemica) || outros.includes(p.status);
+        if (!passa) return false;
+      }
+      if (familias.length && !familias.includes(p.familia)) return false;
+      if (estagios.length && !estagios.some(e => p.estagio.includes(e))) return false;
+      return true;
+    });
+
+    if (ordem === 'nome-az') filtradas.sort((a,b) => a.nome.localeCompare(b.nome));
+    else if (ordem === 'nome-za') filtradas.sort((a,b) => b.nome.localeCompare(a.nome));
+    else if (ordem === 'familia-az') filtradas.sort((a,b) => a.familia.localeCompare(b.familia) || a.nome.localeCompare(b.nome));
+    else if (ordem === 'familia-za') filtradas.sort((a,b) => b.familia.localeCompare(a.familia) || a.nome.localeCompare(b.nome));
+
+    pag = 1; render();
+  }
+
+  function limparFiltros() {
+    document.querySelectorAll('input[type="checkbox"]').forEach(e => e.checked = false);
+    document.getElementById('galSearch').value = '';
+    document.getElementById('ordemSel').value = 'familia-az';
+    aplicarFiltros();
+  }
+
+  // ===== RENDER =====
+  function render() {
+    const grid = document.getElementById('plantGrid');
+    const noImgSection = document.getElementById('noImageSection');
+    const noImgList = document.getElementById('noImageList');
+
+    const comFoto = filtradas.filter(p => p.foto);
+    const semFoto = filtradas.filter(p => !p.foto)
+      .slice()
+      .sort((a,b) => a.familia.localeCompare(b.familia) || a.nome.localeCompare(b.nome));
+
+    const ini = (pag - 1) * POR_PAG;
+    const fim = ini + POR_PAG;
+
+    const items = comFoto.slice(Math.min(ini, comFoto.length), Math.min(fim, comFoto.length));
+    const itensSemFoto = semFoto.slice(
+      Math.max(0, ini - comFoto.length),
+      Math.max(0, fim - comFoto.length)
+    );
+
+    const totalPags = Math.max(1, Math.ceil((comFoto.length + semFoto.length) / POR_PAG));
+
+    document.getElementById('resultInfo').textContent =
+      `${filtradas.length} espécie${filtradas.length !== 1 ? 's' : ''} encontrada${filtradas.length !== 1 ? 's' : ''}`;
+
+    if (!comFoto.length && !semFoto.length) {
+      grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px 0;color:#aaa;font-size:14px">Nenhuma espécie encontrada com os filtros selecionados.</div>';
+      document.getElementById('pagination').innerHTML = '';
+      noImgSection.style.display = 'none';
+      return;
+    }
+
+    grid.innerHTML = items.map(p => {
+      const hasStatus = !!(p.status && p.fonteStatus);
+      const si = hasStatus ? (STATUS_INFO[p.status] || STATUS_INFO['NE']) : null;
+      const hasRare = !!(p.raraEndemica && p.fonteRaridade);
+      return `
+        <a class="plant-card" href="especie.html?id=${p.id}">
+          <div class="plant-card-img-wrap">
+            <img src="${p.foto}" alt="${p.nome}">
+            ${hasStatus ? `<div class="status-circle-badge" style="background:${si.bg}">${p.status}</div>` : ''}
+            ${hasRare ? '<div class="rare-badge">R</div>' : ''}
+          </div>
+          <div class="plant-card-info">
+            <div class="plant-card-family">${p.familia}</div>
+            <div class="plant-card-name">${p.nome}</div>
+            ${p.nomePopular ? `<div class="plant-card-popular">${p.nomePopular}</div>` : ''}
+          </div>
+        </a>`;
+    }).join('');
+
+    if (itensSemFoto.length) {
+      noImgSection.style.display = '';
+      noImgList.innerHTML = itensSemFoto.map(p => `
+        <li class="no-image-item" onclick="location.href='especie.html?id=${p.id}'">
+          <span class="plant-card-family">${p.familia}</span>
+          <span class="plant-card-name">${p.nome}</span>
+          <a class="no-image-btn"
+             href="contribuir.html?nome=${encodeURIComponent(p.nome)}&familia=${encodeURIComponent(p.familia || '')}"
+             onclick="event.stopPropagation()">Adicionar foto</a>
+        </li>`).join('');
+    } else {
+      noImgSection.style.display = 'none';
+      noImgList.innerHTML = '';
+    }
+
+    renderPag(totalPags * POR_PAG);
+  }
+
+  function renderPag(totalItens) {
+    const total = Math.ceil((totalItens ?? filtradas.length) / POR_PAG);
+    const el = document.getElementById('pagination');
+    if (total <= 1) { el.innerHTML = ''; return; }
+
+    const windowStart = Math.floor((pag - 1) / 4) * 4 + 1;
+    const windowEnd = Math.min(total, windowStart + 7);
+
+    let h = '';
+    if (pag > 1) h += `<button class="page-btn" onclick="irPag(${pag-1})">‹</button>`;
+    for (let i = windowStart; i <= windowEnd; i++)
+      h += `<button class="page-btn ${i===pag?'active':''}" onclick="irPag(${i})">${i}</button>`;
+    if (pag < total) h += `<button class="page-btn" onclick="irPag(${pag+1})">›</button>`;
+    el.innerHTML = h;
+  }
+
+  function irPag(n) {
+    pag = n; render();
+    document.querySelector('.main-layout').scrollIntoView({behavior:'smooth', block:'start'});
+  }
+
+  // ===== MODAL =====
+  function openModal(id) {
+    const p = PLANTAS.find(x => x.id === id);
+    if (!p) return;
+    const hasStatus = !!(p.status && p.fonteStatus);
+    const si = hasStatus ? (STATUS_INFO[p.status] || STATUS_INFO['NE']) : null;
+    const hasRare = !!(p.raraEndemica && p.fonteRaridade);
+    document.getElementById('modalContent').innerHTML = `
+      <div class="modal-img-area">
+        ${p.foto ? `<img src="${p.foto}" alt="${p.nome}" style="width:100%;height:100%;object-fit:cover">` : `<span>${p.emoji}</span>`}
+        ${hasStatus ? `<div class="modal-status-badge" style="background:${si.bg}">${p.status} — ${si.label}</div>` : ''}
+        ${hasRare ? '<div class="modal-rare-badge">R — Rara ou endêmica</div>' : ''}
+      </div>
+      <div class="modal-body">
+        <div class="modal-family">${p.familia}</div>
+        <div class="modal-name">${p.nome}</div>
+        <div class="modal-popular">Nome popular: <strong>${p.nomePopular}</strong></div>
+        <div class="modal-tags">
+          ${p.cor.map(c=>`<span class="modal-tag">🌸 ${c.charAt(0).toUpperCase()+c.slice(1)}</span>`).join('')}
+          ${p.estagio.map(e=>`<span class="modal-tag">🌱 ${e.charAt(0).toUpperCase()+e.slice(1)}</span>`).join('')}
+        </div>
+        <p class="modal-desc">${p.descricao}</p>
+      </div>`;
+    document.getElementById('modalOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function fecharModal() {
+    document.getElementById('modalOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // ===== SEARCH HERO =====
+  function buscarHero() {
+    const q = document.getElementById('heroSearch').value.trim();
+    if (q) {
+      document.getElementById('galSearch').value = q;
+      aplicarFiltros();
+      document.querySelector('.main-layout').scrollIntoView({behavior:'smooth'});
+    }
+  }
+
+  // ===== DOWNLOAD =====
+  function baixarXlsx() {
+    const cols = ['Família','Nome Científico','Nome Popular','Tipo','Status','Cores','Estágios'];
+    const rows = filtradas.map(p => [
+      p.familia, p.nome, p.nomePopular, p.tipo, p.status,
+      p.cor.join('; '), p.estagio.join('; ')
+    ]);
+    let csv = cols.join('\t') + '\n' + rows.map(r => r.join('\t')).join('\n');
+    const blob = new Blob(['\uFEFF' + csv], {type:'text/tab-separated-values;charset=utf-8'});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'guia-botanico.xls';
+    a.click();
+  }
+
+  // ===== ANIMATED COUNTER =====
+  function animateCounter(el, target, suffix) {
+    const duration = 1500;
+    const start = performance.now();
+    function tick(now) {
+      const t = Math.min((now - start) / duration, 1);
+      const ease = 1 - Math.pow(1 - t, 3);
+      el.textContent = Math.floor(ease * target) + suffix;
+      if (t < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+
+  function initCounters() {
+    const totalEspecies = PLANTAS.length;
+    const totalFotos = PLANTAS.filter(p => p.foto).length;
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCounter(document.getElementById('statEspecies'), totalEspecies, '');
+          animateCounter(document.getElementById('statFotos'), totalFotos, '');
+          observer.disconnect();
+        }
+      });
+    }, { threshold: 0.3 });
+    observer.observe(document.querySelector('.stats-strip'));
+  }
+
+  document.addEventListener('keydown', e => { if(e.key==='Escape') fecharModal(); });
+  init();
+  initCounters();
+</script>
+</body>
+</html>
