@@ -798,12 +798,13 @@ a.stat-item-link .stat-label { color: #888; }
   white-space: nowrap;
   background: #fff;
   border: 1px solid #ccc;
-  border-radius: 6px;
-  padding: 6px 12px;
+  border-radius: 999px;
+  padding: 6px 18px;
   height: 38px;
   position: relative;
-  min-width: 160px;
+  min-width: 170px;
 }
+.toolbar-order select option[hidden] { display: none !important; }
 .toolbar-order::after {
   content: '';
   width: 16px;
