@@ -163,16 +163,30 @@
     <div class="toolbar-order">
       <span class="toolbar-order-label">Ordenar:</span>
       <select id="ordemSel" onchange="aplicarFiltros()">
+        <option value="" disabled selected hidden>Ordenar</option>
         <option value="recente">Mais recente</option>
+        <option value="antigo">Mais antigo</option>
         <option value="titulo-az">Título A-Z</option>
         <option value="titulo-za">Título Z-A</option>
       </select>
     </div>
+    <button class="toolbar-filter-btn" type="button" onclick="abrirFiltrosMobile()" aria-label="Abrir filtros">
+      <span class="toolbar-btn-label">Filtrar</span>
+      <img class="toolbar-btn-icon" src="filtro.png" alt="">
+    </button>
   </div>
 
   <div class="gallery-body">
 
-    <aside class="filter-sidebar">
+    <div class="filter-backdrop" id="filterBackdrop" onclick="fecharFiltrosMobile()"></div>
+
+    <aside class="filter-sidebar" id="filterSidebar">
+      <div class="filter-sidebar-header">
+        <span>Filtros</span>
+        <button class="filter-sidebar-close" type="button" onclick="fecharFiltrosMobile()" aria-label="Fechar filtros">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
       <div class="filter-group">
         <div class="filter-group-header" onclick="toggleFilter('f-categoria')">
           <span class="filter-group-label">Navegue por categoria</span>
@@ -209,7 +223,7 @@
       </div>
 
       <div class="filter-actions">
-        <button class="btn-apply" onclick="aplicarFiltros()">Aplicar</button>
+        <button class="btn-apply" onclick="aplicarFiltros(); fecharFiltrosMobile();">Aplicar</button>
         <button class="btn-clear" onclick="limparFiltros()">Limpar</button>
       </div>
 
@@ -416,9 +430,10 @@
       return true;
     });
 
-    if (ordem === 'recente') filtradas.sort((a,b) => b.ano - a.ano || a.titulo.localeCompare(b.titulo));
+    if (ordem === 'antigo') filtradas.sort((a,b) => a.ano - b.ano || a.titulo.localeCompare(b.titulo));
     else if (ordem === 'titulo-az') filtradas.sort((a,b) => a.titulo.localeCompare(b.titulo));
     else if (ordem === 'titulo-za') filtradas.sort((a,b) => b.titulo.localeCompare(a.titulo));
+    else filtradas.sort((a,b) => b.ano - a.ano || a.titulo.localeCompare(b.titulo)); // default: mais recente (inclui placeholder vazio)
 
     pag = 1; render();
   }
@@ -426,9 +441,22 @@
   function limparFiltros() {
     document.querySelectorAll('input[type="checkbox"]').forEach(e => e.checked = false);
     document.getElementById('bibSearch').value = '';
-    document.getElementById('ordemSel').value = 'recente';
+    document.getElementById('ordemSel').value = '';
     aplicarFiltros();
   }
+
+  // ===== FILTROS OFF-CANVAS (MOBILE) =====
+  function abrirFiltrosMobile() {
+    document.body.classList.add('filter-open');
+  }
+  function fecharFiltrosMobile() {
+    document.body.classList.remove('filter-open');
+  }
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && document.body.classList.contains('filter-open')) {
+      fecharFiltrosMobile();
+    }
+  });
 
   function render() {
     const el = document.getElementById('bibList');
