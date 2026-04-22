@@ -813,26 +813,69 @@ a.stat-item-link .stat-label { color: #888; }
   pointer-events: none;
   background: url('ordenar.png') no-repeat center / contain;
 }
+/* Select nativo fica escondido — existe só pra guardar o valor selecionado */
 .gallery-toolbar .toolbar-order select,
 .toolbar-order select {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: 0;
   border: 0;
-  background: transparent;
-  outline: none;
-  box-shadow: none;
+  clip: rect(0 0 0 0);
+}
+
+/* Label visível "Ordenar" / nome da opção selecionada */
+.toolbar-order-text {
   flex: 1;
   font-size: 13px;
   font-family: 'Inter', sans-serif !important;
   color: #1a1a1a;
-  cursor: pointer;
-  padding: 0;
+  user-select: none;
+}
+
+.toolbar-order { cursor: pointer; }
+
+/* Dropdown customizado — painel que abre abaixo da caixa */
+.toolbar-order-dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  background: #fff;
+  border: 1px solid #d5d5d5;
+  border-radius: 12px;
+  padding: 6px;
+  list-style: none;
   margin: 0;
-  border-radius: 0;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  z-index: 500;
+  max-height: 260px;
+  overflow-y: auto;
+  opacity: 0;
+  transform: translateY(-4px);
+  pointer-events: none;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+.toolbar-order.open .toolbar-order-dropdown {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.toolbar-order-dropdown li {
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  font-family: 'Inter', sans-serif !important;
+  color: #1a1a1a;
+  line-height: 1.2;
   white-space: nowrap;
 }
-.toolbar-order select::-ms-expand { display: none; }
+.toolbar-order-dropdown li:hover { background: #eff3ef; color: #00502B; }
+.toolbar-order-dropdown li.active { background: #00502B; color: #fff; }
 
 .toolbar-order-label { display: none; }
 
@@ -1954,40 +1997,9 @@ footer {
     height: 40px;
   }
   .gallery-toolbar .toolbar-order {
-    background: #fff;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    padding: 0 12px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    position: relative;
+    padding: 0 14px;
+    min-width: 0;
   }
-  .gallery-toolbar .toolbar-order::after {
-    content: '';
-    width: 16px;
-    height: 16px;
-    flex-shrink: 0;
-    pointer-events: none;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    background-image: url('ordenar.png');
-  }
-  .gallery-toolbar .toolbar-order select {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    border: none;
-    background: transparent;
-    flex: 1;
-    outline: none;
-    font-size: 13px;
-    font-family: 'Inter', sans-serif !important;
-    color: #1a1a1a;
-    padding-right: 0;
-  }
-  .gallery-toolbar .toolbar-order-label { display: none; }
   .toolbar-filter-btn { display: inline-flex; }
 
   /* Sidebar vira off-canvas deslizando da direita */

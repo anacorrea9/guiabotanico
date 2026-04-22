@@ -160,15 +160,22 @@
       </span>
       <input type="text" id="bibSearch" placeholder="Pesquise por autor, título, palavra-chave ou tema" oninput="aplicarFiltros()">
     </div>
-    <div class="toolbar-order">
+    <div class="toolbar-order" id="sortWrapper">
       <span class="toolbar-order-label">Ordenar:</span>
-      <select id="ordemSel" onchange="aplicarFiltros()">
+      <select id="ordemSel" onchange="aplicarFiltros()" aria-hidden="true" tabindex="-1">
         <option value="" disabled selected hidden>Ordenar</option>
         <option value="recente">Mais recente</option>
         <option value="antigo">Mais antigo</option>
         <option value="titulo-az">Título A-Z</option>
         <option value="titulo-za">Título Z-A</option>
       </select>
+      <span class="toolbar-order-text" id="sortLabel">Ordenar</span>
+      <ul class="toolbar-order-dropdown" id="sortDropdown">
+        <li data-value="recente">Mais recente</li>
+        <li data-value="antigo">Mais antigo</li>
+        <li data-value="titulo-az">Título A-Z</li>
+        <li data-value="titulo-za">Título Z-A</li>
+      </ul>
     </div>
     <button class="toolbar-filter-btn" type="button" onclick="abrirFiltrosMobile()" aria-label="Abrir filtros">
       <span class="toolbar-btn-label">Filtrar</span>
@@ -442,6 +449,7 @@
     document.querySelectorAll('input[type="checkbox"]').forEach(e => e.checked = false);
     document.getElementById('bibSearch').value = '';
     document.getElementById('ordemSel').value = '';
+    if (window.__resetSortLabel) window.__resetSortLabel();
     aplicarFiltros();
   }
 
@@ -457,6 +465,38 @@
       fecharFiltrosMobile();
     }
   });
+
+  // ===== DROPDOWN CUSTOM DE ORDENAR =====
+  (function(){
+    const wrap = document.getElementById('sortWrapper');
+    const list = document.getElementById('sortDropdown');
+    const label = document.getElementById('sortLabel');
+    const select = document.getElementById('ordemSel');
+    if (!wrap || !list || !label || !select) return;
+
+    wrap.addEventListener('click', e => {
+      if (e.target.closest('.toolbar-order-dropdown li')) return;
+      wrap.classList.toggle('open');
+    });
+    list.addEventListener('click', e => {
+      const li = e.target.closest('li');
+      if (!li) return;
+      e.stopPropagation();
+      const value = li.dataset.value;
+      select.value = value;
+      label.textContent = li.textContent;
+      list.querySelectorAll('li').forEach(el => el.classList.toggle('active', el === li));
+      wrap.classList.remove('open');
+      aplicarFiltros();
+    });
+    document.addEventListener('click', e => {
+      if (!wrap.contains(e.target)) wrap.classList.remove('open');
+    });
+    window.__resetSortLabel = () => {
+      label.textContent = 'Ordenar';
+      list.querySelectorAll('li').forEach(el => el.classList.remove('active'));
+    };
+  })();
 
   function render() {
     const el = document.getElementById('bibList');
