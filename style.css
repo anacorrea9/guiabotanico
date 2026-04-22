@@ -793,16 +793,41 @@ a.stat-item-link .stat-label { color: #888; }
 .toolbar-order {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   flex-shrink: 0;
   white-space: nowrap;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 6px 12px;
+  height: 38px;
+  position: relative;
+  min-width: 160px;
+}
+.toolbar-order::after {
+  content: '';
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  pointer-events: none;
+  background: url('ordenar.png') no-repeat center / contain;
+}
+.toolbar-order select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+  background: transparent;
+  outline: none;
+  flex: 1;
+  font-size: 13px;
+  font-family: 'Inter', sans-serif !important;
+  color: #1a1a1a;
+  cursor: pointer;
+  padding: 0;
 }
 
-.toolbar-order-label {
-  font-size: 13px;
-  font-weight: 500;
-  color: #1a1a1a;
-}
+.toolbar-order-label { display: none; }
 
 /* Botão "Filtrar" do toolbar (só aparece no mobile) */
 .toolbar-filter-btn {
