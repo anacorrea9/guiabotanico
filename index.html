@@ -219,7 +219,8 @@
     <div class="toolbar-order">
       <span class="toolbar-order-label">Ordenar:</span>
       <select id="ordemSel" onchange="aplicarFiltros()">
-        <option value="familia-az">Ordenar</option>
+        <option value="" disabled selected hidden>Ordenar</option>
+        <option value="familia-az">Família A-Z</option>
         <option value="familia-za">Família Z-A</option>
         <option value="nome-az">Nome científico A-Z</option>
         <option value="nome-za">Nome científico Z-A</option>
@@ -538,8 +539,8 @@
 
     if (ordem === 'nome-az') filtradas.sort((a,b) => a.nome.localeCompare(b.nome));
     else if (ordem === 'nome-za') filtradas.sort((a,b) => b.nome.localeCompare(a.nome));
-    else if (ordem === 'familia-az') filtradas.sort((a,b) => a.familia.localeCompare(b.familia) || a.nome.localeCompare(b.nome));
     else if (ordem === 'familia-za') filtradas.sort((a,b) => b.familia.localeCompare(a.familia) || a.nome.localeCompare(b.nome));
+    else filtradas.sort((a,b) => a.familia.localeCompare(b.familia) || a.nome.localeCompare(b.nome)); // default: familia A-Z (inclui placeholder vazio)
 
     pag = 1; render();
   }
@@ -547,7 +548,7 @@
   function limparFiltros() {
     document.querySelectorAll('input[type="checkbox"]').forEach(e => e.checked = false);
     document.getElementById('galSearch').value = '';
-    document.getElementById('ordemSel').value = 'familia-az';
+    document.getElementById('ordemSel').value = '';
     aplicarFiltros();
   }
 
