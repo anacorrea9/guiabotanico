@@ -527,8 +527,11 @@ function renderOutrasCarousel(current) {
   section.hidden = false;
 
   track.innerHTML = picks.map(p => {
+    const thumbSrc = p.foto && p.foto.startsWith('fotos/') && !p.foto.startsWith('fotos/thumbs/')
+      ? 'fotos/thumbs/' + p.foto.slice('fotos/'.length)
+      : p.foto;
     const img = p.foto
-      ? `<img src="${p.foto}" alt="${p.nome}" loading="lazy">`
+      ? `<img src="${thumbSrc}" alt="${p.nome}" loading="lazy" onerror="this.onerror=null;this.src='${p.foto}'">`
       : `<span>${p.emoji || '🌿'}</span>`;
     return `<a class="outras-card" href="especie.html?id=${p.id}" title="${p.nome}">${img}</a>`;
   }).join('');

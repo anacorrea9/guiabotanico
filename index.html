@@ -519,6 +519,17 @@
     aplicarFiltros();
   }
 
+  // ===== THUMB HELPER =====
+  // Converte "fotos/xxx.jpg" em "fotos/thumbs/xxx.jpg" (usado em cards/modal).
+  // Mantém URLs externas e caminhos que já apontam para thumbs inalterados.
+  function thumb(foto) {
+    if (!foto) return foto;
+    if (foto.startsWith('fotos/') && !foto.startsWith('fotos/thumbs/')) {
+      return 'fotos/thumbs/' + foto.slice('fotos/'.length);
+    }
+    return foto;
+  }
+
   // ===== RENDER =====
   function render() {
     const grid = document.getElementById('plantGrid');
@@ -558,7 +569,7 @@
       return `
         <a class="plant-card" href="especie.html?id=${p.id}">
           <div class="plant-card-img-wrap">
-            <img src="${p.foto}" alt="${p.nome}">
+            <img src="${thumb(p.foto)}" alt="${p.nome}" loading="lazy" onerror="this.onerror=null;this.src='${p.foto}'">
             ${hasStatus ? `<div class="status-circle-badge" style="background:${si.bg}">${p.status}</div>` : ''}
             ${hasRare ? '<div class="rare-badge">R</div>' : ''}
           </div>
@@ -618,7 +629,7 @@
     const hasRare = !!(p.raraEndemica && p.fonteRaridade);
     document.getElementById('modalContent').innerHTML = `
       <div class="modal-img-area">
-        ${p.foto ? `<img src="${p.foto}" alt="${p.nome}" style="width:100%;height:100%;object-fit:cover">` : `<span>${p.emoji}</span>`}
+        ${p.foto ? `<img src="${thumb(p.foto)}" alt="${p.nome}" style="width:100%;height:100%;object-fit:cover" onerror="this.onerror=null;this.src='${p.foto}'">` : `<span>${p.emoji}</span>`}
         ${hasStatus ? `<div class="modal-status-badge" style="background:${si.bg}">${p.status} — ${si.label}</div>` : ''}
         ${hasRare ? '<div class="modal-rare-badge">R — Rara ou endêmica</div>' : ''}
       </div>

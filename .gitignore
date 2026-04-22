@@ -15,6 +15,7 @@ package-lock.json
 
 # Scripts Python e caches
 *.py
+!gerar_thumbs.py
 __pycache__/
 *.pyc
 
@@ -31,8 +32,16 @@ photo_matches.json
 report_reflora.md
 species_list.txt
 
-# Editor/SO
+# Editor/SO/ferramentas locais
 .vscode/
 .idea/
+.claude/
 Thumbs.db
 .DS_Store
+
+# Material-fonte (PDFs, planilhas) — não faz parte do site público
+Bibliografia/
+planilhas/
+
+# Cache de scripts Python (não usado pelo frontend)
+data/reflora_cache.json
