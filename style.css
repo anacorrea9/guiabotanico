@@ -1844,12 +1844,13 @@ footer {
   .peld-logo { height: 30px; }
   .logo-divider { height: 26px; }
 
-  /* Hero banner mais alto e com mais contraste no mobile */
-  .hero-banner { height: 440px; }
+  /* Hero banner mais alto, imagem com leve zoom e degrade diagonal */
+  .hero-banner { height: 520px; }
+  .hero-banner-bg { background-size: 135%; background-position: center 22%; }
   .hero-banner-overlay {
     background:
-      linear-gradient(225deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.15) 55%, rgba(0,0,0,0) 100%),
-      linear-gradient(to top, rgba(0,0,0,0.55), rgba(0,0,0,0) 60%);
+      linear-gradient(45deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.2) 55%, rgba(0,0,0,0) 100%),
+      linear-gradient(to top, rgba(0,0,0,0.25), rgba(0,0,0,0) 55%);
   }
   .hero-banner-content { text-align: left; }
   .hero-title {
@@ -1862,9 +1863,9 @@ footer {
     margin-bottom: 12px;
   }
   .hero-subtitle {
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 400;
-    color: rgba(255,255,255,0.9);
+    color: rgba(255,255,255,0.88);
     margin-bottom: 22px;
     max-width: 320px;
   }
