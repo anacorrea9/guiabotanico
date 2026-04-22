@@ -9,6 +9,25 @@
 </head>
 <body>
 
+<div class="page-loader" id="pageLoader" aria-hidden="true"><div class="spinner"></div></div>
+<script>
+(function(){
+  var loader = document.getElementById('pageLoader');
+  if (!loader) return;
+  var start = performance.now();
+  var MIN_MS = 250;
+  function hide() {
+    var wait = Math.max(0, MIN_MS - (performance.now() - start));
+    setTimeout(function(){
+      loader.classList.add('hidden');
+      setTimeout(function(){ loader.remove(); }, 500);
+    }, wait);
+  }
+  if (document.readyState === 'complete') hide();
+  else window.addEventListener('load', hide);
+})();
+</script>
+
 <header class="site-header">
   <div class="logo-area">
     <a href="index.html" class="logo-link">
