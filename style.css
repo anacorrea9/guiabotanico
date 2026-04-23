@@ -1100,11 +1100,9 @@ a.stat-item-link .stat-label { color: #888; }
   letter-spacing: 0;
   transition: right 0.2s ease;
 }
-/* Quando espécie tem ambos: R fica em cima, status-badge vai pra baixo */
-.plant-card-img-wrap:has(.rare-badge) .status-circle-badge {
-  top: 44px;
-}
+/* Se existe status badge ao lado, desloca R pra esquerda */
 .plant-card-img-wrap:has(.status-circle-badge) .rare-badge {
+  right: 44px;
   line-height: 1;
   font-family: 'Inter', sans-serif !important;
 }
