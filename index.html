@@ -717,8 +717,8 @@
     document.getElementById('modalContent').innerHTML = `
       <div class="modal-img-area">
         ${p.foto ? `<img src="${thumb(p.foto)}" alt="${p.nome}" style="width:100%;height:100%;object-fit:cover" onerror="this.onerror=null;this.src='${p.foto}'">` : `<span>${p.emoji}</span>`}
-        ${hasStatus ? `<div class="modal-status-badge" style="background:${si.bg}">${p.status} — ${si.label}</div>` : ''}
         ${hasRare ? '<div class="modal-rare-badge">R — Rara ou endêmica</div>' : ''}
+        ${hasStatus ? `<div class="modal-status-badge" style="background:${si.bg}">${p.status} — ${si.label}</div>` : ''}
       </div>
       <div class="modal-body">
         <div class="modal-family">${p.familia}</div>
