@@ -15,10 +15,18 @@
 }
 
 @font-face {
-  font-family: 'Aurora';
-  src: url('fonts/Aurora.otf') format('opentype');
-  font-weight: normal;
+  font-family: 'Playfair Display';
+  src: url('fonts/PlayfairDisplay-VariableFont_wght.ttf') format('truetype-variations');
+  font-weight: 400 900;
   font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Playfair Display';
+  src: url('fonts/PlayfairDisplay-Italic-VariableFont_wght.ttf') format('truetype-variations');
+  font-weight: 400 900;
+  font-style: italic;
   font-display: swap;
 }
 
@@ -329,9 +337,9 @@ img.nav-menu-icon {
 }
 
 .hero-title {
-  font-family: 'Aurora', 'Inter', sans-serif !important;
+  font-family: 'Playfair Display', 'Inter', serif !important;
   font-size: clamp(23px, 4.5vw, 50px);
-  font-weight: 400;
+  font-weight: 700;
   color: #fff;
   text-transform: none;
   letter-spacing: 1px;
@@ -1931,7 +1939,7 @@ footer {
   }
   .hero-banner-content { text-align: left; }
   .hero-title {
-    font-family: 'Inter', sans-serif !important;
+    font-family: 'Playfair Display', 'Inter', serif !important;
     font-weight: 700;
     font-size: clamp(30px, 8vw, 42px);
     letter-spacing: 0.5px;
