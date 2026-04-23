@@ -248,9 +248,11 @@ const REFS = {
   CONSEMA: 'Resolução CONSEMA nº 51, de 05 de dezembro de 2014.',
   RS: 'Lista da Flora Ameaçada de Extinção do Rio Grande do Sul (FZB/RS).',
   IGANCI: '<a href="https://academic.oup.com/botlinnean/article/167/4/378/2418615?login=true&guestAccessKey=" target="_blank" rel="noopener">Iganci et al. (2011)</a>',
-  LOZANO: '<a href="https://doi.org/10.1590/0102-33062020abb0409" target="_blank" rel="noopener">Lozano et al. (2021)</a>'
+  LOZANO: '<a href="https://doi.org/10.1590/0102-33062020abb0409" target="_blank" rel="noopener">Lozano et al. (2021)</a>',
+  HORUS: '<a href="https://bd.institutohorus.org.br/especies" target="_blank" rel="noopener">Instituto Hórus de Desenvolvimento e Conservação Ambiental</a>. Base de Dados Nacional de Espécies Exóticas Invasoras.',
+  REFLORA: '<a href="https://floradobrasil.jbrj.gov.br/reflora" target="_blank" rel="noopener">Flora e Funga do Brasil</a>. Jardim Botânico do Rio de Janeiro.'
 };
-const REF_ORDER = ['CNCFLORA', 'MMA', 'CONAMA', 'IUCN', 'CONSEMA', 'RS', 'IGANCI', 'LOZANO'];
+const REF_ORDER = ['CNCFLORA', 'MMA', 'CONAMA', 'IUCN', 'CONSEMA', 'RS', 'IGANCI', 'LOZANO', 'HORUS', 'REFLORA'];
 const REF_NUMBER = Object.fromEntries(REF_ORDER.map((k, i) => [k, i + 1]));
 
 // Para raridade/endemismo, CNCFlora é usado só como último recurso

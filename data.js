@@ -313,8 +313,8 @@ const PLANTAS = [
     "identificacao": "",
     "fotografia": "",
     "localFotografia": "",
-    "status": "LC",
-    "fonteStatus": "IUCN"
+    "status": "EXO",
+    "fonteStatus": "REFLORA"
   },
   {
     "id": 12,
@@ -553,7 +553,7 @@ const PLANTAS = [
     "nome": "Anthoxanthum odoratum",
     "nomePopular": "Fluva",
     "tipo": "Angiosperma",
-    "status": "NE",
+    "status": "EXO",
     "raraEndemica": false,
     "cor": [],
     "estagio": [
@@ -568,7 +568,8 @@ const PLANTAS = [
     "identificacao": "",
     "fotografia": "",
     "localFotografia": "",
-    "indicadoraEstagio": "Espécie indicadora do estágio inicial de regeneração."
+    "indicadoraEstagio": "Espécie indicadora do estágio inicial de regeneração.",
+    "fonteStatus": "REFLORA"
   },
   {
     "id": 20,
@@ -710,7 +711,7 @@ const PLANTAS = [
     "nome": "Holcus lanatus",
     "nomePopular": "Capim-lanudo",
     "tipo": "Angiosperma",
-    "status": "NE",
+    "status": "EXO",
     "raraEndemica": false,
     "cor": [],
     "estagio": [
@@ -726,7 +727,8 @@ const PLANTAS = [
     "distribuicao": "PR, RS, SC, SP",
     "formaVida": "Erva",
     "substrato": "Terrícola",
-    "indicadoraEstagio": "Espécie indicadora do estágio inicial de regeneração."
+    "indicadoraEstagio": "Espécie indicadora do estágio inicial de regeneração.",
+    "fonteStatus": "REFLORA"
   },
   {
     "id": 26,
@@ -734,7 +736,7 @@ const PLANTAS = [
     "nome": "Melinis minutiflora",
     "nomePopular": "Capim-gordura",
     "tipo": "Angiosperma",
-    "status": "NE",
+    "status": "EXO",
     "raraEndemica": false,
     "cor": [],
     "estagio": [
@@ -757,7 +759,8 @@ const PLANTAS = [
     "identificacao": "",
     "fotografia": "",
     "localFotografia": "",
-    "indicadoraEstagio": "Espécie indicadora do estágio inicial de regeneração."
+    "indicadoraEstagio": "Espécie indicadora do estágio inicial de regeneração.",
+    "fonteStatus": "HORUS"
   },
   {
     "id": 27,
@@ -790,7 +793,7 @@ const PLANTAS = [
     "nome": "Rhynchelytrum repens",
     "nomePopular": "Capim-natal",
     "tipo": "Angiosperma",
-    "status": "NE",
+    "status": "EXO",
     "raraEndemica": false,
     "cor": [],
     "estagio": [
@@ -806,7 +809,8 @@ const PLANTAS = [
     "identificacao": "",
     "fotografia": "",
     "localFotografia": "",
-    "indicadoraEstagio": "Espécie indicadora do estágio inicial de regeneração."
+    "indicadoraEstagio": "Espécie indicadora do estágio inicial de regeneração.",
+    "fonteStatus": "REFLORA"
   },
   {
     "id": 29,
@@ -936,8 +940,8 @@ const PLANTAS = [
     "identificacao": "",
     "fotografia": "",
     "localFotografia": "",
-    "status": "LC",
-    "fonteStatus": "IUCN",
+    "status": "EXO",
+    "fonteStatus": "REFLORA",
     "indicadoraEstagio": "Espécie indicadora do estágio inicial de regeneração."
   },
   {
@@ -1300,7 +1304,7 @@ const PLANTAS = [
     "nome": "Agrostis alba",
     "nomePopular": "",
     "tipo": "Angiosperma",
-    "status": "NE",
+    "status": "EXO",
     "raraEndemica": false,
     "cor": [],
     "estagio": [
@@ -1317,7 +1321,8 @@ const PLANTAS = [
     "identificacao": "",
     "fotografia": "",
     "localFotografia": "",
-    "indicadoraEstagio": "Espécie indicadora da vegetação primária e dos estágios médio e avançado de regeneração."
+    "indicadoraEstagio": "Espécie indicadora da vegetação primária e dos estágios médio e avançado de regeneração.",
+    "fonteStatus": "REFLORA"
   },
   {
     "id": 48,
@@ -3146,8 +3151,8 @@ const PLANTAS = [
     "identificacao": "",
     "fotografia": "",
     "localFotografia": "",
-    "status": "LC",
-    "fonteStatus": "IUCN",
+    "status": "EXO",
+    "fonteStatus": "REFLORA",
     "indicadoraEstagio": "Espécie indicadora da vegetação primária e dos estágios médio e avançado de regeneração."
   },
   {
@@ -10263,7 +10268,7 @@ const PLANTAS = [
     "nome": "Apium sellowianum",
     "nomePopular": "Aipo-bravo",
     "tipo": "Angiosperma",
-    "status": "NE",
+    "status": "EXO",
     "raraEndemica": false,
     "cor": [],
     "estagio": [],
@@ -10276,7 +10281,8 @@ const PLANTAS = [
     "autoridade": "H.Wolff",
     "distribuicao": "PR, RJ, RS, SC, SP",
     "formaVida": "Erva",
-    "substrato": "Terrícola"
+    "substrato": "Terrícola",
+    "fonteStatus": "REFLORA"
   },
   {
     "id": 365,
@@ -14192,7 +14198,7 @@ const PLANTAS = [
     "nome": "Eriocaulon ulaei var. radiosum",
     "nomePopular": "",
     "tipo": "Angiosperma",
-    "status": "NE",
+    "status": "EX",
     "raraEndemica": true,
     "fonteRaridade": "IGANCI",
     "cor": [],
@@ -14209,7 +14215,8 @@ const PLANTAS = [
     ],
     "distribuicao": "",
     "formaVida": "Erva",
-    "substrato": "Aquática"
+    "substrato": "Aquática",
+    "fonteStatus": "CONSEMA"
   },
   {
     "id": 525,
@@ -19049,7 +19056,7 @@ const PLANTAS = [
     "nome": "Eragrostis plana",
     "nomePopular": "",
     "tipo": "Angiosperma",
-    "status": "NE",
+    "status": "EXO",
     "raraEndemica": false,
     "cor": [],
     "estagio": [],
@@ -19059,7 +19066,8 @@ const PLANTAS = [
     "distribuicao": "",
     "identificacao": "",
     "fotografia": "",
-    "localFotografia": ""
+    "localFotografia": "",
+    "fonteStatus": "HORUS"
   },
   {
     "id": 757,
@@ -20037,5 +20045,15 @@ const STATUS_INFO = {
     "label": "Não Avaliado",
     "textColor": "#fff",
     "bg": "#9E9E9E"
+  },
+  "EX": {
+    "label": "Extinta",
+    "textColor": "#fff",
+    "bg": "#000000"
+  },
+  "EXO": {
+    "label": "Exótica",
+    "textColor": "#fff",
+    "bg": "#1a2d6d"
   }
 };
