@@ -695,7 +695,13 @@ a.stat-item-link .stat-label { color: #888; }
   margin-bottom: 8px;
   cursor: pointer;
   width: 100%;
+  padding: 4px 6px;
+  margin-left: -6px;
+  margin-right: -6px;
+  border-radius: 4px;
+  transition: background-color 0.15s ease;
 }
+.filter-checkbox:hover { background: #f2f2f2; }
 
 .filter-checkbox input[type="checkbox"] {
   width: 15px;
@@ -882,8 +888,8 @@ a.stat-item-link .stat-label { color: #888; }
   line-height: 1.2;
   white-space: nowrap;
 }
-.toolbar-order-dropdown li:hover { background: #eff3ef; color: #00502B; }
-.toolbar-order-dropdown li.active { background: #00502B; color: #fff; }
+.toolbar-order-dropdown li:hover { background: #f2f2f2; }
+.toolbar-order-dropdown li.active { background: #f2f2f2; }
 
 .toolbar-order-label { display: none; }
 
