@@ -2820,33 +2820,6 @@
       "indicadoraEstagio": "Espécie indicadora da vegetação primária e dos estágios médio e avançado de regeneração."
     },
     {
-      "id": 101,
-      "familia": "ASTERACEAE",
-      "nome": "Chrysolaena oligophylla",
-      "nomePopular": "",
-      "tipo": "Angiosperma",
-      "status": "NE",
-      "raraEndemica": false,
-      "cor": [],
-      "estagio": [
-        "estágio médio",
-        "estágio avançado",
-        "vegetação primária"
-      ],
-      "emoji": "🌿",
-      "descricao": "",
-      "autoridade": "(Vell.) H.Rob.",
-      "sinonimos": [
-        "Vernonia hypochlora Malme"
-      ],
-      "distribuicao": "GO, MG, PR, RS, SC, SP",
-      "formaVida": "Erva",
-      "substrato": "Terrícola",
-      "identificacao": "",
-      "fotografia": "",
-      "localFotografia": ""
-    },
-    {
       "id": 102,
       "familia": "POACEAE",
       "nome": "Chusquea windischii",
