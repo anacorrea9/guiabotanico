@@ -10290,7 +10290,7 @@ const PLANTAS = [
     "nome": "Centella asiatica",
     "nomePopular": "",
     "tipo": "Angiosperma",
-    "status": "NE",
+    "status": "EXO",
     "raraEndemica": false,
     "cor": [],
     "estagio": [],
@@ -10312,7 +10312,8 @@ const PLANTAS = [
     ],
     "distribuicao": "AL, BA, CE, DF, ES, GO, MG, MS, PB, PE, PR, RJ, RN, RS, SC, SE, SP",
     "formaVida": "Erva",
-    "substrato": "Terrícola"
+    "substrato": "Terrícola",
+    "fonteStatus": "REFLORA"
   },
   {
     "id": 366,
