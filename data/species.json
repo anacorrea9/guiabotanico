@@ -183,27 +183,6 @@
       "localFotografia": ""
     },
     {
-      "id": 7,
-      "familia": "GENTIANACEAE",
-      "nome": "Gentiana sp.",
-      "nomePopular": "Genciana",
-      "tipo": "Angiosperma",
-      "status": "NE",
-      "raraEndemica": false,
-      "cor": [
-        "lilas",
-        "roxo"
-      ],
-      "estagio": [
-        "vegetação primária"
-      ],
-      "emoji": "💜",
-      "descricao": "Planta de pequeno porte com flores lilás intensas. Vulnerável à degradação dos campos. Ocorre em campos com boa umidade e solos rasos nos Campos de Altitude.",
-      "identificacao": "",
-      "fotografia": "",
-      "localFotografia": ""
-    },
-    {
       "id": 8,
       "familia": "IRIDACEAE",
       "nome": "Sisyrinchium micranthum",
@@ -2841,32 +2820,6 @@
       "indicadoraEstagio": "Espécie indicadora da vegetação primária e dos estágios médio e avançado de regeneração."
     },
     {
-      "id": 100,
-      "familia": "ORCHIDACEAE",
-      "nome": "Chloraea penicillata",
-      "nomePopular": "",
-      "tipo": "Angiosperma",
-      "status": "NE",
-      "raraEndemica": false,
-      "cor": [],
-      "estagio": [
-        "estágio médio",
-        "estágio avançado",
-        "vegetação primária"
-      ],
-      "emoji": "🌿",
-      "descricao": "",
-      "autoridade": "Rchb.f.",
-      "sinonimos": [
-        "Geoblasta penicillata (Rchb.f.) Hoehne ex M.N.Correa",
-        "Bipinnula pennicillata (Rchb.f.) Cisternas & Salazar",
-        "Bipinnula penicillata (Rchb.f.) Cisternas & Salazar"
-      ],
-      "identificacao": "",
-      "fotografia": "",
-      "localFotografia": ""
-    },
-    {
       "id": 101,
       "familia": "ASTERACEAE",
       "nome": "Chrysolaena oligophylla",
@@ -3045,63 +2998,6 @@
       "fotografia": "",
       "localFotografia": "",
       "fonteStatus": "CONSEMA"
-    },
-    {
-      "id": 108,
-      "familia": "EUPHORBIACEAE",
-      "nome": "Croton antisyphiliticus",
-      "nomePopular": "Pé-de-perdiz",
-      "tipo": "Angiosperma",
-      "status": "NE",
-      "raraEndemica": false,
-      "cor": [],
-      "estagio": [
-        "estágio médio",
-        "estágio avançado",
-        "vegetação primária"
-      ],
-      "emoji": "🌿",
-      "descricao": "",
-      "autoridade": "Mart.",
-      "sinonimos": [
-        "Croton antisyphiliticus var. latifolius (Baill.) Müll.Arg.",
-        "Croton perdicipes var. weddellianus Baill.",
-        "Croton antisyphiliticus var. heterotrichus Müll.Arg.",
-        "Croton antisyphiliticus var. mollis Müll.Arg.",
-        "Croton antisyphiliticus var. cordiifolius Müll.Arg.",
-        "Croton antisyphiliticus var. echiifolius Müll.Arg.",
-        "Croton antisyphiliticus var. genuinus Müll.Arg.",
-        "Croton antisyphiliticus var. intermedius Müll.Arg.",
-        "Croton antisyphiliticus var. minutulus Müll.Arg.",
-        "Croton antisyphiliticus var. nitidulus Müll.Arg.",
-        "Croton antisyphiliticus var. perdicipes Müll.Arg.",
-        "Croton antisyphiliticus var. weddellianus (Baill.) Müll.Arg.",
-        "Croton perdicipes var. latifolius Baill.",
-        "Croton perdicipes var. minor Baill.",
-        "Croton sellowianus var. tomentosus Müll.Arg.",
-        "Croton perdicipes A.St.-Hil.",
-        "Ocalia grandifolia Klotzsch",
-        "Ocalia angustifolia Klotzsch",
-        "Ocalia cordiifolia Klotzsch",
-        "Ocalia echiifolia Klotzsch",
-        "Ocalia sellowiana Klotzsch",
-        "Oxydectes antisyphilitica (Mart.) Kuntze",
-        "Oxydectes caperoniifolia (Müll.Arg.) Kuntze",
-        "Oxydectes sellowiana (Klotzsch) Kuntze",
-        "Croton antisyphiliticus var. angustifolius Müll.Arg.",
-        "Croton sellowianus (Klotzsch) Baill.",
-        "Croton sellowianus var. cinerascens Müll.Arg.",
-        "Croton perdicipes var. genuinus Baill.",
-        "Croton caperoniifolius Müll.Arg.",
-        "Croton antisyphiliticus var. hypoleucus Müll.Arg.",
-        "Croton antisyphiliticus var. minor (Baill.) Müll.Arg."
-      ],
-      "distribuicao": "AC, AM, BA, DF, GO, MA, MG, MS, MT, PA, PB, PI, PR, SC, SP, TO",
-      "formaVida": "Arbusto, Erva, Subarbusto",
-      "substrato": "Terrícola",
-      "identificacao": "",
-      "fotografia": "",
-      "localFotografia": ""
     },
     {
       "id": 109,
@@ -8542,7 +8438,7 @@
     {
       "id": 301,
       "familia": "PORTULACACEAE",
-      "nome": "Portulaca hatsbachii",
+      "nome": "Portulaca hatschbachii",
       "nomePopular": "",
       "tipo": "Angiosperma",
       "status": "NE",
@@ -9548,30 +9444,6 @@
       "localFotografia": "",
       "fonteStatus": "CNCFLORA",
       "indicadoraEstagio": "Espécie indicadora da vegetação primária e dos estágios médio e avançado de regeneração."
-    },
-    {
-      "id": 335,
-      "familia": "ARECACEAE",
-      "nome": "Syagrus hatschbachii",
-      "nomePopular": "",
-      "tipo": "Angiosperma",
-      "status": "NE",
-      "raraEndemica": false,
-      "cor": [],
-      "estagio": [
-        "estágio médio",
-        "estágio avançado",
-        "vegetação primária"
-      ],
-      "emoji": "🌿",
-      "descricao": "",
-      "autoridade": "Glassman",
-      "sinonimos": [
-        "Butia microspadix Burret"
-      ],
-      "identificacao": "",
-      "fotografia": "",
-      "localFotografia": ""
     },
     {
       "id": 336,
