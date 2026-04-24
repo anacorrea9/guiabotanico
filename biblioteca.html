@@ -6,6 +6,7 @@
   <title>Biblioteca – Guia Botânico dos Campos de Altitude</title>
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="stylesheet" href="style.css">
+  <script src="i18n.js" defer></script>
 </head>
 <body>
 
@@ -46,7 +47,7 @@
       <img src="logos/logo-peld.png" alt="PELD" class="peld-logo" onerror="this.style.display='none'">
     </a>
   </div>
-  <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false">
+  <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" data-i18n-aria="nav.open" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
 
@@ -57,45 +58,45 @@
       <a href="index.html" class="nav-menu-logo">
         <img src="logos/logo2.png" alt="Guia dos Campos" onerror="this.style.display='none'">
       </a>
-      <button class="nav-menu-close" id="navClose" aria-label="Fechar menu">
+      <button class="nav-menu-close" id="navClose" aria-label="Fechar menu" data-i18n-aria="nav.close">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
     </div>
 
-    <p class="nav-menu-tagline">Descubra a flora dos campos de altitude de Santa Catarina</p>
+    <p class="nav-menu-tagline" data-i18n="nav.tagline">Descubra a flora dos campos de altitude de Santa Catarina</p>
 
     <div class="nav-menu-list">
       <a href="index.html">
         <svg class="nav-menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-        Galeria
+        <span data-i18n="nav.gallery">Galeria</span>
       </a>
       <a href="sobre.html">
         <svg class="nav-menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
-        Sobre nós
+        <span data-i18n="nav.about">Sobre nós</span>
       </a>
       <a href="conservacao.html">
         <svg class="nav-menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3 9 8 10 5-1 8-5 8-10V6z"/></svg>
-        Conservação dos campos
+        <span data-i18n="nav.conservation">Conservação dos campos</span>
       </a>
       <a href="disturbios.html">
         <img src="simbolo-de-interface-quente-do-contorno-de-chamas-de-fogo.png" alt="" class="nav-menu-icon">
-        Distúrbios
+        <span data-i18n="nav.disturbances">Distúrbios</span>
       </a>
       <a href="guias.html">
         <svg class="nav-menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-        Guias de campo
+        <span data-i18n="nav.guides">Guias de campo</span>
       </a>
       <a href="biblioteca.html" class="active">
         <svg class="nav-menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-        Biblioteca
+        <span data-i18n="nav.library">Biblioteca</span>
       </a>
       <a href="contribuir.html">
         <svg class="nav-menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/></svg>
-        Contribua
+        <span data-i18n="nav.contribute">Contribua</span>
       </a>
       <a href="contato.html">
         <svg class="nav-menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
-        Fale conosco
+        <span data-i18n="nav.contact">Fale conosco</span>
       </a>
     </div>
 
@@ -142,26 +143,26 @@
   <div class="hero-banner-bg"></div>
   <div class="hero-banner-overlay"></div>
   <div class="hero-banner-content">
-    <h1 class="hero-title">Biblioteca</h1>
-    <p class="hero-subtitle">ACESSE OS MATERIAIS DE REFERÊNCIA USADOS NA CRIAÇÃO DESTE PROJETO</p>
+    <h1 class="hero-title" data-i18n="bib.hero.title">Biblioteca</h1>
+    <p class="hero-subtitle" data-i18n="bib.hero.subtitle">ACESSE OS MATERIAIS DE REFERÊNCIA USADOS NA CRIAÇÃO DESTE PROJETO</p>
   </div>
-  <span class="hero-photo-credit">Fotografia: Sofia Casali, Parque Nacional de São Joaquim</span>
+  <span class="hero-photo-credit" data-i18n="hero.credit">Fotografia: Sofia Casali, Parque Nacional de São Joaquim</span>
 </section>
 
 <section class="gallery-section-bg">
 <div class="main-layout">
 
   <div class="gallery-toolbar">
-    <h2>Biblioteca</h2>
+    <h2 data-i18n="bib.title">Biblioteca</h2>
     <span class="toolbar-divider"></span>
     <div class="search-inline">
       <span class="search-icon">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
       </span>
-      <input type="text" id="bibSearch" placeholder="Pesquise por autor, título, palavra-chave ou tema" oninput="aplicarFiltros()">
+      <input type="text" id="bibSearch" placeholder="Pesquise por autor, título, palavra-chave ou tema" data-i18n-placeholder="bib.search.placeholder" oninput="aplicarFiltros()">
     </div>
     <div class="toolbar-order" id="sortWrapper">
-      <span class="toolbar-order-label">Ordenar:</span>
+      <span class="toolbar-order-label" data-i18n="toolbar.sort.label">Ordenar:</span>
       <select id="ordemSel" onchange="aplicarFiltros()" aria-hidden="true" tabindex="-1">
         <option value="" disabled selected hidden>Ordenar</option>
         <option value="recente">Mais recente</option>
@@ -169,16 +170,16 @@
         <option value="titulo-az">Título A-Z</option>
         <option value="titulo-za">Título Z-A</option>
       </select>
-      <span class="toolbar-order-text" id="sortLabel">Ordenar</span>
+      <span class="toolbar-order-text" id="sortLabel" data-i18n="toolbar.sort">Ordenar</span>
       <ul class="toolbar-order-dropdown" id="sortDropdown">
-        <li data-value="recente">Mais recente</li>
-        <li data-value="antigo">Mais antigo</li>
-        <li data-value="titulo-az">Título A-Z</li>
-        <li data-value="titulo-za">Título Z-A</li>
+        <li data-value="recente" data-i18n="bib.sort.recent">Mais recente</li>
+        <li data-value="antigo" data-i18n="bib.sort.old">Mais antigo</li>
+        <li data-value="titulo-az" data-i18n="bib.sort.title-az">Título A-Z</li>
+        <li data-value="titulo-za" data-i18n="bib.sort.title-za">Título Z-A</li>
       </ul>
     </div>
-    <button class="toolbar-filter-btn" type="button" onclick="abrirFiltrosMobile()" aria-label="Abrir filtros">
-      <span class="toolbar-btn-label">Filtrar</span>
+    <button class="toolbar-filter-btn" type="button" onclick="abrirFiltrosMobile()" aria-label="Abrir filtros" data-i18n-aria="toolbar.filter.aria">
+      <span class="toolbar-btn-label" data-i18n="toolbar.filter">Filtrar</span>
       <img class="toolbar-btn-icon" src="filtro.png" alt="">
     </button>
   </div>
@@ -189,55 +190,55 @@
 
     <aside class="filter-sidebar" id="filterSidebar">
       <div class="filter-sidebar-header">
-        <span>Filtros</span>
-        <button class="filter-sidebar-close" type="button" onclick="fecharFiltrosMobile()" aria-label="Fechar filtros">
+        <span data-i18n="filters.title">Filtros</span>
+        <button class="filter-sidebar-close" type="button" onclick="fecharFiltrosMobile()" aria-label="Fechar filtros" data-i18n-aria="filters.close">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
         </button>
       </div>
       <div class="filter-group">
         <div class="filter-group-header" onclick="toggleFilter('f-categoria')">
-          <span class="filter-group-label">Navegue por categoria</span>
+          <span class="filter-group-label" data-i18n="bib.filter.category">Navegue por categoria</span>
           <button class="filter-toggle-btn" data-target="f-categoria">−</button>
         </div>
         <div class="filter-content open" id="f-categoria">
           <div class="filter-content-inner">
             <label class="filter-checkbox">
               <input type="checkbox" name="categoria" value="livros">
-              <span>Livros</span>
+              <span data-i18n="bib.cat.books">Livros</span>
             </label>
             <label class="filter-checkbox">
               <input type="checkbox" name="categoria" value="academicos">
-              <span>Trabalhos Acadêmicos</span>
+              <span data-i18n="bib.cat.academic">Trabalhos Acadêmicos</span>
             </label>
             <label class="filter-checkbox">
               <input type="checkbox" name="categoria" value="publicacoes">
-              <span>Publicações</span>
+              <span data-i18n="bib.cat.publications">Publicações</span>
             </label>
             <label class="filter-checkbox">
               <input type="checkbox" name="categoria" value="legislacao">
-              <span>Legislação e políticas</span>
+              <span data-i18n="bib.cat.legislation">Legislação e políticas</span>
             </label>
             <label class="filter-checkbox">
               <input type="checkbox" name="categoria" value="base-dados">
-              <span>Base de dados</span>
+              <span data-i18n="bib.cat.database">Base de dados</span>
             </label>
             <label class="filter-checkbox">
               <input type="checkbox" name="categoria" value="outros">
-              <span>Outros</span>
+              <span data-i18n="bib.cat.other">Outros</span>
             </label>
           </div>
         </div>
       </div>
 
       <div class="filter-actions">
-        <button class="btn-apply" onclick="aplicarFiltros(); fecharFiltrosMobile();">Aplicar</button>
-        <button class="btn-clear" onclick="limparFiltros()">Limpar</button>
+        <button class="btn-apply" onclick="aplicarFiltros(); fecharFiltrosMobile();" data-i18n="filters.apply">Aplicar</button>
+        <button class="btn-clear" onclick="limparFiltros()" data-i18n="filters.clear">Limpar</button>
       </div>
 
       <div class="info-card" style="text-align:center;margin-top:12px;border-left:none;background:#fff">
-        <h3 style="color:#00502B">Ajude a manter este guia atualizado!</h3>
-        <p style="font-size:12px;color:#555;margin-bottom:10px">Sugira referências ou materiais que podem enriquecer nosso conteúdo.</p>
-        <a class="btn-apply" style="display:inline-block;text-decoration:none" href="contribuir-referencia.html">Contribuir</a>
+        <h3 style="color:#00502B" data-i18n="bib.info.card.title">Ajude a manter este guia atualizado!</h3>
+        <p style="font-size:12px;color:#555;margin-bottom:10px" data-i18n="bib.info.card.text">Sugira referências ou materiais que podem enriquecer nosso conteúdo.</p>
+        <a class="btn-apply" style="display:inline-block;text-decoration:none" href="contribuir-referencia.html" data-i18n="bib.info.card.cta">Contribuir</a>
       </div>
     </aside>
 
@@ -253,32 +254,32 @@
 <footer>
   <div class="footer-grid">
     <div class="footer-col">
-      <h4>Sobre o projeto</h4>
-      <p>O Guia dos Campos é uma iniciativa do PELD BISC para divulgar e valorizar a flora dos campos de altitude de Santa Catarina.</p>
-      <a href="sobre.html" class="footer-cta">Saiba mais sobre o projeto →</a>
+      <h4 data-i18n="footer.about.title">Sobre o projeto</h4>
+      <p data-i18n="footer.about.text">O Guia dos Campos é uma iniciativa do PELD BISC para divulgar e valorizar a flora dos campos de altitude de Santa Catarina.</p>
+      <a href="sobre.html" class="footer-cta" data-i18n="footer.about.cta">Saiba mais sobre o projeto →</a>
     </div>
     <div class="footer-col">
-      <h4>Links rápidos</h4>
-      <a href="index.html">Galeria</a>
-      <a href="sobre.html">Sobre nós</a>
-      <a href="conservacao.html">Conservação dos campos</a>
-      <a href="disturbios.html">Distúrbios</a>
-      <a href="guias.html">Guias de campo</a>
-      <a href="biblioteca.html">Biblioteca</a>
-      <a href="contribuir.html">Contribua</a>
+      <h4 data-i18n="footer.links">Links rápidos</h4>
+      <a href="index.html" data-i18n="nav.gallery">Galeria</a>
+      <a href="sobre.html" data-i18n="nav.about">Sobre nós</a>
+      <a href="conservacao.html" data-i18n="nav.conservation">Conservação dos campos</a>
+      <a href="disturbios.html" data-i18n="nav.disturbances">Distúrbios</a>
+      <a href="guias.html" data-i18n="nav.guides">Guias de campo</a>
+      <a href="biblioteca.html" data-i18n="nav.library">Biblioteca</a>
+      <a href="contribuir.html" data-i18n="nav.contribute">Contribua</a>
     </div>
     <div class="footer-col">
-      <h4>Fale conosco</h4>
-      <a href="contato.html" class="footer-cta">Entre em contato →</a>
+      <h4 data-i18n="footer.contact.title">Fale conosco</h4>
+      <a href="contato.html" class="footer-cta" data-i18n="footer.contact.cta">Entre em contato →</a>
     </div>
     <div class="footer-col">
-      <h4>Realização</h4>
+      <h4 data-i18n="footer.realizacao">Realização</h4>
       <div class="footer-logos">
         <a href="https://peldbisc.ufsc.br/" target="_blank" rel="noopener" class="footer-logo-box"><img src="logos/logo-peld.png" alt="PELD BISC"></a>
         <a href="https://divecon.ufsc.br/index.php" target="_blank" rel="noopener" class="footer-logo-box"><img src="logos/DIVECON.svg" alt="div&amp;con"></a>
         <a href="https://ufsc.br/" target="_blank" rel="noopener" class="footer-logo-box"><img src="logos/UFSC.png" alt="UFSC"></a>
       </div>
-      <h4 class="footer-subheader">Apoio</h4>
+      <h4 class="footer-subheader" data-i18n="footer.apoio">Apoio</h4>
       <div class="footer-logos">
         <div class="footer-logo-box"><img src="logos/fapesc.png" alt="FAPESC"></div>
         <div class="footer-logo-box"><img src="logos/CNPQ.png" alt="CNPq"></div>
@@ -286,7 +287,7 @@
       </div>
     </div>
   </div>
-  <div class="footer-bottom">
+  <div class="footer-bottom" data-i18n="footer.bottom">
     © 2026 Guia Botânico dos Campos de Altitude — Este site foi realizado com recursos provenientes da FAPESC.
   </div>
 </footer>
@@ -501,19 +502,26 @@
       if (!wrap.contains(e.target)) wrap.classList.remove('open');
     });
     window.__resetSortLabel = () => {
-      label.textContent = 'Ordenar';
+      label.textContent = window.i18n ? window.i18n.t('toolbar.sort') : 'Ordenar';
       list.querySelectorAll('li').forEach(el => el.classList.remove('active'));
+    };
+    window.__refreshSortLabel = () => {
+      const active = list.querySelector('li.active');
+      label.textContent = active
+        ? active.textContent
+        : (window.i18n ? window.i18n.t('toolbar.sort') : 'Ordenar');
     };
   })();
 
   function render() {
     const el = document.getElementById('bibList');
     const total = filtradas.length;
+    const _t = (k) => (window.i18n ? window.i18n.t(k) : k);
     document.getElementById('resultInfo').textContent =
-      `${total} referência${total !== 1 ? 's' : ''} encontrada${total !== 1 ? 's' : ''}`;
+      `${total} ${_t(total === 1 ? 'bib.results.found.one' : 'bib.results.found.many')}`;
 
     if (!total) {
-      el.innerHTML = '<div style="text-align:center;padding:40px 0;color:#aaa;font-size:14px">Nenhuma referência encontrada com os filtros selecionados.</div>';
+      el.innerHTML = `<div style="text-align:center;padding:40px 0;color:#aaa;font-size:14px">${_t('bib.results.none')}</div>`;
       document.getElementById('pagination').innerHTML = '';
       return;
     }
@@ -523,7 +531,7 @@
 
     el.innerHTML = itens.map(r => {
       const btnHtml = r.link
-        ? `<a class="btn-apply" href="${r.link}" target="_blank" rel="noopener" style="flex-shrink:0;text-decoration:none;display:inline-flex;align-items:center;gap:6px;white-space:nowrap">Abrir<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>`
+        ? `<a class="btn-apply" href="${r.link}" target="_blank" rel="noopener" style="flex-shrink:0;text-decoration:none;display:inline-flex;align-items:center;gap:6px;white-space:nowrap">${_t('bib.ref.open')}<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>`
         : '';
       return `
         <div class="info-card" style="border-left:none;display:flex;gap:14px;align-items:center">
@@ -559,6 +567,11 @@
     pag = n; render();
     document.querySelector('.main-layout').scrollIntoView({behavior:'smooth', block:'start'});
   }
+
+  window.i18nRerender = function () {
+    if (typeof render === 'function') render();
+    if (typeof window.__refreshSortLabel === 'function') window.__refreshSortLabel();
+  };
 
   aplicarFiltros();
 </script>

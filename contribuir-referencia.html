@@ -6,6 +6,7 @@
   <title>Contribuir com referência – Guia Botânico dos Campos</title>
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="stylesheet" href="style.css">
+  <script src="i18n.js" defer></script>
   <style>
     .contrib-wrap { max-width: 640px; margin: 40px auto; padding: 0 20px; }
     .contrib-card { background: #fff; padding: 28px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
@@ -50,10 +51,10 @@
 </script>
 
 <div class="contrib-wrap">
-  <a class="back-link" href="biblioteca.html">← Voltar à biblioteca</a>
+  <a class="back-link" href="biblioteca.html" data-i18n="contribRef.back">← Voltar à biblioteca</a>
   <div class="contrib-card">
-    <h1>Contribuir com referência</h1>
-    <p class="contrib-lead">
+    <h1 data-i18n="contribRef.title">Contribuir com referência</h1>
+    <p class="contrib-lead" data-i18n="contribRef.lead">
       Ajude a manter este guia atualizado! Sugira referências ou materiais que podem enriquecer
       nosso conteúdo. Sua sugestão será revisada antes de aparecer no site.
     </p>
@@ -62,47 +63,47 @@
 
     <form id="refForm">
       <div class="form-row">
-        <label>Título *</label>
-        <input type="text" name="titulo" required placeholder="Ex: Guia de plantas campestres dos Aparados da Serra">
+        <label data-i18n="contribRef.f.titulo">Título *</label>
+        <input type="text" name="titulo" required placeholder="Ex: Guia de plantas campestres dos Aparados da Serra" data-i18n-placeholder="contribRef.f.titulo.ph">
       </div>
       <div class="form-row">
-        <label>Referência / Citação *</label>
-        <textarea name="referencia" required placeholder="Ex: 2. ed. Porto Alegre: Rede Campos Sulinos — UFRGS. 136 p. ISBN 978-85-63843-24-1."></textarea>
+        <label data-i18n="contribRef.f.referencia">Referência / Citação *</label>
+        <textarea name="referencia" required placeholder="Ex: 2. ed. Porto Alegre: Rede Campos Sulinos — UFRGS. 136 p. ISBN 978-85-63843-24-1." data-i18n-placeholder="contribRef.f.referencia.ph"></textarea>
       </div>
       <div class="form-row">
-        <label>Autores *</label>
-        <input type="text" name="autores" required placeholder="Ex: Boldrini, I. et al.">
+        <label data-i18n="contribRef.f.autores">Autores *</label>
+        <input type="text" name="autores" required placeholder="Ex: Boldrini, I. et al." data-i18n-placeholder="contribRef.f.autores.ph">
       </div>
       <div class="form-row">
-        <label>Link <span class="hint">(opcional)</span></label>
+        <label><span data-i18n="contribRef.f.link">Link</span> <span class="hint" data-i18n="contrib.f.optional">(opcional)</span></label>
         <input type="url" name="link" placeholder="https://...">
       </div>
       <div class="form-row">
-        <label>Categoria *</label>
+        <label data-i18n="contribRef.f.categoria">Categoria *</label>
         <div class="cat-options">
-          <label><input type="radio" name="categoria" value="livros" required> Livros</label>
-          <label><input type="radio" name="categoria" value="academicos"> Trabalhos Acadêmicos</label>
-          <label><input type="radio" name="categoria" value="publicacoes"> Publicações</label>
-          <label><input type="radio" name="categoria" value="legislacao"> Legislação e políticas</label>
-          <label><input type="radio" name="categoria" value="base-dados"> Base de dados</label>
-          <label><input type="radio" name="categoria" value="outros"> Outros</label>
+          <label><input type="radio" name="categoria" value="livros" required> <span data-i18n="contribRef.cat.livros">Livros</span></label>
+          <label><input type="radio" name="categoria" value="academicos"> <span data-i18n="contribRef.cat.academicos">Trabalhos Acadêmicos</span></label>
+          <label><input type="radio" name="categoria" value="publicacoes"> <span data-i18n="contribRef.cat.publicacoes">Publicações</span></label>
+          <label><input type="radio" name="categoria" value="legislacao"> <span data-i18n="contribRef.cat.legislacao">Legislação e políticas</span></label>
+          <label><input type="radio" name="categoria" value="base-dados"> <span data-i18n="contribRef.cat.baseDados">Base de dados</span></label>
+          <label><input type="radio" name="categoria" value="outros"> <span data-i18n="contribRef.cat.outros">Outros</span></label>
         </div>
       </div>
       <div class="form-row">
-        <label>Anexo <span class="hint">(opcional — PDF, imagem ou documento. Máx 10 MB)</span></label>
+        <label><span data-i18n="contribRef.f.anexo">Anexo</span> <span class="hint" data-i18n="contribRef.f.anexo.hint">(opcional — PDF, imagem ou documento. Máx 10 MB)</span></label>
         <input type="file" name="anexo" id="anexoInput" accept=".pdf,.doc,.docx,.odt,.jpg,.jpeg,.png,.webp">
         <span class="hint" id="anexoNome"></span>
       </div>
       <div class="form-row">
-        <label>Seu nome *</label>
+        <label data-i18n="contrib.f.contribuidor">Seu nome *</label>
         <input type="text" name="contribuidor" required>
       </div>
       <div class="form-row">
-        <label>Seu email <span class="hint">(opcional — caso precisemos esclarecer algo)</span></label>
+        <label><span data-i18n="contrib.f.emailContato">Seu email</span> <span class="hint" data-i18n="contrib.f.emailContato.hint">(opcional — caso precisemos esclarecer algo)</span></label>
         <input type="email" name="emailContato">
       </div>
 
-      <button type="submit" class="btn" id="btnSubmit">Enviar contribuição</button>
+      <button type="submit" class="btn" id="btnSubmit" data-i18n="contrib.submit">Enviar contribuição</button>
     </form>
   </div>
 </div>
@@ -119,23 +120,24 @@ function showMsg(text, type) {
 
 document.getElementById('refForm').addEventListener('submit', async e => {
   e.preventDefault();
+  const _t = (k) => (window.i18n ? window.i18n.t(k) : k);
   const btn = document.getElementById('btnSubmit');
   btn.disabled = true;
-  btn.textContent = 'Enviando...';
+  btn.textContent = _t('contrib.submitting');
 
   try {
     const fd = new FormData(e.target);
     const res = await fetch('/api/ref-submissions', { method: 'POST', body: fd });
     const data = await res.json();
     if (!res.ok) throw new Error(data.error || 'erro ao enviar');
-    showMsg('Obrigada! Sua sugestão foi enviada e está aguardando aprovação.', 'ok');
+    showMsg(_t('contribRef.success'), 'ok');
     e.target.reset();
     document.getElementById('anexoNome').textContent = '';
   } catch (err) {
-    showMsg('Erro: ' + err.message, 'err');
+    showMsg(_t('contrib.error.prefix') + err.message, 'err');
   } finally {
     btn.disabled = false;
-    btn.textContent = 'Enviar contribuição';
+    btn.textContent = _t('contrib.submit');
   }
 });
 </script>

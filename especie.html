@@ -6,6 +6,7 @@
   <title>Ficha da espécie – Guia Botânico</title>
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="stylesheet" href="style.css">
+  <script src="i18n.js" defer></script>
 </head>
 <body>
 
@@ -46,7 +47,7 @@
       <img src="logos/logo-peld.png" alt="PELD" class="peld-logo" onerror="this.style.display='none'">
     </a>
   </div>
-  <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false">
+  <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" data-i18n-aria="nav.open" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
 
@@ -57,45 +58,45 @@
       <a href="index.html" class="nav-menu-logo">
         <img src="logos/logo2.png" alt="Guia dos Campos" onerror="this.style.display='none'">
       </a>
-      <button class="nav-menu-close" id="navClose" aria-label="Fechar menu">
+      <button class="nav-menu-close" id="navClose" aria-label="Fechar menu" data-i18n-aria="nav.close">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
     </div>
 
-    <p class="nav-menu-tagline">Descubra a flora dos campos de altitude de Santa Catarina</p>
+    <p class="nav-menu-tagline" data-i18n="nav.tagline">Descubra a flora dos campos de altitude de Santa Catarina</p>
 
     <div class="nav-menu-list">
       <a href="index.html">
         <svg class="nav-menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-        Galeria
+        <span data-i18n="nav.gallery">Galeria</span>
       </a>
       <a href="sobre.html">
         <svg class="nav-menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
-        Sobre nós
+        <span data-i18n="nav.about">Sobre nós</span>
       </a>
       <a href="conservacao.html">
         <svg class="nav-menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3 9 8 10 5-1 8-5 8-10V6z"/></svg>
-        Conservação dos campos
+        <span data-i18n="nav.conservation">Conservação dos campos</span>
       </a>
       <a href="disturbios.html">
         <img src="simbolo-de-interface-quente-do-contorno-de-chamas-de-fogo.png" alt="" class="nav-menu-icon">
-        Distúrbios
+        <span data-i18n="nav.disturbances">Distúrbios</span>
       </a>
       <a href="guias.html">
         <svg class="nav-menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-        Guias de campo
+        <span data-i18n="nav.guides">Guias de campo</span>
       </a>
       <a href="biblioteca.html">
         <svg class="nav-menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-        Biblioteca
+        <span data-i18n="nav.library">Biblioteca</span>
       </a>
       <a href="contribuir.html">
         <svg class="nav-menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/></svg>
-        Contribua
+        <span data-i18n="nav.contribute">Contribua</span>
       </a>
       <a href="contato.html">
         <svg class="nav-menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
-        Fale conosco
+        <span data-i18n="nav.contact">Fale conosco</span>
       </a>
     </div>
 
@@ -139,7 +140,7 @@
 </header>
 
 <main class="especie-wrap" id="especieWrap">
-  <a class="especie-back" href="index.html">← Voltar à galeria</a>
+  <a class="especie-back" href="index.html" data-i18n="especie.back">← Voltar à galeria</a>
 
   <section class="especie-header">
     <h1 id="especieNome">—</h1>
@@ -158,15 +159,15 @@
   </div>
 
   <section class="outras-section" id="outrasSection" hidden>
-    <h2 class="outras-title">Explore mais espécies</h2>
+    <h2 class="outras-title" data-i18n="especie.explore">Explore mais espécies</h2>
     <div class="outras-carousel">
-      <button class="outras-arrow outras-prev" id="outrasPrev" aria-label="Anterior">
+      <button class="outras-arrow outras-prev" id="outrasPrev" aria-label="Anterior" data-i18n-aria="especie.lb.prev">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
       </button>
       <div class="outras-viewport">
         <div class="outras-track" id="outrasTrack"></div>
       </div>
-      <button class="outras-arrow outras-next" id="outrasNext" aria-label="Próxima">
+      <button class="outras-arrow outras-next" id="outrasNext" aria-label="Próxima" data-i18n-aria="especie.lb.next">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
       </button>
     </div>
@@ -175,24 +176,24 @@
 </main>
 
 <div id="lightbox" class="lightbox hidden" role="dialog" aria-hidden="true">
-  <button class="lightbox-close" aria-label="Fechar">&times;</button>
-  <button class="lightbox-download" id="lbDownload" aria-label="Baixar foto" title="Baixar foto">
+  <button class="lightbox-close" aria-label="Fechar" data-i18n-aria="especie.lb.close">&times;</button>
+  <button class="lightbox-download" id="lbDownload" aria-label="Baixar foto" title="Baixar foto" data-i18n-aria="especie.lb.download" data-i18n-title="especie.lb.download">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
       <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
       <polyline points="7 10 12 15 17 10"/>
       <line x1="12" y1="15" x2="12" y2="3"/>
     </svg>
   </button>
-  <button class="lightbox-nav lightbox-prev" aria-label="Anterior">&#8592;</button>
-  <button class="lightbox-nav lightbox-next" aria-label="Próxima">&#8594;</button>
+  <button class="lightbox-nav lightbox-prev" aria-label="Anterior" data-i18n-aria="especie.lb.prev">&#8592;</button>
+  <button class="lightbox-nav lightbox-next" aria-label="Próxima" data-i18n-aria="especie.lb.next">&#8594;</button>
   <div class="lightbox-stage">
     <img class="lightbox-img" src="" alt="" draggable="false">
     <div class="lightbox-caption"></div>
   </div>
   <div class="lightbox-zoom-controls">
-    <button class="lightbox-zoom-btn" id="lbZoomOut" aria-label="Diminuir zoom">&minus;</button>
-    <button class="lightbox-zoom-btn" id="lbZoomReset" aria-label="Ajustar à tela" title="Ajustar à tela">&#8634;</button>
-    <button class="lightbox-zoom-btn" id="lbZoomIn" aria-label="Aumentar zoom">&plus;</button>
+    <button class="lightbox-zoom-btn" id="lbZoomOut" aria-label="Diminuir zoom" data-i18n-aria="especie.lb.zoomOut">&minus;</button>
+    <button class="lightbox-zoom-btn" id="lbZoomReset" aria-label="Ajustar à tela" title="Ajustar à tela" data-i18n-aria="especie.lb.zoomReset" data-i18n-title="especie.lb.zoomReset">&#8634;</button>
+    <button class="lightbox-zoom-btn" id="lbZoomIn" aria-label="Aumentar zoom" data-i18n-aria="especie.lb.zoomIn">&plus;</button>
   </div>
   <div class="lightbox-counter"></div>
 </div>
@@ -200,32 +201,32 @@
 <footer>
   <div class="footer-grid">
     <div class="footer-col">
-      <h4>Sobre o projeto</h4>
-      <p>O Guia dos Campos é uma iniciativa do PELD BISC para divulgar e valorizar a flora dos campos de altitude de Santa Catarina.</p>
-      <a href="sobre.html" class="footer-cta">Saiba mais sobre o projeto →</a>
+      <h4 data-i18n="footer.about.title">Sobre o projeto</h4>
+      <p data-i18n="footer.about.text">O Guia dos Campos é uma iniciativa do PELD BISC para divulgar e valorizar a flora dos campos de altitude de Santa Catarina.</p>
+      <a href="sobre.html" class="footer-cta" data-i18n="footer.about.cta">Saiba mais sobre o projeto →</a>
     </div>
     <div class="footer-col">
-      <h4>Links rápidos</h4>
-      <a href="index.html">Galeria</a>
-      <a href="sobre.html">Sobre nós</a>
-      <a href="conservacao.html">Conservação dos campos</a>
-      <a href="disturbios.html">Distúrbios</a>
-      <a href="guias.html">Guias de campo</a>
-      <a href="biblioteca.html">Biblioteca</a>
-      <a href="contribuir.html">Contribua</a>
+      <h4 data-i18n="footer.links">Links rápidos</h4>
+      <a href="index.html" data-i18n="nav.gallery">Galeria</a>
+      <a href="sobre.html" data-i18n="nav.about">Sobre nós</a>
+      <a href="conservacao.html" data-i18n="nav.conservation">Conservação dos campos</a>
+      <a href="disturbios.html" data-i18n="nav.disturbances">Distúrbios</a>
+      <a href="guias.html" data-i18n="nav.guides">Guias de campo</a>
+      <a href="biblioteca.html" data-i18n="nav.library">Biblioteca</a>
+      <a href="contribuir.html" data-i18n="nav.contribute">Contribua</a>
     </div>
     <div class="footer-col">
-      <h4>Fale conosco</h4>
-      <a href="contato.html" class="footer-cta">Entre em contato →</a>
+      <h4 data-i18n="footer.contact.title">Fale conosco</h4>
+      <a href="contato.html" class="footer-cta" data-i18n="footer.contact.cta">Entre em contato →</a>
     </div>
     <div class="footer-col">
-      <h4>Realização</h4>
+      <h4 data-i18n="footer.realizacao">Realização</h4>
       <div class="footer-logos">
         <a href="https://peldbisc.ufsc.br/" target="_blank" rel="noopener" class="footer-logo-box"><img src="logos/logo-peld.png" alt="PELD BISC"></a>
         <a href="https://divecon.ufsc.br/index.php" target="_blank" rel="noopener" class="footer-logo-box"><img src="logos/DIVECON.svg" alt="div&amp;con"></a>
         <a href="https://ufsc.br/" target="_blank" rel="noopener" class="footer-logo-box"><img src="logos/UFSC.png" alt="UFSC"></a>
       </div>
-      <h4 class="footer-subheader">Apoio</h4>
+      <h4 class="footer-subheader" data-i18n="footer.apoio">Apoio</h4>
       <div class="footer-logos">
         <div class="footer-logo-box"><img src="logos/fapesc.png" alt="FAPESC"></div>
         <div class="footer-logo-box"><img src="logos/CNPQ.png" alt="CNPq"></div>
@@ -233,7 +234,7 @@
       </div>
     </div>
   </div>
-  <div class="footer-bottom">
+  <div class="footer-bottom" data-i18n="footer.bottom">
     © 2026 Guia Botânico dos Campos de Altitude — Este site foi realizado com recursos provenientes da FAPESC.
   </div>
 </footer>
@@ -266,6 +267,7 @@ function infoBlock(titulo, conteudo) {
 }
 
 function renderConservacao(p) {
+  const _t = (k) => (window.i18n ? window.i18n.t(k) : k);
   const si = STATUS_INFO[p.status] || STATUS_INFO['NE'];
   let fonteRar = p.fonteRaridade;
   if (Array.isArray(fonteRar)) fonteRar = fonteRar.filter(f => RARITY_RANK[f]).sort((a, b) => RARITY_RANK[a] - RARITY_RANK[b])[0];
@@ -276,9 +278,7 @@ function renderConservacao(p) {
   // Selo de raridade: só se marcada como rara/endêmica E existe fonte válida
   if (p.raraEndemica && fonteRar && REF_NUMBER[fonteRar]) {
     usedRefs.add(fonteRar);
-    const rarLabel = fonteRar === 'CNCFLORA'
-      ? 'Rara ou endêmica <em>*no Brasil</em>'
-      : 'Rara ou endêmica';
+    const rarLabel = fonteRar === 'CNCFLORA' ? _t('especie.rare.brazil') : _t('especie.rare');
     badges += `
       <div class="conserv-badge">
         <div class="status-circle-badge" style="background:#7B1FA2">R</div>
@@ -291,10 +291,11 @@ function renderConservacao(p) {
     if (REF_NUMBER[fonteStatus]) {
       usedRefs.add(fonteStatus);
       const n = REF_NUMBER[fonteStatus];
+      const statusLabel = _t('filters.status.' + p.status) || si.label;
       badges += `
       <div class="conserv-badge">
         <div class="status-circle-badge" style="background:${si.bg}">${p.status}</div>
-        <span><sup>${n}</sup> ${si.label}</span>
+        <span><sup>${n}</sup> ${statusLabel}</span>
       </div>`;
     }
   }
@@ -306,7 +307,7 @@ function renderConservacao(p) {
     .join('');
   return `
     <div class="info-block conservacao-block">
-      <h3>Estado de conservação</h3>
+      <h3>${_t('especie.info.conservacao')}</h3>
       <div class="conserv-badges">${badges}</div>
       <ol class="refs">${refs}</ol>
     </div>`;
@@ -361,9 +362,10 @@ function navLightbox(dir) {
   renderLightbox();
 }
 function renderLightbox() {
+  const _t = (k) => (window.i18n ? window.i18n.t(k) : k);
   document.querySelector('.lightbox-img').src = lightboxPhotos[lightboxIndex];
   document.querySelector('.lightbox-counter').textContent =
-    `${lightboxIndex + 1} de ${lightboxPhotos.length}`;
+    `${lightboxIndex + 1} ${_t('especie.lb.of')} ${lightboxPhotos.length}`;
   const multi = lightboxPhotos.length > 1;
   document.querySelector('.lightbox-prev').style.display = multi ? '' : 'none';
   document.querySelector('.lightbox-next').style.display = multi ? '' : 'none';
@@ -448,9 +450,10 @@ document.addEventListener('keydown', e => {
 });
 
 function buildCaptionText(p) {
+  const _t = (k) => (window.i18n ? window.i18n.t(k) : k);
   const parts = [];
-  if (p.fotografia) parts.push(`Fotografia: ${p.fotografia}`);
-  if (p.localFotografia) parts.push(`Local: ${p.localFotografia.replace(/\.$/, '')}`);
+  if (p.fotografia) parts.push(`${_t('especie.caption.photo')}: ${p.fotografia}`);
+  if (p.localFotografia) parts.push(`${_t('especie.caption.location')}: ${p.localFotografia.replace(/\.$/, '')}`);
   return parts.join(' | ');
 }
 
@@ -460,9 +463,10 @@ function buildPhotoCaption(p) {
 }
 
 function render(p) {
+  const _t = (k) => (window.i18n ? window.i18n.t(k) : k);
   if (!p) {
     document.getElementById('especieWrap').innerHTML =
-      '<p style="padding:40px;text-align:center;color:#888">Espécie não encontrada.</p>';
+      `<p style="padding:40px;text-align:center;color:#888">${_t('especie.notFound')}</p>`;
     return;
   }
 
@@ -496,19 +500,19 @@ function render(p) {
     : '';
 
   const info = [
-    infoBlock('Nome científico', `<em>${p.nome}</em>${autoridade}`),
-    infoBlock('Nome popular', p.nomePopular),
-    infoBlock('Sinônimos', sinonimos),
-    infoBlock('Família', p.familia ? p.familia.charAt(0) + p.familia.slice(1).toLowerCase() : ''),
-    infoBlock('Tipo de folha', p.tipoFolha),
-    infoBlock('Margem do limbo', p.margemLimbo),
-    infoBlock('Filotaxia', p.filotaxia),
-    infoBlock('Forma de vida', p.formaVida),
-    infoBlock('Substrato', p.substrato),
-    infoBlock('Distribuição geográfica', p.distribuicao),
+    infoBlock(_t('especie.info.nome'), `<em>${p.nome}</em>${autoridade}`),
+    infoBlock(_t('especie.info.nomePopular'), p.nomePopular),
+    infoBlock(_t('especie.info.sinonimos'), sinonimos),
+    infoBlock(_t('especie.info.familia'), p.familia ? p.familia.charAt(0) + p.familia.slice(1).toLowerCase() : ''),
+    infoBlock(_t('especie.info.tipoFolha'), p.tipoFolha),
+    infoBlock(_t('especie.info.margemLimbo'), p.margemLimbo),
+    infoBlock(_t('especie.info.filotaxia'), p.filotaxia),
+    infoBlock(_t('especie.info.formaVida'), p.formaVida),
+    infoBlock(_t('especie.info.substrato'), p.substrato),
+    infoBlock(_t('especie.info.distribuicao'), p.distribuicao),
     renderConservacao(p),
-    infoBlock('Indicadora de estágio sucessional?', p.indicadoraEstagio),
-    infoBlock('Descrição', p.descricao)
+    infoBlock(_t('especie.info.indicadora'), p.indicadoraEstagio),
+    infoBlock(_t('especie.info.descricao'), p.descricao)
   ].join('');
 
   document.getElementById('infoArea').innerHTML = info;
@@ -517,6 +521,13 @@ function render(p) {
 const id = Number(new URLSearchParams(location.search).get('id'));
 const plant = (typeof PLANTAS !== 'undefined') ? PLANTAS.find(p => p.id === id) : null;
 render(plant);
+
+// Re-render ao trocar idioma (labels e caption mudam)
+window.i18nRerender = function () {
+  render(plant);
+  const lb = document.getElementById('lightbox');
+  if (lb && !lb.classList.contains('hidden')) renderLightbox();
+};
 
 /* ===== Carrossel "Outras plantas" ===== */
 function renderOutrasCarousel(current) {
@@ -581,7 +592,7 @@ function renderOutrasCarousel(current) {
     for (let i = 0; i < pages; i++) {
       const d = document.createElement('button');
       d.className = 'outras-dot' + (i === page ? ' active' : '');
-      d.setAttribute('aria-label', `Página ${i + 1}`);
+      d.setAttribute('aria-label', `${window.i18n ? window.i18n.t('especie.carousel.page') : 'Página'} ${i + 1}`);
       d.addEventListener('click', () => { page = i; update(); });
       dots.appendChild(d);
     }

@@ -6,6 +6,7 @@
   <title>Entre em contato – Guia Botânico dos Campos</title>
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="stylesheet" href="style.css">
+  <script src="i18n.js" defer></script>
   <style>
     .contact-wrap { max-width: 640px; margin: 40px auto; padding: 0 20px; }
     .contact-card { background: #fff; padding: 28px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
@@ -46,10 +47,10 @@
 </script>
 
 <div class="contact-wrap">
-  <a class="back-link" href="index.html">← Voltar ao site</a>
+  <a class="back-link" href="index.html" data-i18n="contato.back">← Voltar ao site</a>
   <div class="contact-card">
-    <h1>Entre em contato</h1>
-    <p class="contact-lead">
+    <h1 data-i18n="contato.title">Entre em contato</h1>
+    <p class="contact-lead" data-i18n="contato.lead">
       Envie sugestões, dúvidas ou comentários sobre o Guia Botânico dos Campos.
       Vamos responder pelo email que você informar.
     </p>
@@ -58,19 +59,19 @@
 
     <form id="contatoForm" action="mailto:anacorrea.bio@gmail.com" method="post" enctype="text/plain">
       <div class="form-row">
-        <label>Nome *</label>
+        <label data-i18n="contato.name">Nome *</label>
         <input type="text" name="Nome" required>
       </div>
       <div class="form-row">
-        <label>Endereço de Email *</label>
+        <label data-i18n="contato.email">Endereço de Email *</label>
         <input type="email" name="Email" required>
       </div>
       <div class="form-row">
-        <label>Mensagem *</label>
+        <label data-i18n="contato.message">Mensagem *</label>
         <textarea name="Mensagem" required></textarea>
       </div>
 
-      <button type="submit" class="btn">Enviar</button>
+      <button type="submit" class="btn" data-i18n="contato.send">Enviar</button>
     </form>
   </div>
 </div>

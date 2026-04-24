@@ -6,6 +6,7 @@
   <title>Contribuir – Guia Botânico dos Campos</title>
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="stylesheet" href="style.css">
+  <script src="i18n.js" defer></script>
   <style>
     .contrib-wrap { max-width: 640px; margin: 40px auto; padding: 0 20px; }
     .contrib-card { background: #fff; padding: 28px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
@@ -50,10 +51,10 @@
 </script>
 
 <div class="contrib-wrap">
-  <a class="back-link" href="index.html">← Voltar à galeria</a>
+  <a class="back-link" href="index.html" data-i18n="contrib.back">← Voltar à galeria</a>
   <div class="contrib-card">
-    <h1>Contribuir com uma foto</h1>
-    <p class="contrib-lead">
+    <h1 data-i18n="contrib.title">Contribuir com uma foto</h1>
+    <p class="contrib-lead" data-i18n="contrib.lead">
       Obrigada pela contribuição! Sua foto será revisada antes de aparecer no site.
       Preencha os campos abaixo e envie.
     </p>
@@ -62,49 +63,49 @@
 
     <form id="contribForm">
       <div class="form-row">
-        <label>Nome científico *</label>
-        <input type="text" name="nome" required placeholder="Ex: Baccharis crispa">
+        <label data-i18n="contrib.f.nome">Nome científico *</label>
+        <input type="text" name="nome" required placeholder="Ex: Baccharis crispa" data-i18n-placeholder="contrib.f.nome.ph">
       </div>
       <div class="form-row">
-        <label>Família *</label>
-        <input type="text" name="familia" required placeholder="Ex: ASTERACEAE">
+        <label data-i18n="contrib.f.familia">Família *</label>
+        <input type="text" name="familia" required placeholder="Ex: ASTERACEAE" data-i18n-placeholder="contrib.f.familia.ph">
       </div>
       <div class="form-row">
-        <label>Nome popular <span class="hint">(opcional)</span></label>
+        <label><span data-i18n="contrib.f.nomePopular">Nome popular</span> <span class="hint" data-i18n="contrib.f.optional">(opcional)</span></label>
         <input type="text" name="nomePopular">
       </div>
       <div class="form-row">
-        <label>Fotos *</label>
+        <label data-i18n="contrib.f.fotos">Fotos *</label>
         <input type="file" name="fotos" id="fotosInput" accept="image/jpeg,image/png,image/webp" multiple required>
         <div id="previews" class="previews"></div>
-        <span class="hint">JPG, PNG ou WebP. Máx 10 MB cada.</span>
+        <span class="hint" data-i18n="contrib.f.fotos.hint">JPG, PNG ou WebP. Máx 10 MB cada.</span>
       </div>
       <div class="form-row">
-        <label>Local da fotografia *</label>
-        <input type="text" name="local" id="localInput" required placeholder="Digite bairro, cidade ou endereço" autocomplete="off">
+        <label data-i18n="contrib.f.local">Local da fotografia *</label>
+        <input type="text" name="local" id="localInput" required placeholder="Digite bairro, cidade ou endereço" data-i18n-placeholder="contrib.f.local.ph" autocomplete="off">
       </div>
       <div class="form-row">
-        <label>Fotógrafo *</label>
-        <input type="text" name="fotografo" required placeholder="Nome de quem tirou a foto">
+        <label data-i18n="contrib.f.fotografo">Fotógrafo *</label>
+        <input type="text" name="fotografo" required placeholder="Nome de quem tirou a foto" data-i18n-placeholder="contrib.f.fotografo.ph">
       </div>
       <div class="form-row">
-        <label>Identificador *</label>
-        <input type="text" name="identificador" required placeholder="Nome de quem identificou a espécie">
+        <label data-i18n="contrib.f.identificador">Identificador *</label>
+        <input type="text" name="identificador" required placeholder="Nome de quem identificou a espécie" data-i18n-placeholder="contrib.f.identificador.ph">
       </div>
       <div class="form-row">
-        <label>Descrição / observações <span class="hint">(opcional)</span></label>
-        <textarea name="descricao" placeholder="Data, hábitat, outras observações..."></textarea>
+        <label><span data-i18n="contrib.f.descricao">Descrição / observações</span> <span class="hint" data-i18n="contrib.f.optional">(opcional)</span></label>
+        <textarea name="descricao" placeholder="Data, hábitat, outras observações..." data-i18n-placeholder="contrib.f.descricao.ph"></textarea>
       </div>
       <div class="form-row">
-        <label>Seu nome *</label>
+        <label data-i18n="contrib.f.contribuidor">Seu nome *</label>
         <input type="text" name="contribuidor" required>
       </div>
       <div class="form-row">
-        <label>Seu email <span class="hint">(opcional — caso precisemos esclarecer algo)</span></label>
+        <label><span data-i18n="contrib.f.emailContato">Seu email</span> <span class="hint" data-i18n="contrib.f.emailContato.hint">(opcional — caso precisemos esclarecer algo)</span></label>
         <input type="email" name="emailContato">
       </div>
 
-      <button type="submit" class="btn" id="btnSubmit">Enviar contribuição</button>
+      <button type="submit" class="btn" id="btnSubmit" data-i18n="contrib.submit">Enviar contribuição</button>
     </form>
   </div>
 </div>
@@ -134,23 +135,24 @@ function showMsg(text, type) {
 // ===== Submit =====
 document.getElementById('contribForm').addEventListener('submit', async e => {
   e.preventDefault();
+  const _t = (k) => (window.i18n ? window.i18n.t(k) : k);
   const btn = document.getElementById('btnSubmit');
   btn.disabled = true;
-  btn.textContent = 'Enviando...';
+  btn.textContent = _t('contrib.submitting');
 
   try {
     const fd = new FormData(e.target);
     const res = await fetch('/api/submissions', { method: 'POST', body: fd });
     const data = await res.json();
     if (!res.ok) throw new Error(data.error || 'erro ao enviar');
-    showMsg('Obrigada! Sua contribuição foi enviada e está aguardando aprovação.', 'ok');
+    showMsg(_t('contrib.success'), 'ok');
     e.target.reset();
     document.getElementById('previews').innerHTML = '';
   } catch (err) {
-    showMsg('Erro: ' + err.message, 'err');
+    showMsg(_t('contrib.error.prefix') + err.message, 'err');
   } finally {
     btn.disabled = false;
-    btn.textContent = 'Enviar contribuição';
+    btn.textContent = _t('contrib.submit');
   }
 });
 
