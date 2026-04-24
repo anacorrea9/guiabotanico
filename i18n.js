@@ -98,7 +98,7 @@
 
       // ---- Footer ----
       'footer.about.title': 'Sobre o projeto',
-      'footer.about.text': 'O Guia dos Campos é uma iniciativa do PELD BISC para divulgar e valorizar a flora dos campos de altitude de Santa Catarina.',
+      'footer.about.text': 'O Guia dos Campos é uma iniciativa do PELD BISC para divulgar e valorizar a flora dos campos de altitude do sul do Brasil.',
       'footer.about.cta': 'Saiba mais sobre o projeto →',
       'footer.links': 'Links rápidos',
       'footer.contact.title': 'Fale conosco',
@@ -305,7 +305,7 @@
       'modal.close': 'Close',
 
       'footer.about.title': 'About the project',
-      'footer.about.text': 'Guia dos Campos is an initiative of PELD BISC to promote and celebrate the flora of the highland grasslands of Santa Catarina.',
+      'footer.about.text': 'Guia dos Campos is an initiative of PELD BISC to promote and celebrate the flora of the highland grasslands of southern Brazil.',
       'footer.about.cta': 'Learn more about the project →',
       'footer.links': 'Quick links',
       'footer.contact.title': 'Contact',
@@ -505,7 +505,7 @@
       'modal.close': 'Cerrar',
 
       'footer.about.title': 'Sobre el proyecto',
-      'footer.about.text': 'Guia dos Campos es una iniciativa del PELD BISC para difundir y valorar la flora de los campos de altitud de Santa Catarina.',
+      'footer.about.text': 'Guia dos Campos es una iniciativa del PELD BISC para difundir y valorar la flora de los campos de altitud del sur de Brasil.',
       'footer.about.cta': 'Conoce más sobre el proyecto →',
       'footer.links': 'Enlaces rápidos',
       'footer.contact.title': 'Contacto',
@@ -776,10 +776,17 @@
 
   window.i18n = { t: t, setLang: setLang, getLang: getLang, apply: apply };
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', function () { injectSwitcher(); apply(); });
-  } else {
+  function initialApply() {
     injectSwitcher();
     apply();
+    if (typeof window.i18nRerender === 'function') {
+      try { window.i18nRerender(); } catch (e) { /* silencio */ }
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initialApply);
+  } else {
+    initialApply();
   }
 })();
