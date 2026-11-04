@@ -8,14 +8,28 @@
   <link rel="stylesheet" href="style.css">
   <script src="i18n.js" defer></script>
   <style>
+    /* Foto de abertura: retângulo que some no fundo da página */
+    .sobre-banner { position:relative; height:340px; overflow:hidden;
+      -webkit-mask-image:linear-gradient(to bottom, #000 75%, transparent 100%);
+      mask-image:linear-gradient(to bottom, #000 75%, transparent 100%); }
+    .sobre-banner img { width:100%; height:100%; object-fit:cover; object-position:50% 55%; display:block; will-change:opacity, transform; }
+    .sobre-banner + .info-page.sobre-page { margin-top:24px; position:relative; }
+    .info-page.sobre-page { max-width:1080px; padding:0 24px 60px; }
     .sobre-page h1 { color:#00502B; margin-bottom:18px; }
+    .sobre-guia { margin-top:48px; }
+    .sobre-guia-corpo { display:flex; gap:28px; align-items:flex-start; }
+    .sobre-guia-texto { flex:1; min-width:0; }
+    .sobre-guia-foto { flex:0 0 350px; margin:0; }
+    .sobre-guia-foto figcaption { margin:8px 0 0; font-size:11.5px; font-style:italic; color:#777; text-align:center; }
+    .sobre-guia-foto img { width:100%; height:auto; display:block; border-radius:12px; }
+    .info-page .sobre-secao-title { font-size:28px; font-weight:800; color:#00502B; margin:0 0 18px; }
     .sobre-page p, .sobre-page li { font-size:15px; }
     .sobre-objetivos { margin:4px 0 18px; }
     .sobre-objetivos li { margin-bottom:8px; }
     .sobre-objetivos strong { color:#00502B; }
-    .sobre-foto figcaption { margin:8px 0 0; font-size:13px; font-style:italic; color:#777; text-align:center; }
+    .sobre-foto figcaption { margin:8px 0 0; font-size:11.5px; font-style:italic; color:#777; text-align:center; }
     .sobre-intro { display:flex; gap:28px; align-items:flex-start; margin:10px 0 22px; }
-    .sobre-foto { flex:0 0 42%; margin:0; }
+    .sobre-foto { flex:0 0 350px; margin:0; }
     .sobre-foto img { width:100%; height:auto; display:block; border-radius:12px; }
     .sobre-intro .sobre-objetivos { flex:1; margin:0; }
     .news-carousel { margin-top:6px; }
@@ -30,8 +44,30 @@
     .news-all { text-align:right; margin-top:10px; }
     .news-all a { color:#00502B; font-weight:600; text-decoration:none; }
     .news-all a:hover { text-decoration:underline; }
-    .sobre-instagram { display:flex; justify-content:center; margin-top:28px; }
-    @media (max-width: 700px) { .sobre-intro { flex-direction:column; } .sobre-foto { flex:none; width:100%; } }
+    @media (max-width: 700px) { .sobre-guia-corpo { flex-direction:column; } .sobre-guia-foto { flex:none; width:100%; } .sobre-banner { height:220px; } .sobre-banner + .info-page.sobre-page { margin-top:16px; } .info-page.sobre-page { padding:0 16px 48px; } .sobre-intro { flex-direction:column; } .sobre-foto { flex:none; width:100%; } }
+    .info-page h2.ig-chamada { margin:44px 0 0; }
+    /* Card no estilo de um post do Instagram (vídeo à esquerda, legenda à direita) */
+    .ig-card { --ig-w:400px; --ig-h:calc(var(--ig-w) * 1.25); display:flex; max-width:820px; margin:28px auto 0; background:#fff; border:1px solid #dbdbdb; border-radius:4px; overflow:hidden; }
+    .ig-media { flex:0 0 var(--ig-w); height:var(--ig-h); overflow:hidden; background:#000; }
+    .ig-media iframe { display:block; width:var(--ig-w); height:calc(var(--ig-h) + 260px); margin-top:-54px; border:0; }
+    .ig-side { flex:1; min-width:0; display:flex; flex-direction:column; height:var(--ig-h); border-left:1px solid #efefef; }
+    .ig-head { display:flex; align-items:center; gap:12px; padding:14px 16px; border-bottom:1px solid #efefef; }
+    .ig-avatar { flex:0 0 auto; width:36px; height:36px; border-radius:50%; border:1px solid #dbdbdb; overflow:hidden; display:flex; align-items:center; justify-content:center; background:#fff; }
+    .ig-avatar img { width:88%; height:auto; }
+    .ig-head-txt { font-size:14px; line-height:1.3; color:#262626; }
+    .ig-head-txt a, .ig-user { color:#262626; font-weight:700; text-decoration:none; }
+    .ig-head-txt a:hover, .ig-user:hover { text-decoration:underline; }
+    .ig-sub { display:block; font-size:12px; color:#737373; }
+    .ig-caption { flex:1; overflow-y:auto; padding:16px; }
+    .ig-comment { display:flex; gap:12px; align-items:flex-start; }
+    .info-page .ig-comment-txt p { font-size:14px; line-height:1.45; color:#262626; margin:0 0 14px; }
+    .ig-foot { border-top:1px solid #efefef; padding:12px 16px; }
+    .ig-foot a { display:inline-flex; align-items:center; gap:8px; font-size:14px; font-weight:600; color:#262626; text-decoration:none; }
+    .ig-foot a:hover { color:#00502B; }
+    @media (max-width: 760px) {
+      .ig-card { --ig-w:320px; flex-direction:column; max-width:322px; }
+      .ig-side { height:auto; max-height:360px; border-left:0; border-top:1px solid #efefef; }
+    }
   </style>
 </head>
 <body>
@@ -165,6 +201,8 @@
 </script>
 </header>
 
+<div class="sobre-banner" aria-hidden="true"><img src="sobre/campo-topo.jpg" alt=""></div>
+
 <div class="info-page sobre-page">
   <h1 data-i18n="sobre.title">O PELD-BISC</h1>
 
@@ -202,12 +240,54 @@
   <div class="outras-dots" id="newsDots"></div>
   <p class="news-all"><a href="https://peldbisc.ufsc.br/noticias" target="_blank" rel="noopener" data-i18n="sobre.allNews">Ver todas as notícias do PELD-BISC →</a></p>
 
-  <div class="sobre-instagram">
-    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/C5y38RBvlHK/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin:1px; max-width:360px; min-width:280px; padding:0; width:calc(100% - 2px);">
-      <a href="https://www.instagram.com/reel/C5y38RBvlHK/?utm_source=ig_embed&amp;utm_campaign=loading" target="_blank" rel="noopener" style="display:block;padding:16px;text-align:center;font-family:Arial,sans-serif;font-size:14px;color:#3897f0;text-decoration:none">Ver esse post no Instagram · PELD - BISC (@peldbisc)</a>
-    </blockquote>
-    <script async src="https://www.instagram.com/embed.js"></script>
+  <h2 class="ig-chamada"><span data-i18n="sobre.ig.chamada">Também estamos no Instagram</span></h2>
+  <div class="ig-card">
+    <div class="ig-media">
+      <iframe src="https://www.instagram.com/reel/C5y38RBvlHK/embed/" title="Vídeo do PELD-BISC no Instagram" loading="lazy" scrolling="no" allowtransparency="true" allowfullscreen></iframe>
+    </div>
+    <div class="ig-side">
+      <div class="ig-head">
+        <a href="https://www.instagram.com/peldbisc/" target="_blank" rel="noopener" class="ig-avatar"><img src="logos/logo-peld.png" alt="PELD-BISC"></a>
+        <div class="ig-head-txt">
+          <div><a href="https://www.instagram.com/peldbisc/" target="_blank" rel="noopener">peldbisc</a> <span data-i18n="sobre.ig.and">e</span> <a href="https://www.instagram.com/peldcom/" target="_blank" rel="noopener">peldcom</a></div>
+          <span class="ig-sub" data-i18n="sobre.ig.audio">Áudio original</span>
+        </div>
+      </div>
+      <div class="ig-caption">
+        <div class="ig-comment">
+          <a href="https://www.instagram.com/peldbisc/" target="_blank" rel="noopener" class="ig-avatar"><img src="logos/logo-peld.png" alt=""></a>
+          <div class="ig-comment-txt">
+            <p><a href="https://www.instagram.com/peldbisc/" target="_blank" rel="noopener" class="ig-user">peldbisc</a> <span data-i18n="sobre.ig.title">Fogo no Parque Nacional de São Joaquim (PNSJ)?!</span></p>
+            <p data-i18n="sobre.ig.p1">Calma, pode ficar tranquilo que isso faz parte de uma das pesquisas do PELD-BISC</p>
+            <p data-i18n="sobre.ig.p2">O manejo controlado do fogo é essencial para o equilíbrio do ecossistema e da biodiversidade, pois assim é possível administrar a quantidade de matéria seca orgânica acumulada no solo.</p>
+            <p data-i18n="sobre.ig.p3">Pense assim: quanto maior for essa quantidade, mais fácil fica para o fogo se espalhar e atingir outros lugares como as florestas com araucárias, matas nebulares e até casas.</p>
+            <p data-i18n="sobre.ig.p4">Por esse motivo, utilizando as técnicas de manejo tradicional dos campos que há séculos são feitas pelos proprietários rurais, os pesquisadores do PELD-BISC estão trabalhando para comprovar cientificamente que o manejo do fogo é essencial para o Parque Nacional de São Joaquim.</p>
+            <p data-i18n="sobre.ig.p5">Ah! Mas é super importante reforçar que o fogo bom é aquele controlado e colocado no lugar e época corretos e, claro, com autorização do órgão competente.</p>
+          </div>
+        </div>
+      </div>
+      <div class="ig-foot">
+        <a href="https://www.instagram.com/reel/C5y38RBvlHK/" target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          <span data-i18n="sobre.ig.link">Ver no Instagram</span>
+        </a>
+      </div>
+    </div>
   </div>
+
+  <section class="sobre-guia">
+    <h2 class="sobre-secao-title" data-i18n="sobre.guia.title">O Guia dos Campos</h2>
+    <div class="sobre-guia-corpo">
+      <div class="sobre-guia-texto">
+      <p data-i18n="sobre.guia.p1">O Guia dos Campos foi elaborado a partir de um trabalho minucioso de identificação botânica e de registros fotográficos feitos ao longo de cinco anos de levantamentos da vegetação dos campos de altitude, tanto nos blocos experimentais do PELD-BISC quanto em outras áreas do Parque Nacional de São Joaquim (PNSJ). A primeira versão do guia foi publicada em PDF. Agora, ampliamos o trabalho com este site, que torna a consulta mais dinâmica e abre espaço para a colaboração de quem também estuda e admira os campos.</p>
+      <p data-i18n="sobre.guia.p2">Esperamos que o site contribua para a divulgação e valorização da diversidade campestre, e que seja útil para pesquisas, ensino e ações de conservação!</p>
+      </div>
+      <figure class="sobre-guia-foto">
+        <img src="sobre/foto-trabalhando.jpg" alt="Pesquisadoras identificando plantas dentro de um quadrado de amostragem no campo" loading="lazy">
+        <figcaption data-i18n="sobre.guia.legenda">Pesquisadoras em uma das campanhas de levantamento da biodiversidade dos campos. Fonte: PELD-BISC, 2025.</figcaption>
+      </figure>
+    </div>
+  </section>
 </div>
 
 <footer>
@@ -247,10 +327,28 @@
     </div>
   </div>
   <div class="footer-bottom" data-i18n="footer.bottom">
-    © 2026 Guia Botânico dos Campos de Altitude — Este site foi realizado com recursos provenientes da FAPESC.
+    © 2026 Guia Botânico dos Campos de Altitude - Concepção e desenvolvimento: Ana Carolina Corrêa. Este site foi realizado com recursos provenientes da FAPESC.
   </div>
 </footer>
 
+<script>
+/* Foto do topo: some no branco conforme a página rola (e sobe um pouco mais devagar que o texto) */
+(function () {
+  const banner = document.querySelector('.sobre-banner');
+  const img = banner && banner.querySelector('img');
+  if (!img || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  let pendente = false;
+  function atualizar() {
+    pendente = false;
+    const altura = banner.offsetHeight || 1;
+    const p = Math.min(1, Math.max(0, window.scrollY / altura));
+    img.style.opacity = String(1 - p);
+    img.style.transform = `translateY(${p * altura * 0.35}px)`;
+  }
+  window.addEventListener('scroll', () => { if (!pendente) { pendente = true; requestAnimationFrame(atualizar); } }, { passive: true });
+  atualizar();
+})();
+</script>
 <script>
 /* Notícias do PELD-BISC (https://peldbisc.ufsc.br/noticias), da mais recente para a mais antiga.
    Para adicionar uma notícia nova, inclua um item no topo desta lista.

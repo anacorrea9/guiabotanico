@@ -235,7 +235,7 @@
     </div>
   </div>
   <div class="footer-bottom" data-i18n="footer.bottom">
-    © 2026 Guia Botânico dos Campos de Altitude — Este site foi realizado com recursos provenientes da FAPESC.
+    © 2026 Guia Botânico dos Campos de Altitude - Concepção e desenvolvimento: Ana Carolina Corrêa. Este site foi realizado com recursos provenientes da FAPESC.
   </div>
 </footer>
 
@@ -274,12 +274,16 @@ function renderConservacao(p) {
 
   const usedRefs = new Set();
 
-  let badges = '';
+  // Dois grupos de selos, como nos filtros da galeria:
+  //   "Origem e distribuição" -> Rara ou endêmica (R) e Exótica (EXO)
+  //   "Estado de conservação" -> categorias de ameaça (EX, CR, EN, VU, NT, LC, DD, NE)
+  let origemBadges = '';
+  let conservBadges = '';
   // Selo de raridade: só se marcada como rara/endêmica E existe fonte válida
   if (p.raraEndemica && fonteRar && REF_NUMBER[fonteRar]) {
     usedRefs.add(fonteRar);
     const rarLabel = fonteRar === 'CNCFLORA' ? _t('especie.rare.brazil') : _t('especie.rare');
-    badges += `
+    origemBadges += `
       <div class="conserv-badge">
         <div class="status-circle-badge" style="background:#7B1FA2">R</div>
         <span><sup>${REF_NUMBER[fonteRar]}</sup> ${rarLabel}</span>
@@ -292,23 +296,26 @@ function renderConservacao(p) {
       usedRefs.add(fonteStatus);
       const n = REF_NUMBER[fonteStatus];
       const statusLabel = _t('filters.status.' + p.status) || si.label;
-      badges += `
+      const selo = `
       <div class="conserv-badge">
         <div class="status-circle-badge" style="background:${si.bg}">${p.status}</div>
         <span><sup>${n}</sup> ${statusLabel}</span>
       </div>`;
+      if (p.status === 'EXO') origemBadges += selo;
+      else conservBadges += selo;
     }
   }
-  if (!badges) return '';
+  if (!origemBadges && !conservBadges) return '';
 
   const refs = REF_ORDER
     .filter(k => usedRefs.has(k))
     .map(k => `<li><sup>${REF_NUMBER[k]}</sup> ${REFS[k]}</li>`)
     .join('');
+  const grupo = (titulo, badges) => badges ? `
+      <h3>${titulo}</h3>
+      <div class="conserv-badges">${badges}</div>` : '';
   return `
-    <div class="info-block conservacao-block">
-      <h3>${_t('especie.info.conservacao')}</h3>
-      <div class="conserv-badges">${badges}</div>
+    <div class="info-block conservacao-block">${grupo(_t('filters.biogeo'), origemBadges)}${grupo(_t('especie.info.conservacao'), conservBadges)}
       <ol class="refs">${refs}</ol>
     </div>`;
 }
