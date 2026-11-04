@@ -1,7 +1,9 @@
 """
 Gera versoes reduzidas das fotos para uso nos cards da galeria.
-Le  fotos/*.jpg  e grava  fotos/thumbs/*.jpg  em ~800px (maior lado), qualidade 82.
+Le  fotos/*.jpg  e grava  fotos/thumbs/*.jpg  em ~480px (maior lado), qualidade 82.
 Idempotente: pula arquivos cuja thumb ja esta atualizada.
+Se a foto tem versao sem marca d'agua em ORIGINAIS, a thumb e feita dela
+(as miniaturas dos cards ficam sem credito).
 
 Uso:  python gerar_thumbs.py
 """
@@ -14,7 +16,8 @@ from PIL import Image, ImageOps
 ROOT = Path(__file__).parent
 FOTOS = ROOT / "fotos"
 THUMBS = FOTOS / "thumbs"
-MAX_SIDE = 800
+ORIGINAIS = Path(r"C:\Users\Ana\Documents\Guia botanico - fotos originais")
+MAX_SIDE = 480
 QUALITY = 82
 
 EXTS = {".jpg", ".jpeg", ".png", ".webp"}
@@ -40,12 +43,17 @@ def main():
             continue
 
         dst = THUMBS / src.name
+        if (ORIGINAIS / src.name).exists():
+            src = ORIGINAIS / src.name  # versao sem marca d'agua
         if src.suffix.lower() == ".png":
             dst = dst.with_suffix(".jpg")
 
         if dst.exists() and dst.stat().st_mtime >= src.stat().st_mtime:
-            pulados += 1
-            continue
+            with Image.open(dst) as th:
+                atualizada = max(th.size) <= MAX_SIDE
+            if atualizada:
+                pulados += 1
+                continue
 
         try:
             with Image.open(src) as im:

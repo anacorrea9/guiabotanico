@@ -7,6 +7,7 @@
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="stylesheet" href="style.css">
   <script src="i18n.js" defer></script>
+  <script src="formularios.js"></script>
   <style>
     .contact-wrap { max-width: 640px; margin: 40px auto; padding: 0 20px; }
     .contact-card { background: #fff; padding: 28px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
@@ -46,6 +47,116 @@
 })();
 </script>
 
+<header class="site-header">
+  <div class="logo-area">
+    <a href="index.html" class="logo-link">
+      <img src="logos/logo2.png" alt="Guia dos Campos" class="main-logo"
+           onerror="this.style.display='none'; document.getElementById('lf').style.display='flex'">
+      <div id="lf" class="main-logo-fallback" style="display:none">
+        <span style="font-size:26px">🌿</span>
+        <div>
+          <div style="font-size:16px;font-weight:800;color:#00502B;line-height:1.1">Guia dos Campos</div>
+          <div style="font-size:10px;color:#888">Botânico de Altitude</div>
+        </div>
+      </div>
+    </a>
+    <div class="logo-divider"></div>
+    <a href="https://peldbisc.ufsc.br/" target="_blank" rel="noopener" class="logo-link">
+      <img src="logos/logo-peld.png" alt="PELD" class="peld-logo" onerror="this.style.display='none'">
+    </a>
+  </div>
+  <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" data-i18n-aria="nav.open" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+
+  <div class="nav-overlay" id="navOverlay"></div>
+
+  <nav id="mainNav" class="nav-menu" aria-label="Menu principal">
+    <div class="nav-menu-header">
+      <a href="index.html" class="nav-menu-logo">
+        <img src="logos/logo2.png" alt="Guia dos Campos" onerror="this.style.display='none'">
+      </a>
+      <button class="nav-menu-close" id="navClose" aria-label="Fechar menu" data-i18n-aria="nav.close">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+
+    <p class="nav-menu-tagline" data-i18n="nav.tagline">Descubra a flora dos campos de altitude de Santa Catarina</p>
+
+    <div class="nav-menu-list">
+      <a href="index.html">
+        <svg class="nav-menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+        <span data-i18n="nav.gallery">Galeria</span>
+      </a>
+      <a href="sobre.html">
+        <svg class="nav-menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
+        <span data-i18n="nav.about">Sobre nós</span>
+      </a>
+      <a href="conservacao.html">
+        <svg class="nav-menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3 9 8 10 5-1 8-5 8-10V6z"/></svg>
+        <span data-i18n="nav.conservation">Conservação dos campos</span>
+      </a>
+      <a href="disturbios.html">
+        <img src="simbolo-de-interface-quente-do-contorno-de-chamas-de-fogo.png" alt="" class="nav-menu-icon">
+        <span data-i18n="nav.disturbances">Distúrbios</span>
+      </a>
+      <a href="guias.html">
+        <svg class="nav-menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        <span data-i18n="nav.guides">Guias de campo</span>
+      </a>
+      <a href="biblioteca.html">
+        <svg class="nav-menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        <span data-i18n="nav.library">Biblioteca</span>
+      </a>
+      <a href="contribuir.html">
+        <svg class="nav-menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/></svg>
+        <span data-i18n="nav.contribute">Contribua</span>
+      </a>
+      <a href="contato.html" class="active">
+        <svg class="nav-menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+        <span data-i18n="nav.contact">Fale conosco</span>
+      </a>
+    </div>
+
+    <div class="nav-menu-footer">
+      <img src="araucaria.png" alt="" class="nav-menu-art">
+    </div>
+  </nav>
+
+<script>
+(function(){
+  const btn = document.getElementById('navToggle');
+  const menu = document.getElementById('mainNav');
+  const overlay = document.getElementById('navOverlay');
+  const close = document.getElementById('navClose');
+  if (!btn || !menu) return;
+  function openMenu() {
+    btn.classList.add('open');
+    menu.classList.add('open');
+    if (overlay) overlay.classList.add('open');
+    btn.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMenu() {
+    btn.classList.remove('open');
+    menu.classList.remove('open');
+    if (overlay) overlay.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+  btn.addEventListener('click', e => {
+    e.stopPropagation();
+    if (btn.classList.contains('open')) closeMenu(); else openMenu();
+  });
+  if (overlay) overlay.addEventListener('click', closeMenu);
+  if (close) close.addEventListener('click', closeMenu);
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && menu.classList.contains('open')) closeMenu();
+  });
+})();
+</script>
+</header>
+
 <div class="contact-wrap">
   <a class="back-link" href="index.html" data-i18n="contato.back">← Voltar ao site</a>
   <div class="contact-card">
@@ -57,24 +168,45 @@
 
     <div id="msg"></div>
 
-    <form id="contatoForm" action="mailto:anacorrea.bio@gmail.com" method="post" enctype="text/plain">
+    <form id="contatoForm">
+      <input type="text" name="site_url" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
       <div class="form-row">
         <label data-i18n="contato.name">Nome *</label>
-        <input type="text" name="Nome" required>
+        <input type="text" name="nome" required>
       </div>
       <div class="form-row">
         <label data-i18n="contato.email">Endereço de Email *</label>
-        <input type="email" name="Email" required>
+        <input type="email" name="email" required>
       </div>
       <div class="form-row">
         <label data-i18n="contato.message">Mensagem *</label>
-        <textarea name="Mensagem" required></textarea>
+        <textarea name="mensagem" required></textarea>
       </div>
 
-      <button type="submit" class="btn" data-i18n="contato.send">Enviar</button>
+      <button type="submit" class="btn" id="btnSubmit" data-i18n="contato.send">Enviar</button>
     </form>
   </div>
 </div>
 
+<script>
+document.getElementById('contatoForm').addEventListener('submit', async e => {
+  e.preventDefault();
+  const _t = (k) => (window.i18n ? window.i18n.t(k) : k);
+  const btn = document.getElementById('btnSubmit');
+  const msg = document.getElementById('msg');
+  btn.disabled = true;
+  btn.textContent = _t('contrib.submitting');
+  try {
+    await enviarFormulario('contato', e.target);
+    msg.innerHTML = `<div class="msg ok">${_t('contato.success')}</div>`;
+    e.target.reset();
+  } catch (err) {
+    msg.innerHTML = `<div class="msg err">${_t('contrib.error.prefix')}${err.message}</div>`;
+  } finally {
+    btn.disabled = false;
+    btn.textContent = _t('contato.send');
+  }
+});
+</script>
 </body>
 </html>

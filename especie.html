@@ -369,10 +369,11 @@ function renderLightbox() {
   const multi = lightboxPhotos.length > 1;
   document.querySelector('.lightbox-prev').style.display = multi ? '' : 'none';
   document.querySelector('.lightbox-next').style.display = multi ? '' : 'none';
+  // Legenda (Fotografia | Local) aparece só na página, não na foto ampliada:
+  // o crédito já está gravado na imagem como marca d'água.
   const capEl = document.querySelector('.lightbox-caption');
-  const txt = window.__lightboxCaption || '';
-  capEl.textContent = txt;
-  capEl.style.display = txt ? '' : 'none';
+  capEl.textContent = '';
+  capEl.style.display = 'none';
 }
 
 document.querySelector('.lightbox-close').addEventListener('click', closeLightbox);

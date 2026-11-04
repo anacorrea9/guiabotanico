@@ -7,6 +7,32 @@
   <link rel="icon" type="image/webp" href="icone planta.webp">
   <link rel="stylesheet" href="style.css">
   <script src="i18n.js" defer></script>
+  <style>
+    .sobre-page h1 { color:#00502B; margin-bottom:18px; }
+    .sobre-page p, .sobre-page li { font-size:15px; }
+    .sobre-objetivos { margin:4px 0 18px; }
+    .sobre-objetivos li { margin-bottom:8px; }
+    .sobre-objetivos strong { color:#00502B; }
+    .sobre-foto figcaption { margin:8px 0 0; font-size:13px; font-style:italic; color:#777; text-align:center; }
+    .sobre-intro { display:flex; gap:28px; align-items:flex-start; margin:10px 0 22px; }
+    .sobre-foto { flex:0 0 42%; margin:0; }
+    .sobre-foto img { width:100%; height:auto; display:block; border-radius:12px; }
+    .sobre-intro .sobre-objetivos { flex:1; margin:0; }
+    .news-carousel { margin-top:6px; }
+    .news-carousel .outras-track { --por-pagina:3; gap:16px; align-items:stretch; }
+    .news-carousel .news-card { flex:0 0 calc((100% - (var(--por-pagina) - 1) * 16px) / var(--por-pagina)); min-width:0; }
+    .news-card { display:flex; flex-direction:column; align-items:center; text-align:center; background:#fff; border:1px solid #e4ded6; border-radius:8px; padding:8px 8px 14px; color:inherit; text-decoration:none; box-shadow:0 1px 4px rgba(0,0,0,0.05); transition:transform .2s, box-shadow .2s; }
+    .news-card:hover { transform:translateY(-2px); box-shadow:0 8px 20px rgba(0,0,0,0.12); }
+    .news-card img { width:100%; aspect-ratio:16/10; object-fit:cover; border-radius:10px; display:block; }
+    .news-card h3 { font-size:14px; font-weight:700; line-height:1.35; color:#1a1a1a; margin:12px 6px 4px; }
+    .news-date { font-size:11px; color:#999; }
+    .news-plus { margin-top:auto; padding-top:10px; font-size:22px; font-weight:700; line-height:1; color:#4CAF50; }
+    .news-all { text-align:right; margin-top:10px; }
+    .news-all a { color:#00502B; font-weight:600; text-decoration:none; }
+    .news-all a:hover { text-decoration:underline; }
+    .sobre-instagram { display:flex; justify-content:center; margin-top:28px; }
+    @media (max-width: 700px) { .sobre-intro { flex-direction:column; } .sobre-foto { flex:none; width:100%; } }
+  </style>
 </head>
 <body>
 
@@ -139,9 +165,49 @@
 </script>
 </header>
 
-<div class="info-page" style="text-align:center;padding-top:80px;padding-bottom:100px">
-  <h1 data-i18n="maintenance.title">Em manutenção</h1>
-  <p class="subtitle" style="border-bottom:none" data-i18n="maintenance.subtitle">Esta página está temporariamente indisponível. Em breve, novidades.</p>
+<div class="info-page sobre-page">
+  <h1 data-i18n="sobre.title">O PELD-BISC</h1>
+
+  <p data-i18n="sobre.p1">O PELD-BISC é um grupo de Pesquisa Ecológica de Longa Duração (PELD) que reúne pesquisadores da UFSC, UDESC, Epagri e ICMBio. Ele faz parte do INCT ClimaVeg, Instituto Nacional de Ciência e Tecnologia dedicado a estudos sobre biodiversidade, ecologia e mudanças climáticas, com ênfase na adaptação da vegetação nativa, financiado pelo CNPq (governo federal).</p>
+  <p data-i18n="sobre.p2">Aqui, estudamos como as mudanças ambientais e os distúrbios afetam a biodiversidade e o funcionamento dos ecossistemas de Santa Catarina ao longo do tempo. Nossas pesquisas têm cinco objetivos principais:</p>
+
+  <div class="sobre-intro">
+    <figure class="sobre-foto">
+      <img src="sobre/foto-campo.jpg" alt="Vista aérea de duas pesquisadoras em campanha de levantamento da biodiversidade dos campos">
+      <figcaption data-i18n="sobre.foto.legenda">Pesquisadoras em campanha de levantamento da biodiversidade dos campos. Fonte: PELD-BISC, 2026.</figcaption>
+    </figure>
+    <ul class="sobre-objetivos">
+      <li data-i18n-html="sobre.obj1"><strong>Documentar</strong> a diversidade de espécies de Santa Catarina, incluindo a identificação de novas espécies;</li>
+      <li data-i18n-html="sobre.obj2"><strong>Compreender</strong> como o fogo, o clima, a altitude e a perda de florestas influenciam a distribuição e a diversidade de comunidades de plantas, formigas e microbiota do solo;</li>
+      <li data-i18n-html="sobre.obj3"><strong>Identificar</strong> como as interações entre espécies e sua história evolutiva influenciam sua sobrevivência e sua capacidade de responder às mudanças ambientais;</li>
+      <li data-i18n-html="sobre.obj4"><strong>Avaliar</strong> os impactos de espécies invasoras e estratégias para restaurar áreas degradadas desses ecossistemas;</li>
+      <li data-i18n-html="sobre.obj5"><strong>Promover</strong> atividades e ações de divulgação científica, relacionando ciência e arte em distintos setores da sociedade.</li>
+    </ul>
+  </div>
+
+  <p data-i18n="sobre.p3">Os estudos acontecem em duas unidades de conservação, o Parque Nacional de São Joaquim e o Parque Estadual da Serra Furada. Juntas, elas somam mais de 50 mil hectares de Floresta Ombrófila Densa, Floresta com Araucária, Matas Nebulares e Campos de Altitude do estado.</p>
+  <h2 data-i18n="sobre.more">Veja mais sobre o nosso trabalho:</h2>
+
+  <div class="outras-carousel news-carousel">
+    <button class="outras-arrow" id="newsPrev" aria-label="Anterior" data-i18n-aria="especie.lb.prev">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <div class="outras-viewport">
+      <div class="outras-track" id="newsTrack"></div>
+    </div>
+    <button class="outras-arrow" id="newsNext" aria-label="Próxima" data-i18n-aria="especie.lb.next">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+  </div>
+  <div class="outras-dots" id="newsDots"></div>
+  <p class="news-all"><a href="https://peldbisc.ufsc.br/noticias" target="_blank" rel="noopener" data-i18n="sobre.allNews">Ver todas as notícias do PELD-BISC →</a></p>
+
+  <div class="sobre-instagram">
+    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/C5y38RBvlHK/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin:1px; max-width:360px; min-width:280px; padding:0; width:calc(100% - 2px);">
+      <a href="https://www.instagram.com/reel/C5y38RBvlHK/?utm_source=ig_embed&amp;utm_campaign=loading" target="_blank" rel="noopener" style="display:block;padding:16px;text-align:center;font-family:Arial,sans-serif;font-size:14px;color:#3897f0;text-decoration:none">Ver esse post no Instagram · PELD - BISC (@peldbisc)</a>
+    </blockquote>
+    <script async src="https://www.instagram.com/embed.js"></script>
+  </div>
 </div>
 
 <footer>
@@ -185,5 +251,169 @@
   </div>
 </footer>
 
+<script>
+/* Notícias do PELD-BISC (https://peldbisc.ufsc.br/noticias), da mais recente para a mais antiga.
+   Para adicionar uma notícia nova, inclua um item no topo desta lista.
+   O carrossel mostra só as MAX_NOTICIAS mais recentes (3 páginas de 3 cards). */
+const MAX_NOTICIAS = 9;
+const NOTICIAS = [
+ {
+  "titulo": "Pesquisadores do PELD-BISC participam do II Workshop da rede sFuego",
+  "data": "06/10/2026",
+  "url": "https://peldbisc.ufsc.br/noticia&id=22",
+  "img": "sobre/noticias/noticia-22.jpg"
+ },
+ {
+  "titulo": "Pesquisa revela como o fogo afeta a regeneração da araucária",
+  "data": "04/09/2026",
+  "url": "https://peldbisc.ufsc.br/noticia&id=21",
+  "img": "sobre/noticias/noticia-21.jpg"
+ },
+ {
+  "titulo": "PELD-BISC orienta queima no Parque Nacional de São Joaquim",
+  "data": "20/07/2026",
+  "url": "https://peldbisc.ufsc.br/noticia&id=20",
+  "img": "sobre/noticias/noticia-20.jpg"
+ },
+ {
+  "titulo": "Pod[e] Bisc vai ao ar com episódio sobre javalis",
+  "data": "03/07/2026",
+  "url": "https://peldbisc.ufsc.br/noticia&id=19",
+  "img": "sobre/noticias/noticia-19.jpg"
+ },
+ {
+  "titulo": "Pinhões toleram condições associadas ao fogo, com limites",
+  "data": "29/04/2026",
+  "url": "https://peldbisc.ufsc.br/noticia&id=15",
+  "img": "sobre/noticias/noticia-15.jpg"
+ },
+ {
+  "titulo": "PELD-BISC recebe visita técnica de rede de pesquisadores",
+  "data": "24/04/2026",
+  "url": "https://peldbisc.ufsc.br/noticia&id=18",
+  "img": "sobre/noticias/noticia-18.jpg"
+ },
+ {
+  "titulo": "Fogo ajuda a manter a diversidade de plantas nos Campos de Altitude do Sul do Brasil",
+  "data": "02/03/2026",
+  "url": "https://peldbisc.ufsc.br/noticia&id=17",
+  "img": "sobre/noticias/noticia-17.jpg"
+ },
+ {
+  "titulo": "Não apenas insetos: aves também consomem o melato da bracatinga",
+  "data": "31/03/2025",
+  "url": "https://peldbisc.ufsc.br/noticia&id=16",
+  "img": "sobre/noticias/noticia-16.jpg"
+ },
+ {
+  "titulo": "PELD-BISC publica estudo sobre espécie \"super rara\"",
+  "data": "04/08/2024",
+  "url": "https://peldbisc.ufsc.br/noticia&id=14",
+  "img": "sobre/noticias/noticia-14.jpg"
+ },
+ {
+  "titulo": "PELD-BISC participa de evento nacional em Brasília",
+  "data": "04/07/2024",
+  "url": "https://peldbisc.ufsc.br/noticia&id=13",
+  "img": "sobre/noticias/noticia-13.jpg"
+ },
+ {
+  "titulo": "PELD-BISC no mundo: \"A ciência colaborativa é o melhor jeito de fazer ciência\"",
+  "data": "19/07/2023",
+  "url": "https://peldbisc.ufsc.br/noticia&id=12",
+  "img": "sobre/noticias/noticia-12.jpg"
+ },
+ {
+  "titulo": "PELD-BISC no mundo: De sapos na banheira a Minnesota, nos EUA",
+  "data": "23/05/2023",
+  "url": "https://peldbisc.ufsc.br/noticia&id=11",
+  "img": "sobre/noticias/noticia-11.jpg"
+ },
+ {
+  "titulo": "Reportagem sobre o PELD-BISC vence prêmio da Fapesc",
+  "data": "16/12/2022",
+  "url": "https://peldbisc.ufsc.br/noticia&id=6",
+  "img": "sobre/noticias/noticia-6.jpg"
+ },
+ {
+  "titulo": "PELD-BISC na mídia: Pesquisadores investigam árvore rara",
+  "data": "30/11/2022",
+  "url": "https://peldbisc.ufsc.br/noticia&id=9",
+  "img": "sobre/noticias/noticia-9.jpg"
+ },
+ {
+  "titulo": "PELD-BISC na mídia: SC abriga espécie considerada \"super rara\"",
+  "data": "22/11/2022",
+  "url": "https://peldbisc.ufsc.br/noticia&id=10",
+  "img": "sobre/noticias/noticia-10.jpg"
+ },
+ {
+  "titulo": "II Semana da Ciência do PELD BISC",
+  "data": "18/10/2022",
+  "url": "https://peldbisc.ufsc.br/noticia&id=5",
+  "img": "sobre/noticias/noticia-5.jpg"
+ },
+ {
+  "titulo": "Identidade visual",
+  "data": "30/06/2022",
+  "url": "https://peldbisc.ufsc.br/noticia&id=4",
+  "img": "sobre/noticias/noticia-4.jpg"
+ },
+ {
+  "titulo": "PELD-BISC na mídia: Nova espécie de planta é encontrada no PNSJ",
+  "data": "20/04/2021",
+  "url": "https://peldbisc.ufsc.br/noticia&id=7",
+  "img": "sobre/noticias/noticia-7.jpg"
+ },
+ {
+  "titulo": "PELD-BISC na mídia: Personagem de série vira nome de planta em SC",
+  "data": "13/04/2021",
+  "url": "https://peldbisc.ufsc.br/noticia&id=8",
+  "img": "sobre/noticias/noticia-8.jpg"
+ }
+];
+
+(function () {
+  const track = document.getElementById('newsTrack');
+  const dots = document.getElementById('newsDots');
+  const prev = document.getElementById('newsPrev');
+  const next = document.getElementById('newsNext');
+  if (!track) return;
+  const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
+  const lista = NOTICIAS.slice(0, MAX_NOTICIAS);
+  track.innerHTML = lista.map(n => `
+    <a class="news-card" href="${esc(n.url)}" target="_blank" rel="noopener">
+      <img src="${n.img}" alt="" loading="lazy">
+      <h3>${esc(n.titulo)}</h3>
+      <span class="news-date">${n.data}</span>
+      <span class="news-plus" aria-hidden="true">+</span>
+    </a>`).join('');
+
+  const porPagina = () => window.innerWidth <= 480 ? 1 : window.innerWidth <= 760 ? 2 : 3;
+  const totalPaginas = () => Math.max(1, Math.ceil(lista.length / porPagina()));
+  let pagina = 0;
+  function atualizar() {
+    const total = totalPaginas();
+    if (pagina >= total) pagina = total - 1;
+    track.style.setProperty('--por-pagina', porPagina());
+    const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+    track.style.transform = `translateX(-${pagina * (track.parentElement.clientWidth + gap)}px)`;
+    prev.disabled = pagina === 0;
+    next.disabled = pagina >= total - 1;
+    dots.innerHTML = '';
+    for (let k = 0; k < total; k++) {
+      const d = document.createElement('button');
+      d.className = 'outras-dot' + (k === pagina ? ' active' : '');
+      d.setAttribute('aria-label', 'Página ' + (k + 1));
+      d.addEventListener('click', () => { pagina = k; atualizar(); });
+      dots.appendChild(d);
+    }
+  }
+  prev.addEventListener('click', () => { if (pagina > 0) { pagina--; atualizar(); } });
+  next.addEventListener('click', () => { if (pagina < totalPaginas() - 1) { pagina++; atualizar(); } });
+  window.addEventListener('resize', atualizar);
+  atualizar();
+})();
+</script>
 </body>
 </html>
