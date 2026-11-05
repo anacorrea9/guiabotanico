@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ficha da espécie – Guia Botânico</title>
+  <title>Ficha da espécie</title>
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="stylesheet" href="style.css">
   <script src="i18n.js" defer></script>
@@ -478,7 +478,7 @@ function render(p) {
     return;
   }
 
-  document.title = `${p.nome} — Guia Botânico`;
+  document.title = p.nome;
   document.getElementById('especieNome').textContent = p.nome;
   document.getElementById('especieFamilia').textContent = p.familia;
 
